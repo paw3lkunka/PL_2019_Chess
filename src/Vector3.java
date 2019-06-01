@@ -54,5 +54,11 @@ public class Vector3 {
 	public String toString() {
 		return "X= "+x+"  Y= "+y+"  Z= "+z;
 	}
+	
+	public void mult(int a) {
+		this.x = x * a;
+		this.y = y * a;
+		this.z = z * a;
+	}
 }
 

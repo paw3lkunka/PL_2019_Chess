@@ -1,26 +1,24 @@
+import Exceptions.ColorMissingException;
 import processing.core.PApplet;
 
 enum Color
 {
 	black,
-	white;
+	white,
+	aGreen;
 }
 
 
 public class Tile extends PositionedObject 
 {
 
-	Vector3 color;
+	Color color;
 	Figure figure;
 
 	public Tile(PApplet parent, Vector3 pos, Color color) 
 	{
 		super(parent, pos);
-		switch(color)
-		{
-			case white: this.color = new Vector3(255,255,255); 	break;
-			case black: this.color = new Vector3(0,0,0);		break;
-		}
+		this.color = color;
 	}
 	
 	
@@ -28,14 +26,14 @@ public class Tile extends PositionedObject
 	public void display()
 	{
 		super.parent.noStroke();
-		super.parent.fill(color.getX(), color.getY(), color.getZ());
-		
+		this.fill();
 		super.parent.pushMatrix();
 		super.place();
 		super.parent.rotateX(PApplet.PI/2);
 		super.parent.square(0,0,50);
+		
 		if(figure != null)
-			super.parent.shape(figure.getShape(), 5, 5); //pliki svg s¹ wielkoœci 40x40, a pola 50x50 st¹d offset 5,5
+			figure.display();
 		super.parent.popMatrix();
 	}
 
@@ -49,5 +47,15 @@ public class Tile extends PositionedObject
 		this.figure = figure;
 	}
 	
+	public void fill()
+	{
+		switch(color)
+		{
+			case white: super.parent.fill(255, 255, 255);	break;
+			case black: super.parent.fill(  0,   0,   0);	break;
+			case aGreen:super.parent.fill(  0, 255,   0,  150);	break;
+			default: throw new ColorMissingException("Brak podanego koloru pola");
+		}
+	}
 	
 }

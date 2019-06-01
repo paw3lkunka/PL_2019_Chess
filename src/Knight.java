@@ -5,13 +5,14 @@ import processing.core.PApplet;
 
 public class Knight extends Figure{
 
-	public Knight(PApplet parent, Vector3 position, Color color) {
-		super(parent, position, color);
+	public Knight(PApplet parent, Chessboard chessboard, Vector3 position, Player player) {
+		super(parent, chessboard, position, player);
 
-		switch(super.color)
+		switch(player.getColor())
 		{
 			case white: super.setShape("chess_svgs/white_knight.svg");	break;
 			case black: super.setShape("chess_svgs/black_knight.svg");	break;
+			default: throw new FileMissingException("Brak pliku z podanym kolorem figury"); 
 		}
 	}
 
