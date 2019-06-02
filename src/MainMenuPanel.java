@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 
 public class MainMenuPanel extends JPanel {
@@ -140,7 +141,7 @@ public class MainMenuPanel extends JPanel {
 			}
 
 			if(e.getSource() == btnExit) {
-				
+				program.dispatchEvent(new WindowEvent(program, WindowEvent.WINDOW_CLOSING));
 			}
 
 		}
