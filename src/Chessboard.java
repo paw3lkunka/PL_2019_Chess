@@ -41,21 +41,32 @@ public class Chessboard extends PositionedObject {
 	    getTile(6,0).setFigure(new Knight(parent, this, new Vector3(6,0), one));
 	    getTile(7,0).setFigure(new Rook(parent, this, new Vector3(7,0), one));
 	    
-	    getTile(3,1).setFigure(new Pawn(parent, this, new Vector3(3,1), one));
-	    
+	    for(int i=0; i<8; ++i)
+	    	getTile(i,1).setFigure(new Pawn(parent, this, new Vector3(i,1), one));
 	    
 	    //black
+	    getTile(0,7).setFigure(new Rook(parent, this, new Vector3(0,7), two));
+	    getTile(1,7).setFigure(new Knight(parent, this, new Vector3(1,7), two));
+	    getTile(2,7).setFigure(new Bishop(parent, this, new Vector3(2,7), two));
+	    getTile(3,7).setFigure(new Queen(parent, this, new Vector3(3,7), two));
+	    getTile(4,7).setFigure(new King(parent, this, new Vector3(4,7), two));
+	    getTile(5,7).setFigure(new Bishop(parent, this, new Vector3(5,7), two));
+	    getTile(6,7).setFigure(new Knight(parent, this, new Vector3(6,7), two));
+	    getTile(7,7).setFigure(new Rook(parent, this, new Vector3(7,7), two));
+	    
+	    for(int i=0; i<8; ++i)
+	    	getTile(i,6).setFigure(new Pawn(parent, this, new Vector3(i,6), two));
+	    
+	    //testy
+	   /* getTile(4,3).setFigure(new Pawn(parent, this, new Vector3(4,3), one));
+	    getTile(2,3).setFigure(new Bishop(parent, this, new Vector3(2,3), two));
 	    getTile(1,7).setFigure(new Knight(parent, this, new Vector3(1,7), two));
 	    getTile(6,7).setFigure(new Knight(parent, this, new Vector3(6,7), two));
 
 	    getTile(2,7).setFigure(new Bishop(parent, this, new Vector3(2,7), two));
 	    getTile(5,7).setFigure(new Bishop(parent, this, new Vector3(5,7), two));
 
-	    getTile(4,6).setFigure(new Pawn(parent, this, new Vector3(4,6), two));
-	    
-	    //testy
-	    getTile(4,3).setFigure(new Pawn(parent, this, new Vector3(4,3), one));
-	    getTile(2,3).setFigure(new Bishop(parent, this, new Vector3(2,3), two));
+	    getTile(4,6).setFigure(new Pawn(parent, this, new Vector3(4,6), two));*/
 	}
 
 	public void display()

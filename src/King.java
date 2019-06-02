@@ -10,8 +10,8 @@ public class King extends Figure {
 
 		switch(player.getColor())
 		{
-			case white: super.setShape("chess_svgs/white_knight.svg");	break;
-			case black: super.setShape("chess_svgs/black_knight.svg");	break;
+			case white: super.setShape("chess_svgs/white_king.svg");	break;
+			case black: super.setShape("chess_svgs/black_king.svg");	break;
 			default: throw new FileMissingException("Brak pliku z podanym kolorem figury"); 
 		}
 	}

@@ -9,8 +9,8 @@ public class Bishop extends Figure {
 
 		switch(player.getColor())
 		{
-			case white: super.setShape("chess_svgs/white_knight.svg");	break;
-			case black: super.setShape("chess_svgs/black_knight.svg");	break;
+			case white: super.setShape("chess_svgs/white_bishop.svg");	break;
+			case black: super.setShape("chess_svgs/black_bishop.svg");	break;
 			default: break;
 		}
 
