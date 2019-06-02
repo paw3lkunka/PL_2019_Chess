@@ -108,6 +108,7 @@ public class Chessboard extends PositionedObject {
 		getTile(to).setFigure( getTile(from).getFigure() ); //ruch figury na pole
 		getTile(from).setFigure( null );					//usuniecie figury z poprzedniego pola
 		getTile(to).getFigure().setPosition(to); 			//nadanie nowej pozycji
+		getTile(to).getFigure().moved();
 		PApplet.println(from.toString() + "   ==>   "+to.toString());	//wyswietlenie na konsoli
 	}
 }
