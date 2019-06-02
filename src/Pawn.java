@@ -1,6 +1,4 @@
-import java.util.ArrayList;
 import java.util.List;
-
 import processing.core.PApplet;
 
 public class Pawn extends Figure {
@@ -18,25 +16,48 @@ public class Pawn extends Figure {
 	
 	@Override
 	public List<Vector3> getPossibleMoves() {
-		List<Vector3> list= new ArrayList<Vector3>();
-
+		/*List<Vector3> list= new ArrayList<Vector3>();
+		boolean collision = false;
+		Vector3 v;
+		for(int i=1; i<=2; ++i)
+		{
+			switch(player.getId())
+			{
+				case one:
+						v = new Vector3(position.getX(), position.getY()+i);
+						if(collision  == false && (i==1 || i==2 && position.getY() == 1))
+							if(chessboard.checkCollision(v) == false)
+								list.add(v);
+							else
+								collision = true;
+						break;
+					
+				case two:
+					v = new Vector3(position.getX(), position.getY()-i);
+					if(collision  == false && (i==1 || i==2 && position.getY() == 6))
+						if(chessboard.checkCollision(v) == false)
+							list.add(v);
+						else
+							collision = true;
+					break;
+			}
+		}*/
+		int[] tabX = {0};
+		int[] tabY = {0};
 		switch(player.getId())
 		{
-			case one: 
-				list.add(new Vector3(position.getX(), position.getY()+1));
-				if(position.getY() == 1)
-					list.add(new Vector3(position.getX(), position.getY()+2));
+			case one:
+				tabY = new int[] {1};
 				break;
-				
-			case two:	
-				list.add(new Vector3(position.getX(), position.getY()-1));	
-				if(position.getY() == 6)
-					list.add(new Vector3(position.getX(), position.getY()-2));
+			case two:
+				tabY = new int[] {-1};
 				break;
-			default: throw new FileMissingException("Brak pliku z podanym kolorem figury");
 		}
 		
-		return super.removeAnomalies(list);
+		if(moved)
+			return standardProcedure(tabX, tabY, 1, false);
+		else
+			return standardProcedure(tabX, tabY, 2, false);
 	}
 	
 }

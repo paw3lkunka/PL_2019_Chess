@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+
+import Exceptions.OutOfChessboardException;
 import processing.core.PApplet;
 
 public class Chessboard extends PositionedObject {
@@ -30,13 +32,17 @@ public class Chessboard extends PositionedObject {
 	    two = new Player("Czarny", PlayerID.two, Color.black, Sex.male, Skill.beginner, 1, 5);
 	    
 	    //white
+	    getTile(0,0).setFigure(new Rook(parent, this, new Vector3(0,0), one));
 	    getTile(1,0).setFigure(new Knight(parent, this, new Vector3(1,0), one));
-	    getTile(6,0).setFigure(new Knight(parent, this, new Vector3(6,0), one));
-	    
 	    getTile(2,0).setFigure(new Bishop(parent, this, new Vector3(2,0), one));
+	    getTile(3,0).setFigure(new Queen(parent, this, new Vector3(3,0), one));
+	    getTile(4,0).setFigure(new King(parent, this, new Vector3(4,0), one));
 	    getTile(5,0).setFigure(new Bishop(parent, this, new Vector3(5,0), one));
+	    getTile(6,0).setFigure(new Knight(parent, this, new Vector3(6,0), one));
+	    getTile(7,0).setFigure(new Rook(parent, this, new Vector3(7,0), one));
 	    
 	    getTile(3,1).setFigure(new Pawn(parent, this, new Vector3(3,1), one));
+	    
 	    
 	    //black
 	    getTile(1,7).setFigure(new Knight(parent, this, new Vector3(1,7), two));
@@ -45,6 +51,11 @@ public class Chessboard extends PositionedObject {
 	    getTile(2,7).setFigure(new Bishop(parent, this, new Vector3(2,7), two));
 	    getTile(5,7).setFigure(new Bishop(parent, this, new Vector3(5,7), two));
 
+	    getTile(4,6).setFigure(new Pawn(parent, this, new Vector3(4,6), two));
+	    
+	    //testy
+	    getTile(4,3).setFigure(new Pawn(parent, this, new Vector3(4,3), one));
+	    getTile(2,3).setFigure(new Bishop(parent, this, new Vector3(2,3), two));
 	}
 
 	public void display()
@@ -77,14 +88,26 @@ public class Chessboard extends PositionedObject {
 		return list;
 	}
 	
-	public boolean checkCollision(Vector3 v)
+	public Figure checkCollision(Vector3 v) throws OutOfChessboardException
 	{
 		if(v.getX() > 7 || v.getX() < 0 ||
 		   v.getY() > 7 || v.getY() < 0)
-			return true;
+			throw new OutOfChessboardException("Kordynaty: "+v.toString()+" znajduj¹ siê poza plansz¹");
 		else if(getTile(v).getFigure() != null)
-			return true;
+			return getTile(v).getFigure();
 		else 
-			return false;
+			return null;
+	}
+
+	public int getSize() {
+		return size;
+	}
+	
+	public void moveFigure(Vector3 from, Vector3 to)
+	{
+		getTile(to).setFigure( getTile(from).getFigure() ); //ruch figury na pole
+		getTile(from).setFigure( null );					//usuniecie figury z poprzedniego pola
+		getTile(to).getFigure().setPosition(to); 			//nadanie nowej pozycji
+		PApplet.println(from.toString() + "   ==>   "+to.toString());	//wyswietlenie na konsoli
 	}
 }

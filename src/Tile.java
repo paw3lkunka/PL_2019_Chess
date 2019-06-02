@@ -51,9 +51,9 @@ public class Tile extends PositionedObject
 	{
 		switch(color)
 		{
-			case white: super.parent.fill(255, 255, 255);	break;
-			case black: super.parent.fill(  0,   0,   0);	break;
-			case aGreen:super.parent.fill(  0, 255,   0,  150);	break;
+			case white: super.parent.fill(255, 255, 255, 255);	break;
+			case black: super.parent.fill(  0,   0,   0, 255);	break;
+			case aGreen:super.parent.fill(  0, 255,   0, 100);	break;
 			default: throw new ColorMissingException("Brak podanego koloru pola");
 		}
 	}

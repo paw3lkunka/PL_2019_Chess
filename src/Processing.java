@@ -81,6 +81,12 @@ public class Processing extends PApplet {
 		  selection.switchSelection();
 		  selection = null;
 	  }
+	  else if( selection != null && selection.getPossibleMoves().contains(new Vector3(x,y)))
+	  {
+		  c.moveFigure(selection.getPosition(), new Vector3(x,y));
+		  selection.switchSelection();
+		  selection = null;
+	  }
 	  else
 	  {
 		  selection.switchSelection();

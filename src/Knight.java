@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 
 import processing.core.PApplet;
@@ -19,7 +18,7 @@ public class Knight extends Figure{
 	@Override
 	public List<Vector3> getPossibleMoves() {
 
-		List<Vector3> list= new ArrayList<Vector3>();
+		/*List<Vector3> list= new ArrayList<Vector3>();
 		list.add(new Vector3(position.getX()+1, position.getY()+2));
 		list.add(new Vector3(position.getX()+1, position.getY()-2));
 		list.add(new Vector3(position.getX()-1, position.getY()+2));
@@ -27,8 +26,10 @@ public class Knight extends Figure{
 		list.add(new Vector3(position.getX()+2, position.getY()+1));
 		list.add(new Vector3(position.getX()+2, position.getY()-1));
 		list.add(new Vector3(position.getX()-2, position.getY()+1));
-		list.add(new Vector3(position.getX()-2, position.getY()-1));
-		return super.removeAnomalies(list);
+		list.add(new Vector3(position.getX()-2, position.getY()-1));*/
+		int[] tabX = {1,1,-1,-1,2,2,-2,-2};
+		int[] tabY = {2,-2,2,-2,1,-1,1,-1};
+		return standardProcedure(tabX,tabY,1,true);
 	}
 
 }
