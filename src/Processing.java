@@ -41,6 +41,8 @@ public class Processing extends PApplet {
     	  //rotateX(PI/3);
     	  //drawCordinateSystem();
     	  c.display();
+  		if(selection != null)
+			selection.displayPossibleToMoveTiles();
     }	
     
     

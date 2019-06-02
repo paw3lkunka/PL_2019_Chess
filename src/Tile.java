@@ -27,6 +27,7 @@ public class Tile extends PositionedObject
 	{
 		super.parent.noStroke();
 		this.fill();
+		
 		super.parent.pushMatrix();
 		super.place();
 		super.parent.rotateX(PApplet.PI/2);

@@ -58,10 +58,10 @@ public abstract class Figure {
 	public void display()
 	{
 		parent.pushMatrix();
-		parent.translate(0,-0.01f,0);
+		parent.translate(0,-0.02f,0);
 		parent.shape(getShape(), 5, 5); //pliki svg s¹ wielkoœci 40x40, a pola 50x50 st¹d offset 5,5
-		if(selection)
-			displayPossibleToMoveTiles();
+		/*if(selection)
+			displayPossibleToMoveTiles();*/
 		parent.popMatrix();
 	}
 
@@ -69,12 +69,12 @@ public abstract class Figure {
 	{
 		List<Vector3> vList = getPossibleMoves();
 		
-		parent.rotateX(-PApplet.PI/2);
+		//parent.rotateX(PApplet.PI/2);
 		for(int i=0; i<vList.size(); ++i)
 		{
-			Vector3 v = new Vector3(vList.get(i).getX()*50 - position.getX()*50,		
+			Vector3 v = new Vector3(vList.get(i).getX()*50,// - position.getX()*50,		
 									-0.01f,
-									vList.get(i).getY()*50 - position.getY()*50
+									vList.get(i).getY()*50// - position.getY()*50
 									);
 
 			new Tile( parent, v, Color.aGreen).display();
