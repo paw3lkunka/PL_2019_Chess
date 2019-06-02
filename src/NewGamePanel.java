@@ -60,14 +60,14 @@ public class NewGamePanel extends JPanel {
 		txtLabelBlack.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		txtLabelBlack.setEditable(false);
 		txtLabelBlack.setColumns(10);
-		txtLabelBlack.setBounds(60, 225, 70, 25);
+		txtLabelBlack.setBounds(60, 200, 70, 25);
 		add(txtLabelBlack);
 		
 		JFormattedTextField txtBlackPlayer = new JFormattedTextField();
 		txtBlackPlayer.setForeground(new Color(0, 0, 0));
 		txtBlackPlayer.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		txtBlackPlayer.setBackground(new Color(245, 245, 245));
-		txtBlackPlayer.setBounds(130, 225, 210, 25);
+		txtBlackPlayer.setBounds(130, 200, 210, 25);
 		add(txtBlackPlayer);
 		
 		JButton btnBack = new JButton("Wr\u00F3\u0107");
@@ -83,14 +83,14 @@ public class NewGamePanel extends JPanel {
 				}
 			}
 		});
-		btnBack.setBounds(20, 320, 100, 50);
+		btnBack.setBounds(20, 280, 100, 50);
 		add(btnBack);
 		
 		JButton btnNewPlayer = new JButton("Nowy gracz");
 		btnNewPlayer.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
 		btnNewPlayer.setForeground(new Color(0, 0, 0));
 		btnNewPlayer.setBackground(new Color(245, 245, 245));
-		btnNewPlayer.setBounds(150, 320, 100, 50);
+		btnNewPlayer.setBounds(140, 280, 120, 50);
 		btnNewPlayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnNewPlayer) {
@@ -106,7 +106,7 @@ public class NewGamePanel extends JPanel {
 		btnStart.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
 		btnStart.setForeground(new Color(245, 245, 245));
 		btnStart.setBackground(Color.BLACK);
-		btnStart.setBounds(280, 320, 100, 50);
+		btnStart.setBounds(280, 280, 100, 50);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnStart) {

@@ -6,6 +6,8 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
+
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
@@ -57,7 +59,6 @@ public class MainMenuPanel extends JPanel {
 		add(btnNewGame);
 		
 		btnLoadGame = new JButton("Wczytaj gr\u0119");
-		btnLoadGame.setEnabled(false);
 		btnLoadGame.setForeground(new Color(0, 0, 0));
 		btnLoadGame.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		btnLoadGame.setBackground(new Color(245, 245, 245));
@@ -66,7 +67,6 @@ public class MainMenuPanel extends JPanel {
 		add(btnLoadGame);
 		
 		btnSaveGame = new JButton("Zapisz gr\u0119");
-		btnSaveGame.setEnabled(false);
 		btnSaveGame.setForeground(new Color(245, 245, 245));
 		btnSaveGame.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		btnSaveGame.setBackground(Color.BLACK);
@@ -125,7 +125,33 @@ public class MainMenuPanel extends JPanel {
 			}
 			
 			if(e.getSource() == btnLoadGame) {
-				
+				try {
+					JFileChooser fileChooser = new JFileChooser();
+					fileChooser.setCurrentDirectory(new java.io.File("."));
+					fileChooser.setDialogTitle("Wybierz plik do wczytania");
+					fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+					fileChooser.showOpenDialog(btnLoadGame);
+					
+					//trzeba bêdzie z³apaæ wyj¹tek NullPointerException na wypadek klikniêcia Cancel
+					System.out.println("Chosen load file: " + fileChooser.getSelectedFile().getAbsolutePath() );
+				} catch (NullPointerException ex) {
+					System.out.println("Load file hasn't been chosen");
+				}
+			}
+			
+			if(e.getSource() == btnSaveGame) {
+				try {
+					JFileChooser fileChooser = new JFileChooser();
+					fileChooser.setCurrentDirectory(new java.io.File("."));
+					fileChooser.setDialogTitle("Wybierz plik do zapisu");
+					fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+					fileChooser.showOpenDialog(btnLoadGame);
+					
+					//trzeba bêdzie z³apaæ wyj¹tek NullPointerException na wypadek klikniêcia Cancel
+					System.out.println("Chosen save file: " + fileChooser.getSelectedFile().getAbsolutePath() );
+				} catch (NullPointerException ex) {
+					System.out.println("Save file hasn't been chosen");
+				}
 			}
 
 			if(e.getSource() == btnStats) {
