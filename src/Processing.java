@@ -3,15 +3,21 @@
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class Processing extends PApplet {
-
-	public static void main(String[] args) {
-		PApplet.main("Processing");
-	}
-
+public class Processing extends PApplet /*implements Runnable*/ {
+	Program program;
 	PImage bg;
 	Chessboard c;
 	Figure selection;
+	
+	public void run(Program program) {
+		this.program = program;
+		program.setVisible(false);
+		PApplet.main("Processing");
+	}
+	
+	public Processing() {
+		super();
+	}
 	
     public void settings(){
     	//fullScreen(P3D);
@@ -47,7 +53,11 @@ public class Processing extends PApplet {
     
     
   public void keyPressed() {
-
+	  
+	  if(key==27) {
+		  //tu chcia³em zrobiæ wyjœcie do menu i chowanie tego gównianego appeltu ale oczywiœcie nie dzia³a
+	  }
+	  
 	  switch(key)
 	  {
 	  case CODED:

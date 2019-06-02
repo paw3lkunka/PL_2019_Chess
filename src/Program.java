@@ -7,8 +7,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import processing.core.PApplet;
+
 public class Program extends JFrame {
 	private MainMenuPanel mmPanel;
+	public Processing game;
+
 
 	public MainMenuPanel getMmPanel() {
 		return mmPanel;
@@ -67,8 +71,7 @@ public class Program extends JFrame {
 			}
 			
 		});
-		setBounds(100, 100, 400, 400);
-		
+		setBounds(100, 100, 400, 400);		
 		mmPanel = new MainMenuPanel(this);
 		setContentPane(mmPanel);
 	}

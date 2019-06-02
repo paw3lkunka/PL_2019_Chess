@@ -107,10 +107,15 @@ public class NewGamePanel extends JPanel {
 		btnStart.setForeground(new Color(245, 245, 245));
 		btnStart.setBackground(Color.BLACK);
 		btnStart.setBounds(280, 280, 100, 50);
-		btnBack.addActionListener(new ActionListener() {
+		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnStart) {
-					// odpalanie PAppletu i w ogóle ca³ej gry
+					System.out.println("Clicked Start button");
+					//program.setVisible(false);
+					program.game = new Processing();
+					program.game.run(program);
+					//program.thread = new Thread(program.game);
+					//program.thread.start();
 				}
 			}
 		});
