@@ -22,7 +22,7 @@ public class Queen extends Figure {
 		int[] tabX = {1,-1,0,0,1,1,-1,-1};
 		int[] tabY = {0,0,1,-1,1,-1,1,-1};
 
-		return standardProcedure(tabX,tabY,chessboard.getSize(),true);
+		return standardProcedure(tabX,tabY,chessboard.getSize(),CollisionEvent.both);
 	}
 
 }

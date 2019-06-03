@@ -5,6 +5,13 @@ import Exceptions.OutOfChessboardException;
 import processing.core.PApplet;
 import processing.core.PShape;
 
+enum CollisionEvent {
+	attack,
+	move,
+	both;
+}
+
+
 public abstract class Figure {
 
 	protected final PApplet parent;
@@ -95,7 +102,7 @@ public abstract class Figure {
 		return player;
 	}
 	
-	public List<Vector3> standardProcedure(int[] tabX, int[] tabY, int distance, boolean fightOnCollision) {
+	public List<Vector3> standardProcedure(int[] tabX, int[] tabY, int distance,  CollisionEvent cevent) {
 		
 		List<Vector3> list= new ArrayList<Vector3>();
 		boolean collision = false;
@@ -111,10 +118,15 @@ public abstract class Figure {
 				{
 					if(collision  == false)
 						if(chessboard.checkCollision(v) == null)
-							list.add(v);
+						{
+							if(cevent != CollisionEvent.attack)
+								list.add(v);
+						}
 						else
 						{
-							if(chessboard.checkCollision(v).getPlayer().getId() != player.getId() && fightOnCollision)
+							if(chessboard.checkCollision(v).getPlayer().getId() != player.getId() 
+							  && cevent != CollisionEvent.move
+							  )
 								list.add(v);
 							collision = true;
 						}

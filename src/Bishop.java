@@ -47,7 +47,7 @@ public class Bishop extends Figure {
 			}
 			collision = false;
 		}*/
-		return standardProcedure(tabX,tabY,chessboard.getSize(),true);
+		return standardProcedure(tabX,tabY,chessboard.getSize(), CollisionEvent.both);
 	}
 	
 	

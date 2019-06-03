@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import processing.core.PApplet;
 
@@ -42,22 +43,29 @@ public class Pawn extends Figure {
 					break;
 			}
 		}*/
-		int[] tabX = {0};
+		int[] tabX = {-1,1};
 		int[] tabY = {0};
+		List<Vector3> list = new ArrayList<Vector3>();
+		
 		switch(player.getId())
 		{
 			case one:
-				tabY = new int[] {1};
+				tabY = new int[] {1,1};
+				list = standardProcedure(tabX, tabY, 1, CollisionEvent.attack);
+				tabX = new int[] {0};
 				break;
 			case two:
-				tabY = new int[] {-1};
+				tabY = new int[] {-1,-1};
+				list = standardProcedure(tabX, tabY, 1, CollisionEvent.attack);
+				tabX = new int[] {0};
 				break;
 		}
 		
 		if(moved)
-			return standardProcedure(tabX, tabY, 1, false);
+			list.addAll( standardProcedure(tabX, tabY, 1, CollisionEvent.move) );
 		else
-			return standardProcedure(tabX, tabY, 2, false);
+			list.addAll( standardProcedure(tabX, tabY, 2, CollisionEvent.move) );
+		return list;
 	}
 	
 }

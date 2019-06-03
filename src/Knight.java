@@ -29,7 +29,7 @@ public class Knight extends Figure{
 		list.add(new Vector3(position.getX()-2, position.getY()-1));*/
 		int[] tabX = {1,1,-1,-1,2,2,-2,-2};
 		int[] tabY = {2,-2,2,-2,1,-1,1,-1};
-		return standardProcedure(tabX,tabY,1,true);
+		return standardProcedure(tabX,tabY,1,CollisionEvent.both);
 	}
 
 }

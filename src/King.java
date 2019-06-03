@@ -22,7 +22,7 @@ public class King extends Figure {
 		int[] tabX = {1,-1,0,0,1,1,-1,-1};
 		int[] tabY = {0,0,1,-1,1,-1,1,-1};
 
-		return standardProcedure(tabX,tabY,1,true);
+		return standardProcedure(tabX,tabY,1, CollisionEvent.both);
 	}
 
 }

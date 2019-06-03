@@ -35,7 +35,7 @@ public class Rook extends Figure {
 					else
 						collision[j] = true;
 			}*/
-		return standardProcedure(tabX,tabY,chessboard.getSize(),true);//return list;
+		return standardProcedure(tabX,tabY,chessboard.getSize(),CollisionEvent.both);//return list;
 	}
 
 }
