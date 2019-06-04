@@ -1,21 +1,15 @@
+package Processing;
 import Exceptions.ColorMissingException;
+import Figures.Figure;
 import processing.core.PApplet;
-
-enum Color
-{
-	black,
-	white,
-	aGreen;
-}
-
 
 public class Tile extends PositionedObject 
 {
 
-	Color color;
+	TColor color;
 	Figure figure;
 
-	public Tile(PApplet parent, Vector3 pos, Color color) 
+	public Tile(PApplet parent, Vector3 pos, TColor color) 
 	{
 		super(parent, pos);
 		this.color = color;
@@ -33,12 +27,19 @@ public class Tile extends PositionedObject
 		super.parent.rotateX(PApplet.PI/2);
 		super.parent.square(0,0,50);
 		
-		if(figure != null)
-			figure.display();
+		displayFigure();
+		
 		super.parent.popMatrix();
 	}
 
-
+	
+	public void displayFigure()
+	{
+		if(figure != null) {
+			parent.translate(0,-0.02f,0);
+			parent.shape(figure.getShape(), 5, 5); //pliki svg s¹ wielkoœci 40x40, a pola 50x50 st¹d offset 5,5
+		}
+	}
 
 	public Figure getFigure() {
 		return figure;

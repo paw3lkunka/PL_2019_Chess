@@ -1,8 +1,9 @@
+package Processing;
 
 public class Vector3 {
-	float x;
-	float y;
-	float z;
+	private float x;
+	private float y;
+	private float z;
 	
 	public Vector3(float x, float y, float z) {
 		this.x = x;
@@ -53,6 +54,25 @@ public class Vector3 {
 	
 	public String toString() {
 		return "X= "+x+"  Y= "+y+"  Z= "+z;
+	}
+
+	public String toChessString() {
+		String str = new String();
+		
+		switch((int)this.x)
+		{
+		case 0: str="A"; break;
+		case 1: str="B"; break;
+		case 2: str="C"; break;
+		case 3: str="D"; break;
+		case 4: str="E"; break;
+		case 5: str="F"; break;
+		case 6: str="G"; break;
+		case 7: str="H"; break;
+		default: str+=(((int)this.x)+1)+" | "; break;
+		}
+		
+		return str+(int)this.y;
 	}
 	
 	public void mult(int a) {

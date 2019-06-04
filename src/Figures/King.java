@@ -1,12 +1,16 @@
-import java.util.List;
+package Figures;
 
-import processing.core.PApplet;
+import java.util.List;
+import Exceptions.FileMissingException;
+import Player.Player;
+import Processing.Chessboard;
+import Processing.Vector3;
 
 public class King extends Figure {
 
 	
-	public King(PApplet parent, Chessboard chessboard, Vector3 position, Player player) {
-		super(parent, chessboard, position, player);
+	public King(Chessboard chessboard, Vector3 position, Player player) {
+		super(chessboard, position, player);
 
 		switch(player.getColor())
 		{
@@ -25,4 +29,8 @@ public class King extends Figure {
 		return standardProcedure(tabX,tabY,1, CollisionEvent.both);
 	}
 
+	public String toString()
+	{
+		return getPlayer().getName()+" Ki "+getPosition().toChessString();
+	}
 }

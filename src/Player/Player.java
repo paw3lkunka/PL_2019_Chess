@@ -1,35 +1,17 @@
-
-enum PlayerID
-{
-	one,
-	two;
-}
-
-enum Sex
-{
-	male,
-	female,
-	none;
-}
-
-enum Skill
-{
-	beginner,
-	intermediate,
-	profesional;
-}
+package Player;
+import Figures.FColor;
 
 public class Player {
 
 	String name;
 	PlayerID id;
-	Color color;
+	FColor color;
 	Sex sex;
 	Skill skill;
 	int wins;
 	int games;
 	
-	public Player(String name, PlayerID id, Color color, Sex sex, Skill skill, int wins, int games) {
+	public Player(String name, PlayerID id, FColor color, Sex sex, Skill skill, int wins, int games) {
 		this.name = name;
 		this.color = color;
 		this.sex = sex;
@@ -55,11 +37,11 @@ public class Player {
 		this.id = id;
 	}
 
-	public Color getColor() {
+	public FColor getColor() {
 		return color;
 	}
 
-	public void setColor(Color color) {
+	public void setColor(FColor color) {
 		this.color = color;
 	}
 

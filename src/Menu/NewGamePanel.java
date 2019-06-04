@@ -1,9 +1,12 @@
+package Menu;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Canvas;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import processing.core.PApplet;
 
 import java.awt.Font;
 import javax.swing.JFormattedTextField;
@@ -111,11 +114,7 @@ public class NewGamePanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnStart) {
 					System.out.println("Clicked Start button");
-					//program.setVisible(false);
-					program.game = new Processing();
-					program.game.run(program);
-					//program.thread = new Thread(program.game);
-					//program.thread.start();
+					program.getGame().run();
 				}
 			}
 		});
