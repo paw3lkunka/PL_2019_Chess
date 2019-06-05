@@ -18,14 +18,20 @@ public class MainMenuPanel extends JPanel {
 	private JTextField txtTitle;
 	
 	// by u¿yæ w optymalny sposób klasy wewnêtrznej do obs³ugi tych guziczków potrzebne by³y te pola
-	MainMenuListener mmListener;
-	JButton btnNewGame;
-	JButton btnLoadGame;
-	JButton btnSaveGame;
-	JButton btnStats;
-	JButton btnInfo;
-	JButton btnExit;
-	JButton btnContinue;
+	private MainMenuListener mmListener;
+	private JButton btnNewGame;
+	private JButton btnLoadGame;
+	private JButton btnSaveGame;
+	private JButton btnStats;
+	private JButton btnInfo;
+	private JButton btnExit;
+	private JButton btnContinue;
+	
+	
+	public JButton getBtnContinue() {
+		return btnContinue;
+	}
+
 	/**
 	 * Create the panel.
 	 */
@@ -116,7 +122,7 @@ public class MainMenuPanel extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			
 			if(e.getSource() == btnContinue) {
-				// new NewPlayerPanel(program);
+				program.getGame().run();
 			}
 			
 			if(e.getSource() == btnNewGame) {

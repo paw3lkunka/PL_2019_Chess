@@ -38,6 +38,7 @@ public class StatsPanel extends JPanel {
 		txtTitle.setColumns(10);
 		
 		table = new JTable();
+		table.setEnabled(false);
 		table.setForeground(new Color(245, 245, 245));
 		table.setBackground(new Color(0, 0, 0));
 		table.setModel(new DefaultTableModel(

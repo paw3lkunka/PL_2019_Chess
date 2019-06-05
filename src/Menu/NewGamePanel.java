@@ -114,7 +114,14 @@ public class NewGamePanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnStart) {
 					System.out.println("Clicked Start button");
+					
+					if(program.getGame().getIsRunning()) {
+						// reset planszy i zawodników
+					}
+					
 					program.getGame().run();
+					program.getMmPanel().getBtnContinue().setEnabled(true);
+					program.setContentPane(program.getMmPanel());
 				}
 			}
 		});

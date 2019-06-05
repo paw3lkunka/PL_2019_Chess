@@ -11,7 +11,18 @@ public class Processing extends PApplet {
 	private Chessboard c;
 	private Figure selection;
 	private PlayerID turn;
+	private boolean isRunning = false;
 	
+	
+	
+	public boolean getIsRunning() {
+		return isRunning;
+	}
+
+	public void setIsRunning(boolean isRunning) {
+		this.isRunning = isRunning;
+	}
+
 	public void run() {			//nale¿y u¿yæ przy ka¿dorazowym wywo³aniu okna
 		program.setVisible(false);
 		getSurface().setVisible(true);
