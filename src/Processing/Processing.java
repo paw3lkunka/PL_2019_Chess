@@ -23,12 +23,21 @@ public class Processing extends PApplet {
 		this.isRunning = isRunning;
 	}
 
+	public Chessboard getC() {
+		return c;
+	}
+
+	public void setC(Chessboard c) {
+		this.c = c;
+	}
+
 	public void run() {			//nale¿y u¿yæ przy ka¿dorazowym wywo³aniu okna
 		program.setVisible(false);
 		getSurface().setVisible(true);
 		resume();
 		loop();
 		getSurface().setLocation(100, 100);
+		setIsRunning(true);
 	}
 	
 	public Processing(Program program) {
@@ -81,7 +90,7 @@ public class Processing extends PApplet {
   public void exit() {		//do ukrycia okna
 	  program.setVisible(true);
 	  noLoop();
-	  getSurface().setVisible(false); 
+	  getSurface().setVisible(false);
   }
   
   public void end()

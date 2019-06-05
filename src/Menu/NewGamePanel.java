@@ -6,10 +6,13 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import Processing.Chessboard;
+import Processing.Vector3;
 import processing.core.PApplet;
 
 import java.awt.Font;
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -116,12 +119,30 @@ public class NewGamePanel extends JPanel {
 					System.out.println("Clicked Start button");
 					
 					if(program.getGame().getIsRunning()) {
-						// reset planszy i zawodników
+						int confirm = JOptionPane.showConfirmDialog(
+								null, 
+								"Czy na pewno chcesz rozpocz¹æ now¹ grê? Niezapisany postêp zostanie utracony.", 
+								"UWAGA!", 
+								JOptionPane.YES_NO_OPTION, 
+								JOptionPane.INFORMATION_MESSAGE
+							);
+							
+							switch(confirm) {
+							case JOptionPane.YES_OPTION:
+								program.getGame().setC(new Chessboard(program.getGame(), new Vector3(0,0,0)));
+								program.getGame().run();
+								program.setContentPane(program.getMmPanel());
+								break;
+							default:
+								System.out.println("New game cancelled");
+								break;
+							}
+					} else {
+						program.getGame().run();
+						program.setContentPane(program.getMmPanel());
 					}
 					
-					program.getGame().run();
 					program.getMmPanel().getBtnContinue().setEnabled(true);
-					program.setContentPane(program.getMmPanel());
 				}
 			}
 		});
