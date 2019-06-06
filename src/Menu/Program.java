@@ -2,6 +2,7 @@ package Menu;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.*;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -9,12 +10,18 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Processing.Processing;
+import SQL.MySql;
 import processing.core.PApplet;
 
 public class Program extends JFrame {
 	private MainMenuPanel mmPanel;
 	private Processing game;
+	private MySql mySql;
 
+
+	public MySql getMySql() {
+		return mySql;
+	}
 
 	public MainMenuPanel getMmPanel() {
 		return mmPanel;
@@ -44,14 +51,17 @@ public class Program extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
 	 */
-	public Program() {
+	public Program() throws SQLException {
 		
 		
   	  	game = new Processing(this);
 		String[] args =new String[] {"--location=2000,2000", "Szachy"};
     	PApplet.runSketch(args, game);
     	game.stop();
+    	
+    	mySql = new MySql();
     	
 		setTitle("GRA W SZACHY");
 		setResizable(false);
@@ -76,8 +86,8 @@ public class Program extends JFrame {
 				switch(confirm) {
 				case JOptionPane.YES_OPTION:
 					// coœ innego do za³atwienia przy zamykaniu
-					evt.getWindow().dispose();
 					game.end();
+					evt.getWindow().dispose();
 					System.out.println("Closed");
 					break;
 				default:

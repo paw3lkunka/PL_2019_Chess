@@ -7,6 +7,10 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import Player.Sex;
+import Player.Skill;
+
 import javax.swing.JComboBox;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -15,6 +19,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButtonMenuItem;
 
@@ -105,12 +110,13 @@ public class NewPlayerPanel extends JPanel {
 		txtLevel.setBounds(30, 220, 150, 25);
 		add(txtLevel);
 		
-		JRadioButton rdbtnBegginer = new JRadioButton("Pocz\u0105tkuj\u0105cy");
-		rdbtnBegginer.setForeground(new Color(245, 245, 245));
-		rdbtnBegginer.setFont(new Font("Comic Sans MS", Font.BOLD, 13));
-		rdbtnBegginer.setBackground(new Color(160, 82, 45));
-		rdbtnBegginer.setBounds(30, 250, 110, 25);
-		add(rdbtnBegginer);
+		JRadioButton rdbtnBeginner = new JRadioButton("Pocz\u0105tkuj\u0105cy");
+		rdbtnBeginner.setSelected(true);
+		rdbtnBeginner.setForeground(new Color(245, 245, 245));
+		rdbtnBeginner.setFont(new Font("Comic Sans MS", Font.BOLD, 13));
+		rdbtnBeginner.setBackground(new Color(160, 82, 45));
+		rdbtnBeginner.setBounds(30, 250, 110, 25);
+		add(rdbtnBeginner);
 		
 		JRadioButton rdbtnIntermediate = new JRadioButton("Standardowy");
 		rdbtnIntermediate.setForeground(new Color(169, 169, 169));
@@ -119,17 +125,20 @@ public class NewPlayerPanel extends JPanel {
 		rdbtnIntermediate.setBounds(140, 250, 110, 25);
 		add(rdbtnIntermediate);
 		
-		JRadioButton rdbtnProffesional = new JRadioButton("Profesjonalista");
-		rdbtnProffesional.setForeground(new Color(0, 0, 0));
-		rdbtnProffesional.setFont(new Font("Comic Sans MS", Font.BOLD, 13));
-		rdbtnProffesional.setBackground(new Color(160, 82, 45));
-		rdbtnProffesional.setBounds(250, 250, 127, 25);
-		add(rdbtnProffesional);
+		JRadioButton rdbtnProfesional = new JRadioButton("Profesjonalista");
+		rdbtnProfesional.setForeground(new Color(0, 0, 0));
+		rdbtnProfesional.setFont(new Font("Comic Sans MS", Font.BOLD, 13));
+		rdbtnProfesional.setBackground(new Color(160, 82, 45));
+		rdbtnProfesional.setBounds(250, 250, 127, 25);
+		add(rdbtnProfesional);
 		
 		levelRadio = new ButtonGroup();
-		levelRadio.add(rdbtnBegginer);
+		rdbtnBeginner.setActionCommand("beginner");
+		levelRadio.add(rdbtnBeginner);
+		rdbtnIntermediate.setActionCommand("intermediate");
 		levelRadio.add(rdbtnIntermediate);
-		levelRadio.add(rdbtnProffesional);
+		rdbtnProfesional.setActionCommand("profesional");
+		levelRadio.add(rdbtnProfesional);
 		
 		JButton btnBack = new JButton("Wr\u00F3\u0107");
 		btnBack.setBackground(new Color(245, 245, 245));
@@ -146,11 +155,49 @@ public class NewPlayerPanel extends JPanel {
 		add(btnBack);
 		
 		JButton btnCreate = new JButton("Utw\u00F3rz");
-		btnCreate.setEnabled(false);
+		btnCreate.setEnabled(true);
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//System.out.println();
 				// zebranie danych z pól tekstowych, radia, p³ci, countera
 				// utworzenie obiektu gracza, zapisanie go w bazie danych
+				try {
+					if(program.getMySql().isPlayerRegistered(txtNick.getText())) {
+						System.out.println("Player " + txtNick.getText() + " already registered!");
+					} else {
+						Sex playerSex = null;
+						Skill playerSkill = null;
+						//"m\u0119\u017Cczyzna", "kobieta", "nie podaj\u0119"
+						switch(cbSex.getSelectedItem().toString()) {
+						case "m\u0119\u017Cczyzna":
+							playerSex = Sex.male;
+							break;
+						case "kobieta":
+							playerSex = Sex.female;
+							break;
+						case "nie podaj\u0119":
+							playerSex = Sex.none;
+							break;
+						}
+						
+						switch(levelRadio.getSelection().getActionCommand()) {
+						case "beginner":
+							playerSkill = Skill.beginner;
+							break;
+						case "intermediate":
+							playerSkill = Skill.intermediate;
+							break;
+						case "profesional":
+							playerSkill = Skill.profesional;
+							break;
+						}
+						
+						program.getMySql().addNewPlayer(txtNick.getText(), playerSex, (int) spinnerAge.getValue(), playerSkill);
+					}
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnCreate.setForeground(new Color(245, 245, 245));

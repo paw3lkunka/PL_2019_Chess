@@ -86,14 +86,6 @@
 </Vector3>
 <PlayerID>two</PlayerID>
 </Figure>
-<Figure figure="Bishop">
-<Vector3>
-<X>2.0</X>
-<Y>0.0</Y>
-<Z>0.0</Z>
-</Vector3>
-<PlayerID>one</PlayerID>
-</Figure>
 <Figure figure="Pawn">
 <Vector3>
 <X>2.0</X>
@@ -129,7 +121,7 @@
 <Figure figure="Pawn">
 <Vector3>
 <X>3.0</X>
-<Y>1.0</Y>
+<Y>3.0</Y>
 <Z>0.0</Z>
 </Vector3>
 <PlayerID>one</PlayerID>
@@ -198,10 +190,18 @@
 </Vector3>
 <PlayerID>one</PlayerID>
 </Figure>
+<Figure figure="Bishop">
+<Vector3>
+<X>5.0</X>
+<Y>3.0</Y>
+<Z>0.0</Z>
+</Vector3>
+<PlayerID>one</PlayerID>
+</Figure>
 <Figure figure="Pawn">
 <Vector3>
 <X>5.0</X>
-<Y>6.0</Y>
+<Y>5.0</Y>
 <Z>0.0</Z>
 </Vector3>
 <PlayerID>two</PlayerID>

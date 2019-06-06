@@ -11,10 +11,13 @@ import Processing.Vector3;
 import processing.core.PApplet;
 
 import java.awt.Font;
+import java.awt.HeadlessException;
+
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class NewGamePanel extends JPanel {
@@ -118,29 +121,39 @@ public class NewGamePanel extends JPanel {
 				if(e.getSource() == btnStart) {
 					System.out.println("Clicked Start button");
 					
-					if(program.getGame().getIsRunning()) {
-						int confirm = JOptionPane.showConfirmDialog(
-								null, 
-								"Czy na pewno chcesz rozpocz¹æ now¹ grê? Niezapisany postêp zostanie utracony.", 
-								"UWAGA!", 
-								JOptionPane.YES_NO_OPTION, 
-								JOptionPane.INFORMATION_MESSAGE
-							);
-							
-							switch(confirm) {
-							case JOptionPane.YES_OPTION:
-								program.getGame().setC(new Chessboard(program.getGame(), new Vector3(0,0,0)));
+					try {
+						if(program.getMySql().isPlayerRegistered(txtWhitePlayer.getText()) && program.getMySql().isPlayerRegistered(txtBlackPlayer.getText())) {
+							if(program.getGame().getIsRunning()) {
+								int confirm = JOptionPane.showConfirmDialog(
+										null, 
+										"Czy na pewno chcesz rozpocz¹æ now¹ grê? Niezapisany postêp zostanie utracony.", 
+										"UWAGA!", 
+										JOptionPane.YES_NO_OPTION, 
+										JOptionPane.INFORMATION_MESSAGE
+									);
+									
+									switch(confirm) {
+									case JOptionPane.YES_OPTION:
+										program.getGame().setC(new Chessboard(program.getGame(), new Vector3(0,0,0)));
+										program.getGame().run();
+										program.setContentPane(program.getMmPanel());
+										break;
+									default:
+										System.out.println("New game cancelled");
+										break;
+									}
+							} else {
 								program.getGame().run();
 								program.setContentPane(program.getMmPanel());
-								break;
-							default:
-								System.out.println("New game cancelled");
-								break;
 							}
-					} else {
-						program.getGame().run();
-						program.setContentPane(program.getMmPanel());
+						} else {
+							System.out.println("At least one of players is not registered!");
+						}
+					} catch (HeadlessException | SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
 					}
+					
 					
 					program.getMmPanel().getBtnContinue().setEnabled(true);
 				}

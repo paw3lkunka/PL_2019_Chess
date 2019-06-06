@@ -5,12 +5,16 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import Processing.Processing;
+import XML.XMLWriter;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class MainMenuPanel extends JPanel {
@@ -156,13 +160,19 @@ public class MainMenuPanel extends JPanel {
 					
 					//trzeba bêdzie z³apaæ wyj¹tek NullPointerException na wypadek klikniêcia Cancel
 					System.out.println("Chosen save file: " + fileChooser.getSelectedFile().getAbsolutePath() );
+					new XMLWriter<Processing>(fileChooser.getSelectedFile().getAbsolutePath()).save(program.getGame());
 				} catch (NullPointerException ex) {
 					System.out.println("Save file hasn't been chosen");
 				}
 			}
 
 			if(e.getSource() == btnStats) {
-				program.setContentPane(new StatsPanel(program));
+				try {
+					program.setContentPane(new StatsPanel(program));
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				program.revalidate();
 				program.repaint();
 			}

@@ -10,6 +10,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class StatsPanel extends JPanel {
@@ -19,8 +20,9 @@ public class StatsPanel extends JPanel {
 
 	/**
 	 * Create the panel.
+	 * @throws SQLException 
 	 */
-	public StatsPanel(Program program) {
+	public StatsPanel(Program program) throws SQLException {
 		this.program = program;
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		setBackground(new Color(160, 82, 45));
@@ -41,36 +43,7 @@ public class StatsPanel extends JPanel {
 		table.setEnabled(false);
 		table.setForeground(new Color(245, 245, 245));
 		table.setBackground(new Color(0, 0, 0));
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, "", null, null, null, ""},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-			},
-			new String[] {
-				"Miejsce", "Nick", "Gry", "Wygrane", "Wiek", "Poziom"
-			}
-		) {
-			Class[] columnTypes = new Class[] {
-				Integer.class, String.class, Integer.class, Integer.class, Integer.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
+		table.setModel(program.getMySql().buildTableModel(program.getMySql().getPlayersStats()));
 		table.getColumnModel().getColumn(0).setResizable(false);
 		table.getColumnModel().getColumn(0).setPreferredWidth(55);
 		table.getColumnModel().getColumn(0).setMinWidth(14);
