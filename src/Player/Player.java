@@ -1,4 +1,7 @@
 package Player;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import Figures.FColor;
 
 public class Player {
@@ -77,6 +80,40 @@ public class Player {
 		this.games = games;
 	}
 	
-	
+	public Element saveXML(Document document)
+	{
+	            // root element
+	            Element root = document.createElement("Player");
+	            
+	            Element imie = document.createElement("Name");
+	            imie.appendChild(document.createTextNode(name));
+	            root.appendChild(imie);
+	            
+	            Element idgracza = document.createElement("ID");
+	            idgracza.appendChild(document.createTextNode(id.toString()));
+	            root.appendChild(idgracza);
+
+	            Element kolor = document.createElement("Color");
+	            kolor.appendChild(document.createTextNode(color.toString()));
+	            root.appendChild(kolor);
+	            
+	            Element plec = document.createElement("Sex");
+	            plec.appendChild(document.createTextNode(sex.toString()));
+	            root.appendChild(plec);
+	            
+	            Element umiej = document.createElement("Skill");
+	            umiej.appendChild(document.createTextNode(skill.toString()));
+	            root.appendChild(umiej);
+	            
+	            Element wygrane = document.createElement("Wins");
+	            wygrane.appendChild(document.createTextNode(wins+""));
+	            root.appendChild(wygrane);
+	            
+	            Element gry = document.createElement("Games");
+	            gry.appendChild(document.createTextNode(games+""));
+	            root.appendChild(gry);
+	            return root;
+
+	}
 
 }

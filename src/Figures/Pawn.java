@@ -2,6 +2,10 @@ package Figures;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import Exceptions.FileMissingException;
 import Player.Player;
 import Processing.Chessboard;
@@ -50,5 +54,14 @@ public class Pawn extends Figure {
 	public String toString()
 	{
 		return getPlayer().getName()+" P  "+getPosition().toChessString();
+	}
+	
+	public Element saveXML(Document document) {
+
+        Element root = super.saveXML(document);
+        root.setAttribute("figure", "Pawn");
+
+        return root;
+
 	}
 }

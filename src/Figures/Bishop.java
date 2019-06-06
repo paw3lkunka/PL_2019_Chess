@@ -1,6 +1,10 @@
 package Figures;
 
 import java.util.List;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import Player.Player;
 import Processing.Chessboard;
 import Processing.Vector3;
@@ -31,6 +35,16 @@ public class Bishop extends Figure {
 	public String toString()
 	{
 		return getPlayer().getName()+" B "+getPosition().toChessString();
+	}
+
+	
+	public Element saveXML(Document document) {
+
+        Element root = super.saveXML(document);
+        root.setAttribute("figure", "Bishop");
+
+        return root;
+
 	}
 
 }

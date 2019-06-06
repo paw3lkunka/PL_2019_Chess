@@ -1,5 +1,8 @@
 package Processing;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 public class Vector3 {
 	private float x;
 	private float y;
@@ -112,6 +115,27 @@ public class Vector3 {
 			return false;
 		}
 		return true;
+	}
+	
+	public Element saveXML(Document document) {
+
+            // root element
+            Element root = document.createElement("Vector3");
+            
+            Element ex = document.createElement("X");
+            ex.appendChild(document.createTextNode(x+""));
+            root.appendChild(ex);
+            
+            Element ey = document.createElement("Y");
+            ey.appendChild(document.createTextNode(y+""));
+            root.appendChild(ey);
+            
+            Element ez = document.createElement("Z");
+            ez.appendChild(document.createTextNode(z+""));
+            root.appendChild(ez);
+
+		
+		return root;
 	}
 }
 

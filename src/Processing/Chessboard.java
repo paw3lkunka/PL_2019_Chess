@@ -1,12 +1,22 @@
 package Processing;
 import java.util.ArrayList;
 import java.util.List;
-
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import Exceptions.FigureCollisionException;
 import Exceptions.NoCollisionException;
 import Exceptions.OutOfChessboardException;
-import Figures.*;
-import Player.*;
+import Figures.Bishop;
+import Figures.FColor;
+import Figures.King;
+import Figures.Knight;
+import Figures.Pawn;
+import Figures.Queen;
+import Figures.Rook;
+import Player.Player;
+import Player.PlayerID;
+import Player.Sex;
+import Player.Skill;
 import processing.core.PApplet;
 
 public class Chessboard extends PositionedObject {
@@ -117,5 +127,27 @@ public class Chessboard extends PositionedObject {
 		getTile(from).setFigure( null );					//usuniecie figury z poprzedniego pola
 		getTile(to).getFigure().setPosition(to); 			//nadanie nowej pozycji
 		getTile(to).getFigure().moved();
+	}
+	
+	public Element saveXML(Document document)
+	{
+
+            // root element
+            Element root = document.createElement("Chessboard");
+            
+            Element players = document.createElement("Players");
+            	Element player1 = one.saveXML(document);
+            	Element player2 = two.saveXML(document);
+            	players.appendChild(player1);
+            	players.appendChild(player2);
+            root.appendChild(players);
+            
+            Element figures = document.createElement("Figures");
+            List<Vector3> tiles = getOccupiedTiles();
+            for(int i=0; i<tiles.size(); ++i)
+                figures.appendChild(getTile(tiles.get(i)).getFigure().saveXML(document) );
+            root.appendChild(figures);
+
+            return root;
 	}
 }

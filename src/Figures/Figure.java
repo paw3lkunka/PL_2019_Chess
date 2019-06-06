@@ -2,6 +2,9 @@ package Figures;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import Exceptions.FigureCollisionException;
 import Exceptions.NoCollisionException;
 import Exceptions.OutOfChessboardException;
@@ -38,8 +41,22 @@ public abstract class Figure {
 	
 	public abstract List<Vector3> getPossibleMoves();
 	public abstract String toString();
-	
+	//public abstract Element saveXML();
 
+	public Element saveXML(Document document) {
+
+            // root element
+            Element root = document.createElement("Figure");
+            	root.appendChild(getPosition().saveXML(document));
+            
+            Element idgracza = document.createElement("PlayerID");
+            idgracza.appendChild(document.createTextNode( getPlayer().getId().toString() ));
+            root.appendChild(idgracza);
+
+        return root;
+            
+	}
+	
 	public void displayPossibleToMoveTiles()
 	{
 		List<Vector3> vList = getPossibleMoves();
