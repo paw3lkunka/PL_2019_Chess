@@ -162,7 +162,8 @@ public class Processing extends PApplet {
   	  line(0,0,-100,0,0,100);
   	}
   	
-  	public void changeTurn() {
+  	public void changeTurn() 
+	{
   		if(turn == PlayerID.one)
   			turn = PlayerID.two;
   		else
@@ -170,4 +171,36 @@ public class Processing extends PApplet {
 
 		  println("Turn of player "+turn.toString());
   	}
+	
+	public void saveXML(String path)
+	{
+		try {
+			DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
+			Document document = documentBuilder.newDocument();
+			
+            // root element
+            Element root = document.createElement("Game");
+            document.appendChild(root);
+          
+            root.appendChild(c.saveXML(document));
+            
+            Element tura = document.createElement("Turn");
+            tura.appendChild(document.createTextNode(turn.toString()));
+           
+            DOMSource source = new DOMSource(document);
+            StreamResult stream = new StreamResult(new File(path));
+            
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.transform(source, stream);
+          
+            
+		} catch (ParserConfigurationException pce) {
+            pce.printStackTrace();
+        } catch (TransformerException tfe) {
+            tfe.printStackTrace();
+        }
+	}
 }
