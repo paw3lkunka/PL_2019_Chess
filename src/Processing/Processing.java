@@ -1,24 +1,15 @@
 package Processing;
 
-import java.io.File;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import Figures.Figure;
 import Menu.Program;
 import Player.PlayerID;
+import XML.XMLSerializable;
+import XML.XMLWriter;
 import processing.core.PApplet;
 
-public class Processing extends PApplet {
+public class Processing extends PApplet implements XMLSerializable{
 	private Program program;
 	//private PImage bg;
 	private Chessboard c;
@@ -110,7 +101,7 @@ public class Processing extends PApplet {
   
   public void end()
   {
-	  saveXML("saves/autosave");
+	  new XMLWriter<Processing>("saves/autosave").save(this);
 	  super.exit();
   }
 
@@ -172,9 +163,20 @@ public class Processing extends PApplet {
 		  println("Turn of player "+turn.toString());
   	}
 	
-	public void saveXML(String path)
+	public Element saveXML(Document document)
 	{
-		try {
+		
+        // root element
+        Element root = document.createElement("Game");
+        document.appendChild(root);
+      
+        root.appendChild(c.saveXML(document));
+        
+        Element tura = document.createElement("Turn");
+        tura.appendChild(document.createTextNode(turn.toString()));
+        
+        return root;
+		/*try {
 			DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
 			Document document = documentBuilder.newDocument();
@@ -201,6 +203,6 @@ public class Processing extends PApplet {
             pce.printStackTrace();
         } catch (TransformerException tfe) {
             tfe.printStackTrace();
-        }
+        }*/
 	}
 }

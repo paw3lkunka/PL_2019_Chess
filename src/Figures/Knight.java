@@ -9,8 +9,9 @@ import Exceptions.FileMissingException;
 import Player.Player;
 import Processing.Chessboard;
 import Processing.Vector3;
+import XML.XMLSerializable;
 
-public class Knight extends Figure{
+public class Knight extends Figure implements XMLSerializable {
 
 	public Knight(Chessboard chessboard, Vector3 position, Player player) {
 		super(chessboard, position, player);

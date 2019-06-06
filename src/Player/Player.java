@@ -3,8 +3,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import Figures.FColor;
+import XML.XMLSerializable;
 
-public class Player {
+public class Player implements XMLSerializable {
 
 	String name;
 	PlayerID id;

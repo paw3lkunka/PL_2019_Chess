@@ -13,6 +13,7 @@ import Processing.Chessboard;
 import Processing.TColor;
 import Processing.Tile;
 import Processing.Vector3;
+import XML.XMLSerializable;
 import processing.core.PShape;
 
 enum CollisionEvent {
@@ -21,7 +22,7 @@ enum CollisionEvent {
 	both;
 }
 
-public abstract class Figure {
+public abstract class Figure implements XMLSerializable {
 
 	private final Chessboard chessboard;
 	private final Player player;

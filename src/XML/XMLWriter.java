@@ -13,7 +13,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 
-public class XMLWriter <T extends XMLSerializable<T>> {
+public class XMLWriter <T extends XMLSerializable> {
 	
 	private String path;
 	
@@ -29,7 +29,7 @@ public class XMLWriter <T extends XMLSerializable<T>> {
 			Document document = documentBuilder.newDocument();
 			
             // root element
-			t.createElement(document);
+			t.saveXML(document);
            
             DOMSource source = new DOMSource(document);
             StreamResult stream = new StreamResult(new File(path));

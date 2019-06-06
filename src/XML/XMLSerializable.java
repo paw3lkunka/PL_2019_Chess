@@ -1,9 +1,9 @@
 package XML;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
-public interface XMLSerializable<T> {
+public interface XMLSerializable {
 
-	public void createElement(Document document);
-	public T createObject(Document document);
+	public Element saveXML(Document document);
 }

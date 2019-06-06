@@ -3,7 +3,9 @@ package Processing;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class Vector3 {
+import XML.XMLSerializable;
+
+public class Vector3 implements XMLSerializable {
 	private float x;
 	private float y;
 	private float z;

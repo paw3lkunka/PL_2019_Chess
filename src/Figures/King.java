@@ -9,8 +9,9 @@ import Exceptions.FileMissingException;
 import Player.Player;
 import Processing.Chessboard;
 import Processing.Vector3;
+import XML.XMLSerializable;
 
-public class King extends Figure {
+public class King extends Figure implements XMLSerializable {
 
 	
 	public King(Chessboard chessboard, Vector3 position, Player player) {

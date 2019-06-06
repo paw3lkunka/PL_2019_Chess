@@ -17,9 +17,10 @@ import Player.Player;
 import Player.PlayerID;
 import Player.Sex;
 import Player.Skill;
+import XML.XMLSerializable;
 import processing.core.PApplet;
 
-public class Chessboard extends PositionedObject {
+public class Chessboard extends PositionedObject  implements XMLSerializable  {
 	
 	private final int size=8;
 	private List<List<Tile>> tiles;
