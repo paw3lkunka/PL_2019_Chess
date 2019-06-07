@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 public class StatsPanel extends JPanel {
 	private Program program;
@@ -28,32 +30,10 @@ public class StatsPanel extends JPanel {
 		setBackground(new Color(160, 82, 45));
 		setLayout(null);
 		
-		table = new JTable();
-		table.setEnabled(false);
-		table.setForeground(new Color(245, 245, 245));
-		table.setBackground(new Color(0, 0, 0));
-		table.setModel(program.getMySql().buildTableModel(program.getMySql().getPlayersStats()));
-		table.getColumnModel().getColumn(0).setResizable(false);
-		table.getColumnModel().getColumn(0).setPreferredWidth(55);
-		table.getColumnModel().getColumn(0).setMinWidth(14);
-		table.getColumnModel().getColumn(1).setResizable(false);
-		table.getColumnModel().getColumn(1).setPreferredWidth(150);
-		table.getColumnModel().getColumn(2).setResizable(false);
-		table.getColumnModel().getColumn(2).setPreferredWidth(30);
-		table.getColumnModel().getColumn(3).setResizable(false);
-		table.getColumnModel().getColumn(3).setPreferredWidth(65);
-		table.getColumnModel().getColumn(4).setResizable(false);
-		table.getColumnModel().getColumn(4).setPreferredWidth(40);
-		table.getColumnModel().getColumn(5).setResizable(false);
-		table.getColumnModel().getColumn(5).setPreferredWidth(100);
-		table.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		table.setBounds(20, 50, 360, 255);
-		add(table);
-		
 		JButton btnBack = new JButton("Wr\u00F3\u0107");
 		btnBack.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
 		btnBack.setBackground(new Color(245, 245, 245));
-		btnBack.setBounds(20, 320, 97, 25);
+		btnBack.setBounds(150, 320, 100, 25);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnBack) {
@@ -65,39 +45,24 @@ public class StatsPanel extends JPanel {
 		});
 		add(btnBack);
 		
-		JButton btnLastPage = new JButton("<<<");
-		btnLastPage.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-		btnLastPage.setEnabled(false);
-		btnLastPage.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//cofanie tabelki
-			}
-		});
-		btnLastPage.setForeground(new Color(245, 245, 245));
-		btnLastPage.setBackground(new Color(0, 0, 0));
-		btnLastPage.setBounds(240, 320, 60, 25);
-		add(btnLastPage);
+		JLabel lblTitle = new JLabel("RANKING");
+		lblTitle.setForeground(new Color(245, 245, 245));
+		lblTitle.setFont(new Font("Papyrus", Font.BOLD, 16));
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitle.setBounds(100, 10, 200, 30);
+		add(lblTitle);
 		
-		JButton btnNextPage = new JButton(">>>");
-		btnNextPage.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-		btnNextPage.setEnabled(false);
-		btnNextPage.setForeground(new Color(0, 0, 0));
-		btnNextPage.setBackground(new Color(245, 245, 245));
-		btnNextPage.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// tabelka w przód
-			}
-		});
-		btnNextPage.setBounds(320, 320, 60, 25);
-		add(btnNextPage);
+		table = new JTable();
+		table.setEnabled(false);
+		table.setForeground(new Color(245, 245, 245));
+		table.setBackground(new Color(0, 0, 0));
+		table.setModel(program.getMySql().buildTableModel(program.getMySql().getPlayersStats()));
+		table.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
-		JLabel lblNewLabel = new JLabel("RANKING");
-		lblNewLabel.setForeground(new Color(245, 245, 245));
-		lblNewLabel.setFont(new Font("Papyrus", Font.BOLD, 16));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(100, 10, 200, 30);
-		add(lblNewLabel);
+		JScrollPane scrollPane = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setBounds(20, 50, 360, 250);
+		add(scrollPane);
 
 	}
-
 }

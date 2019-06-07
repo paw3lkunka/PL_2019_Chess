@@ -157,36 +157,36 @@ public class NewPlayerPanel extends JPanel {
 		btnCreate.setBounds(240, 300, 120, 40);
 		add(btnCreate);
 		
-		JLabel lblNewLabel = new JLabel("REJESTRACJA  GRACZA");
-		lblNewLabel.setForeground(new Color(245, 245, 245));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Papyrus", Font.BOLD, 18));
-		lblNewLabel.setBounds(30, 30, 340, 40);
-		add(lblNewLabel);
+		JLabel lblTitle = new JLabel("REJESTRACJA  GRACZA");
+		lblTitle.setForeground(new Color(245, 245, 245));
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitle.setFont(new Font("Papyrus", Font.BOLD, 18));
+		lblTitle.setBounds(30, 30, 340, 40);
+		add(lblTitle);
 		
-		JLabel lblNewLabel_1 = new JLabel("NICK:");
-		lblNewLabel_1.setForeground(new Color(245, 245, 245));
-		lblNewLabel_1.setFont(new Font("Papyrus", Font.BOLD, 15));
-		lblNewLabel_1.setBounds(30, 100, 60, 25);
-		add(lblNewLabel_1);
+		JLabel lblNick = new JLabel("NICK:");
+		lblNick.setForeground(new Color(245, 245, 245));
+		lblNick.setFont(new Font("Papyrus", Font.BOLD, 15));
+		lblNick.setBounds(30, 100, 60, 25);
+		add(lblNick);
 		
-		JLabel lblNewLabel_2 = new JLabel("PLEC:");
-		lblNewLabel_2.setForeground(new Color(245, 245, 245));
-		lblNewLabel_2.setFont(new Font("Papyrus", Font.BOLD, 15));
-		lblNewLabel_2.setBounds(30, 160, 60, 25);
-		add(lblNewLabel_2);
+		JLabel lblSex = new JLabel("PLEC:");
+		lblSex.setForeground(new Color(245, 245, 245));
+		lblSex.setFont(new Font("Papyrus", Font.BOLD, 15));
+		lblSex.setBounds(30, 160, 60, 25);
+		add(lblSex);
 		
-		JLabel lblNewLabel_3 = new JLabel("WIEK:");
-		lblNewLabel_3.setForeground(new Color(245, 245, 245));
-		lblNewLabel_3.setFont(new Font("Papyrus", Font.BOLD, 15));
-		lblNewLabel_3.setBounds(230, 160, 60, 25);
-		add(lblNewLabel_3);
+		JLabel lblAge = new JLabel("WIEK:");
+		lblAge.setForeground(new Color(245, 245, 245));
+		lblAge.setFont(new Font("Papyrus", Font.BOLD, 15));
+		lblAge.setBounds(230, 160, 60, 25);
+		add(lblAge);
 		
-		JLabel lblNewLabel_4 = new JLabel("POZIOM  GRACZA:");
-		lblNewLabel_4.setForeground(new Color(245, 245, 245));
-		lblNewLabel_4.setFont(new Font("Papyrus", Font.BOLD, 15));
-		lblNewLabel_4.setBounds(30, 220, 200, 25);
-		add(lblNewLabel_4);
+		JLabel lblLevel = new JLabel("POZIOM  GRACZA:");
+		lblLevel.setForeground(new Color(245, 245, 245));
+		lblLevel.setFont(new Font("Papyrus", Font.BOLD, 15));
+		lblLevel.setBounds(30, 220, 200, 25);
+		add(lblLevel);
 
 	}
 }

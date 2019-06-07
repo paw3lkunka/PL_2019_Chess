@@ -129,24 +129,24 @@ public class NewGamePanel extends JPanel {
 		});
 		add(btnStart);
 		
-		JLabel lblNewLabel = new JLabel("WPROWADZ NICKI GRACZY");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Papyrus", Font.BOLD, 16));
-		lblNewLabel.setBounds(40, 13, 320, 30);
-		add(lblNewLabel);
+		JLabel lblTitle = new JLabel("WPROWADZ NICKI GRACZY");
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitle.setFont(new Font("Papyrus", Font.BOLD, 16));
+		lblTitle.setBounds(40, 13, 320, 30);
+		add(lblTitle);
 		
-		JLabel lblNewLabel_1 = new JLabel("BIALY:");
-		lblNewLabel_1.setBackground(new Color(240, 255, 255));
-		lblNewLabel_1.setFont(new Font("Papyrus", Font.BOLD, 15));
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_1.setBounds(60, 100, 80, 25);
-		add(lblNewLabel_1);
+		JLabel lblWhitePlayer = new JLabel("BIALY:");
+		lblWhitePlayer.setBackground(new Color(240, 255, 255));
+		lblWhitePlayer.setFont(new Font("Papyrus", Font.BOLD, 15));
+		lblWhitePlayer.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblWhitePlayer.setBounds(60, 100, 80, 25);
+		add(lblWhitePlayer);
 		
-		JLabel lblNewLabel_2 = new JLabel("CZARNY:");
-		lblNewLabel_2.setForeground(new Color(245, 245, 245));
-		lblNewLabel_2.setFont(new Font("Papyrus", Font.BOLD, 12));
-		lblNewLabel_2.setBounds(60, 200, 80, 25);
-		add(lblNewLabel_2);
+		JLabel lblBlackPlayer = new JLabel("CZARNY:");
+		lblBlackPlayer.setForeground(new Color(245, 245, 245));
+		lblBlackPlayer.setFont(new Font("Papyrus", Font.BOLD, 12));
+		lblBlackPlayer.setBounds(60, 200, 80, 25);
+		add(lblBlackPlayer);
 
 	}
 

@@ -30,7 +30,7 @@ public class MainMenuPanel extends JPanel {
 	private JButton btnInfo;
 	private JButton btnExit;
 	private JButton btnContinue;
-	private JLabel lblNewLabel;
+	private JLabel lblTitle;
 	
 	
 	public JButton getBtnContinue() {
@@ -109,12 +109,12 @@ public class MainMenuPanel extends JPanel {
 		btnContinue.addActionListener(mmListener);
 		add(btnContinue);
 		
-		lblNewLabel = new JLabel("GRA W SZACHY");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setForeground(new Color(245, 245, 245));
-		lblNewLabel.setFont(new Font("Papyrus", Font.BOLD, 26));
-		lblNewLabel.setBounds(40, 20, 320, 40);
-		add(lblNewLabel);
+		lblTitle = new JLabel("GRA W SZACHY");
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitle.setForeground(new Color(245, 245, 245));
+		lblTitle.setFont(new Font("Papyrus", Font.BOLD, 26));
+		lblTitle.setBounds(40, 20, 320, 40);
+		add(lblTitle);
 
 	}
 	

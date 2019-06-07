@@ -30,42 +30,42 @@ public class InfoPanel extends JPanel implements ActionListener {
 		btnBack.addActionListener(this);
 		add(btnBack);
 		
-		JLabel lblNewLabel = new JLabel("Tw\u00F3rcy");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setForeground(Color.GREEN);
-		lblNewLabel.setFont(new Font("Arial Black", Font.PLAIN, 20));
-		lblNewLabel.setBounds(100, 20, 200, 30);
-		add(lblNewLabel);
+		JLabel lblCreators = new JLabel("Tw\u00F3rcy");
+		lblCreators.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCreators.setForeground(Color.GREEN);
+		lblCreators.setFont(new Font("Arial Black", Font.PLAIN, 20));
+		lblCreators.setBounds(100, 20, 200, 30);
+		add(lblCreators);
 		
-		JLabel lblNewLabel_1 = new JLabel("Piotr Ruci\u0144ski 216878");
-		lblNewLabel_1.setForeground(new Color(178, 34, 34));
-		lblNewLabel_1.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
-		lblNewLabel_1.setBounds(60, 60, 280, 22);
-		add(lblNewLabel_1);
+		JLabel lblPiotr = new JLabel("Piotr Ruci\u0144ski 216878");
+		lblPiotr.setForeground(new Color(178, 34, 34));
+		lblPiotr.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		lblPiotr.setBounds(60, 60, 280, 22);
+		add(lblPiotr);
 		
-		JLabel lblNewLabel_2 = new JLabel("Pawe\u0142 Kunka 216819");
-		lblNewLabel_2.setForeground(new Color(65, 105, 225));
-		lblNewLabel_2.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
-		lblNewLabel_2.setBounds(60, 90, 280, 22);
-		add(lblNewLabel_2);
+		JLabel lblPawel = new JLabel("Pawe\u0142 Kunka 216819");
+		lblPawel.setForeground(new Color(65, 105, 225));
+		lblPawel.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		lblPawel.setBounds(60, 90, 280, 22);
+		add(lblPawel);
 		
-		JLabel lblNewLabel_3 = new JLabel("Porada");
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setForeground(new Color(0, 255, 0));
-		lblNewLabel_3.setFont(new Font("Arial Black", Font.PLAIN, 20));
-		lblNewLabel_3.setBounds(100, 120, 200, 30);
-		add(lblNewLabel_3);
+		JLabel lblTip = new JLabel("Porada");
+		lblTip.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTip.setForeground(new Color(0, 255, 0));
+		lblTip.setFont(new Font("Arial Black", Font.PLAIN, 20));
+		lblTip.setBounds(100, 120, 200, 30);
+		add(lblTip);
 		
-		JLabel lblNewLabel_4 = new JLabel("Pierwszy gracz gra bia\u0142ymi - s\u0105 na g\u00F3rze.");
-		lblNewLabel_4.setForeground(new Color(245, 245, 245));
-		lblNewLabel_4.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
-		lblNewLabel_4.setBounds(60, 150, 280, 22);
-		add(lblNewLabel_4);
+		JLabel lblTipWhite = new JLabel("Pierwszy gracz gra bia\u0142ymi - s\u0105 na g\u00F3rze.");
+		lblTipWhite.setForeground(new Color(245, 245, 245));
+		lblTipWhite.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
+		lblTipWhite.setBounds(60, 150, 280, 22);
+		add(lblTipWhite);
 		
-		JLabel lblNewLabel_5 = new JLabel("Drugi gracz gra czarnymi - s\u0105 na dole.");
-		lblNewLabel_5.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
-		lblNewLabel_5.setBounds(60, 180, 280, 22);
-		add(lblNewLabel_5);
+		JLabel lblTipBlack = new JLabel("Drugi gracz gra czarnymi - s\u0105 na dole.");
+		lblTipBlack.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
+		lblTipBlack.setBounds(60, 180, 280, 22);
+		add(lblTipBlack);
 
 	}
 	
