@@ -151,6 +151,9 @@ public class NewPlayerPanel extends JPanel {
 						}
 						
 						program.getMySql().addNewPlayer(txtNick.getText(), playerSex, (int) spinnerAge.getValue(), playerSkill);
+						program.setContentPane(new NewGamePanel(program));
+						program.revalidate();
+						program.repaint();
 					}
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
