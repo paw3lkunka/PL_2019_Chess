@@ -100,10 +100,10 @@
 <Figure figure="Pawn">
 <Vector3>
 <X>2.0</X>
-<Y>6.0</Y>
+<Y>4.0</Y>
 <Z>0.0</Z>
 </Vector3>
-<PlayerID>two</PlayerID>
+<PlayerID>one</PlayerID>
 </Figure>
 <Figure figure="Bishop">
 <Vector3>
@@ -116,42 +116,10 @@
 <Figure figure="Queen">
 <Vector3>
 <X>3.0</X>
-<Y>0.0</Y>
-<Z>0.0</Z>
-</Vector3>
-<PlayerID>one</PlayerID>
-</Figure>
-<Figure figure="Pawn">
-<Vector3>
-<X>3.0</X>
 <Y>1.0</Y>
 <Z>0.0</Z>
 </Vector3>
-<PlayerID>one</PlayerID>
-</Figure>
-<Figure figure="Pawn">
-<Vector3>
-<X>3.0</X>
-<Y>6.0</Y>
-<Z>0.0</Z>
-</Vector3>
 <PlayerID>two</PlayerID>
-</Figure>
-<Figure figure="Queen">
-<Vector3>
-<X>3.0</X>
-<Y>7.0</Y>
-<Z>0.0</Z>
-</Vector3>
-<PlayerID>two</PlayerID>
-</Figure>
-<Figure figure="King">
-<Vector3>
-<X>4.0</X>
-<Y>0.0</Y>
-<Z>0.0</Z>
-</Vector3>
-<PlayerID>one</PlayerID>
 </Figure>
 <Figure figure="Pawn">
 <Vector3>

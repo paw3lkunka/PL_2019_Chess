@@ -1,4 +1,5 @@
 package Processing;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.w3c.dom.Document;
@@ -183,17 +184,23 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 			{
 			PApplet.println(winner.toString()+" won");
 			//tutaj rzeczy do wygranej, trzeba jakos do sqla zapisac tych gosci
-			one.setGames(one.getGames()+1);
+			/*one.setGames(one.getGames()+1);
 			two.setGames(two.getGames()+1);
-			winner.setWins(winner.getWins()+1);
-			if(one == winner) {
-				getParent().getProgram().getMySql().updateWin(one.getName());
-				parent.getProgram().getMySql().updateLoss(two.getName());
-			} else {
-				parent.getProgram().getMySql().updateWin(two.getName());
-				parent.getProgram().getMySql().updateLoss(one.getName());
-			}
-			parent.exit();
+			winner.setWins(winner.getWins()+1);*/
+			try {
+				if(one == winner) {
+					((Processing)parent).getProgram().getMySql().updateWin(one.getName());
+					((Processing)parent).getProgram().getMySql().updateLoss(two.getName());
+				} else {
+					((Processing)parent).getProgram().getMySql().updateWin(two.getName());
+					((Processing)parent).getProgram().getMySql().updateLoss(one.getName());
+				}
+				} catch(SQLException e) {
+					
+				} finally {
+					parent.exit();
+				}
+		
 			}
 	}
 	
