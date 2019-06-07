@@ -104,6 +104,13 @@ public class NewPlayerPanel extends JPanel {
 		btnBack.setBounds(30, 300, 120, 40);
 		add(btnBack);
 		
+		JLabel lblBadNick = new JLabel("NICK  ZAJETY  !!!");
+		lblBadNick.setVisible(false);
+		lblBadNick.setForeground(new Color(255, 105, 180));
+		lblBadNick.setFont(new Font("Papyrus", Font.PLAIN, 13));
+		lblBadNick.setBounds(100, 130, 200, 20);
+		add(lblBadNick);
+		
 		JButton btnCreate = new JButton("Utw\u00F3rz");
 		btnCreate.setEnabled(true);
 		btnCreate.addActionListener(new ActionListener() {
@@ -112,7 +119,8 @@ public class NewPlayerPanel extends JPanel {
 				// zebranie danych z pól tekstowych, radia, p³ci, countera
 				// utworzenie obiektu gracza, zapisanie go w bazie danych
 				try {
-					if(program.getMySql().isPlayerRegistered(txtNick.getText())) {
+					if(program.getMySql().isPlayerRegistered(txtNick.getText()) || txtNick.getText().compareTo("") == 0) {
+						lblBadNick.setVisible(true);
 						System.out.println("Player " + txtNick.getText() + " already registered!");
 					} else {
 						Sex playerSex = null;

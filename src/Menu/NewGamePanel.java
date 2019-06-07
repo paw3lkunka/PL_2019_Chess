@@ -77,6 +77,46 @@ public class NewGamePanel extends JPanel {
 		});
 		add(btnNewPlayer);
 		
+		JLabel lblTitle = new JLabel("WPROWADZ NICKI GRACZY");
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitle.setFont(new Font("Papyrus", Font.BOLD, 16));
+		lblTitle.setBounds(40, 13, 320, 30);
+		add(lblTitle);
+		
+		JLabel lblWhitePlayer = new JLabel("BIALY:");
+		lblWhitePlayer.setBackground(new Color(240, 255, 255));
+		lblWhitePlayer.setFont(new Font("Papyrus", Font.BOLD, 15));
+		lblWhitePlayer.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblWhitePlayer.setBounds(60, 100, 80, 25);
+		add(lblWhitePlayer);
+		
+		JLabel lblBlackPlayer = new JLabel("CZARNY:");
+		lblBlackPlayer.setForeground(new Color(245, 245, 245));
+		lblBlackPlayer.setFont(new Font("Papyrus", Font.BOLD, 12));
+		lblBlackPlayer.setBounds(60, 200, 80, 25);
+		add(lblBlackPlayer);
+		
+		JLabel lblWhiteUnregistered = new JLabel("NIEZAREJESTROWANY(A)   !!!");
+		lblWhiteUnregistered.setVisible(false);
+		lblWhiteUnregistered.setForeground(new Color(0, 0, 255));
+		lblWhiteUnregistered.setFont(new Font("Papyrus", Font.PLAIN, 10));
+		lblWhiteUnregistered.setBounds(140, 130, 200, 20);
+		add(lblWhiteUnregistered);
+		
+		JLabel lblBlackUnregistered = new JLabel("NIEZAREJESTROWANY(A)  !!!");
+		lblBlackUnregistered.setVisible(false);
+		lblBlackUnregistered.setForeground(Color.BLUE);
+		lblBlackUnregistered.setFont(new Font("Papyrus", Font.PLAIN, 10));
+		lblBlackUnregistered.setBounds(140, 230, 200, 20);
+		add(lblBlackUnregistered);
+		
+		JLabel lblEqualNick = new JLabel("DUBLUJ\u0104CE  SI\u0118  NICKI !!!");
+		lblEqualNick.setVisible(false);
+		lblEqualNick.setForeground(new Color(47, 79, 79));
+		lblEqualNick.setFont(new Font("Papyrus", Font.PLAIN, 10));
+		lblEqualNick.setBounds(140, 160, 200, 20);
+		add(lblEqualNick);
+		
 		JButton btnStart = new JButton("Start");
 		btnStart.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
 		btnStart.setForeground(new Color(245, 245, 245));
@@ -88,8 +128,25 @@ public class NewGamePanel extends JPanel {
 					System.out.println("Clicked Start button");
 					
 					try {
-						if(program.getMySql().isPlayerRegistered(txtWhitePlayer.getText()) && program.getMySql().isPlayerRegistered(txtBlackPlayer.getText())) {
+						lblWhiteUnregistered.setVisible(false);
+						lblBlackUnregistered.setVisible(false);
+						lblEqualNick.setVisible(false);
+						
+						if(program.getMySql().isPlayerRegistered(txtWhitePlayer.getText()) == false) {
+							lblWhiteUnregistered.setVisible(true);
+							System.out.println("User " + txtWhitePlayer.getText() + "not registered!");
+						
+						} else if(program.getMySql().isPlayerRegistered(txtBlackPlayer.getText()) == false) {
+							lblBlackUnregistered.setVisible(true);
+							System.out.println("User " + txtBlackPlayer.getText() + "not registered!");
+						
+						} else if(txtWhitePlayer.getText().compareTo(txtBlackPlayer.getText()) == 0) {
+							lblEqualNick.setVisible(true);
+							System.out.println("User cannot play with himself! Well at least in this app.");
+						
+						} else {
 							if(program.getGame().getIsRunning()) {
+								
 								int confirm = JOptionPane.showConfirmDialog(
 										null, 
 										"Czy na pewno chcesz rozpocz¹æ now¹ grê? Niezapisany postêp zostanie utracony.", 
@@ -120,9 +177,8 @@ public class NewGamePanel extends JPanel {
 								program.getGame().run();
 								program.setContentPane(program.getMmPanel());
 							}
-						} else {
-							System.out.println("At least one of players is not registered!");
-						}
+						} 
+						
 					} catch (HeadlessException | SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -135,25 +191,7 @@ public class NewGamePanel extends JPanel {
 		});
 		add(btnStart);
 		
-		JLabel lblTitle = new JLabel("WPROWADZ NICKI GRACZY");
-		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setFont(new Font("Papyrus", Font.BOLD, 16));
-		lblTitle.setBounds(40, 13, 320, 30);
-		add(lblTitle);
 		
-		JLabel lblWhitePlayer = new JLabel("BIALY:");
-		lblWhitePlayer.setBackground(new Color(240, 255, 255));
-		lblWhitePlayer.setFont(new Font("Papyrus", Font.BOLD, 15));
-		lblWhitePlayer.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblWhitePlayer.setBounds(60, 100, 80, 25);
-		add(lblWhitePlayer);
-		
-		JLabel lblBlackPlayer = new JLabel("CZARNY:");
-		lblBlackPlayer.setForeground(new Color(245, 245, 245));
-		lblBlackPlayer.setFont(new Font("Papyrus", Font.BOLD, 12));
-		lblBlackPlayer.setBounds(60, 200, 80, 25);
-		add(lblBlackPlayer);
 
 	}
-
 }
