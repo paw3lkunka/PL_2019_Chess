@@ -12,10 +12,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class StatsPanel extends JPanel {
 	private Program program;
-	private JTextField txtTitle;
 	private JTable table;
 
 	/**
@@ -27,17 +27,6 @@ public class StatsPanel extends JPanel {
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		setBackground(new Color(160, 82, 45));
 		setLayout(null);
-		
-		txtTitle = new JTextField();
-		txtTitle.setFont(new Font("Arial Black", Font.PLAIN, 18));
-		txtTitle.setForeground(new Color(245, 245, 245));
-		txtTitle.setBackground(new Color(160, 82, 45));
-		txtTitle.setBounds(100, 10, 200, 30);
-		txtTitle.setEditable(false);
-		txtTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		txtTitle.setText("Ranking");
-		add(txtTitle);
-		txtTitle.setColumns(10);
 		
 		table = new JTable();
 		table.setEnabled(false);
@@ -101,6 +90,13 @@ public class StatsPanel extends JPanel {
 		});
 		btnNextPage.setBounds(320, 320, 60, 25);
 		add(btnNextPage);
+		
+		JLabel lblNewLabel = new JLabel("RANKING");
+		lblNewLabel.setForeground(new Color(245, 245, 245));
+		lblNewLabel.setFont(new Font("Papyrus", Font.BOLD, 16));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(100, 10, 200, 30);
+		add(lblNewLabel);
 
 	}
 

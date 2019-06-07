@@ -22,14 +22,10 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JLabel;
 
 public class NewPlayerPanel extends JPanel {
 	private Program program;
-	private JTextField txtLabelNick;
-	private JTextField txtLabelSex;
-	private JTextField txtLabelAge;
-	private JTextField txtLevel;
-	private JTextField txtTitle;
 	private ButtonGroup levelRadio;
 
 	/**
@@ -49,28 +45,6 @@ public class NewPlayerPanel extends JPanel {
 		txtNick.setBounds(90, 100, 260, 25);
 		add(txtNick);
 		
-		txtLabelNick = new JTextField();
-		txtLabelNick.setHorizontalAlignment(SwingConstants.LEFT);
-		txtLabelNick.setBackground(new Color(160, 82, 45));
-		txtLabelNick.setForeground(new Color(245, 245, 245));
-		txtLabelNick.setText("Nick:");
-		txtLabelNick.setFont(new Font("Arial Black", Font.PLAIN, 15));
-		txtLabelNick.setEditable(false);
-		txtLabelNick.setBounds(30, 100, 60, 25);
-		add(txtLabelNick);
-		txtLabelNick.setColumns(10);
-		
-		txtLabelSex = new JTextField();
-		txtLabelSex.setText("P\u0142e\u0107:");
-		txtLabelSex.setHorizontalAlignment(SwingConstants.LEFT);
-		txtLabelSex.setForeground(new Color(245, 245, 245));
-		txtLabelSex.setFont(new Font("Arial Black", Font.PLAIN, 15));
-		txtLabelSex.setEditable(false);
-		txtLabelSex.setColumns(10);
-		txtLabelSex.setBackground(new Color(160, 82, 45));
-		txtLabelSex.setBounds(30, 160, 60, 25);
-		add(txtLabelSex);
-		
 		JComboBox cbSex = new JComboBox();
 		cbSex.setFont(new Font("Comic Sans MS", Font.PLAIN, 13));
 		cbSex.setBackground(new Color(0, 0, 0));
@@ -80,17 +54,6 @@ public class NewPlayerPanel extends JPanel {
 		cbSex.setBounds(90, 160, 120, 25);
 		add(cbSex);
 		
-		txtLabelAge = new JTextField();
-		txtLabelAge.setText("Wiek:");
-		txtLabelAge.setHorizontalAlignment(SwingConstants.LEFT);
-		txtLabelAge.setForeground(new Color(245, 245, 245));
-		txtLabelAge.setFont(new Font("Arial Black", Font.PLAIN, 15));
-		txtLabelAge.setEditable(false);
-		txtLabelAge.setColumns(10);
-		txtLabelAge.setBackground(new Color(160, 82, 45));
-		txtLabelAge.setBounds(240, 160, 50, 25);
-		add(txtLabelAge);
-		
 		JSpinner spinnerAge = new JSpinner();
 		spinnerAge.setModel(new SpinnerNumberModel(21, 1, 150, 1));
 		spinnerAge.setFont(new Font("Comic Sans MS", Font.PLAIN, 13));
@@ -98,17 +61,6 @@ public class NewPlayerPanel extends JPanel {
 		spinnerAge.setBackground(new Color(0, 0, 0));
 		spinnerAge.setBounds(290, 160, 60, 25);
 		add(spinnerAge);
-		
-		txtLevel = new JTextField();
-		txtLevel.setText("Poziom gracza:");
-		txtLevel.setHorizontalAlignment(SwingConstants.LEFT);
-		txtLevel.setForeground(new Color(245, 245, 245));
-		txtLevel.setFont(new Font("Arial Black", Font.PLAIN, 15));
-		txtLevel.setEditable(false);
-		txtLevel.setColumns(10);
-		txtLevel.setBackground(new Color(160, 82, 45));
-		txtLevel.setBounds(30, 220, 150, 25);
-		add(txtLevel);
 		
 		JRadioButton rdbtnBeginner = new JRadioButton("Pocz\u0105tkuj\u0105cy");
 		rdbtnBeginner.setSelected(true);
@@ -205,16 +157,36 @@ public class NewPlayerPanel extends JPanel {
 		btnCreate.setBounds(240, 300, 120, 40);
 		add(btnCreate);
 		
-		txtTitle = new JTextField();
-		txtTitle.setEditable(false);
-		txtTitle.setForeground(new Color(245, 245, 245));
-		txtTitle.setFont(new Font("Arial Black", Font.PLAIN, 22));
-		txtTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		txtTitle.setBackground(new Color(160, 82, 45));
-		txtTitle.setText("Rejestracja gracza");
-		txtTitle.setBounds(30, 30, 340, 40);
-		add(txtTitle);
-		txtTitle.setColumns(10);
+		JLabel lblNewLabel = new JLabel("REJESTRACJA  GRACZA");
+		lblNewLabel.setForeground(new Color(245, 245, 245));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Papyrus", Font.BOLD, 18));
+		lblNewLabel.setBounds(30, 30, 340, 40);
+		add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("NICK:");
+		lblNewLabel_1.setForeground(new Color(245, 245, 245));
+		lblNewLabel_1.setFont(new Font("Papyrus", Font.BOLD, 15));
+		lblNewLabel_1.setBounds(30, 100, 60, 25);
+		add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("PLEC:");
+		lblNewLabel_2.setForeground(new Color(245, 245, 245));
+		lblNewLabel_2.setFont(new Font("Papyrus", Font.BOLD, 15));
+		lblNewLabel_2.setBounds(30, 160, 60, 25);
+		add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("WIEK:");
+		lblNewLabel_3.setForeground(new Color(245, 245, 245));
+		lblNewLabel_3.setFont(new Font("Papyrus", Font.BOLD, 15));
+		lblNewLabel_3.setBounds(230, 160, 60, 25);
+		add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("POZIOM  GRACZA:");
+		lblNewLabel_4.setForeground(new Color(245, 245, 245));
+		lblNewLabel_4.setFont(new Font("Papyrus", Font.BOLD, 15));
+		lblNewLabel_4.setBounds(30, 220, 200, 25);
+		add(lblNewLabel_4);
 
 	}
 }

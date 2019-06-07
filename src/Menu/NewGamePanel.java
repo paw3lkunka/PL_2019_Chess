@@ -19,12 +19,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class NewGamePanel extends JPanel {
 	private Program program;
-	private JTextField txtTitle;
-	private JTextField txtLabelWhite;
-	private JTextField txtLabelBlack;
 
 	/**
 	 * Create the panel.
@@ -35,48 +33,18 @@ public class NewGamePanel extends JPanel {
 		setBackground(new Color(160, 82, 45));
 		setLayout(null);
 		
-		txtTitle = new JTextField();
-		txtTitle.setFont(new Font("Arial Black", Font.BOLD, 18));
-		txtTitle.setText("Wprowad\u017C nicki graczy");
-		txtTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		txtTitle.setBackground(new Color(160, 82, 45));
-		txtTitle.setEditable(false);
-		txtTitle.setBounds(40, 13, 320, 30);
-		add(txtTitle);
-		txtTitle.setColumns(10);
-		
-		txtLabelWhite = new JTextField();
-		txtLabelWhite.setHorizontalAlignment(SwingConstants.RIGHT);
-		txtLabelWhite.setFont(new Font("Arial Black", Font.PLAIN, 16));
-		txtLabelWhite.setEditable(false);
-		txtLabelWhite.setText("Bia\u0142y:");
-		txtLabelWhite.setBounds(60, 100, 70, 25);
-		add(txtLabelWhite);
-		txtLabelWhite.setColumns(10);
-		
 		JFormattedTextField txtWhitePlayer = new JFormattedTextField();
 		txtWhitePlayer.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		txtWhitePlayer.setBackground(new Color(0, 0, 0));
 		txtWhitePlayer.setForeground(new Color(245, 245, 245));
-		txtWhitePlayer.setBounds(130, 100, 210, 25);
+		txtWhitePlayer.setBounds(140, 100, 200, 25);
 		add(txtWhitePlayer);
-		
-		txtLabelBlack = new JTextField();
-		txtLabelBlack.setForeground(new Color(245, 245, 245));
-		txtLabelBlack.setBackground(new Color(0, 0, 0));
-		txtLabelBlack.setText("Czarny:");
-		txtLabelBlack.setHorizontalAlignment(SwingConstants.RIGHT);
-		txtLabelBlack.setFont(new Font("Arial Black", Font.PLAIN, 16));
-		txtLabelBlack.setEditable(false);
-		txtLabelBlack.setColumns(10);
-		txtLabelBlack.setBounds(60, 200, 70, 25);
-		add(txtLabelBlack);
 		
 		JFormattedTextField txtBlackPlayer = new JFormattedTextField();
 		txtBlackPlayer.setForeground(new Color(0, 0, 0));
 		txtBlackPlayer.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		txtBlackPlayer.setBackground(new Color(245, 245, 245));
-		txtBlackPlayer.setBounds(130, 200, 210, 25);
+		txtBlackPlayer.setBounds(140, 200, 200, 25);
 		add(txtBlackPlayer);
 		
 		JButton btnBack = new JButton("Wr\u00F3\u0107");
@@ -160,6 +128,25 @@ public class NewGamePanel extends JPanel {
 			}
 		});
 		add(btnStart);
+		
+		JLabel lblNewLabel = new JLabel("WPROWADZ NICKI GRACZY");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Papyrus", Font.BOLD, 16));
+		lblNewLabel.setBounds(40, 13, 320, 30);
+		add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("BIALY:");
+		lblNewLabel_1.setBackground(new Color(240, 255, 255));
+		lblNewLabel_1.setFont(new Font("Papyrus", Font.BOLD, 15));
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_1.setBounds(60, 100, 80, 25);
+		add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("CZARNY:");
+		lblNewLabel_2.setForeground(new Color(245, 245, 245));
+		lblNewLabel_2.setFont(new Font("Papyrus", Font.BOLD, 12));
+		lblNewLabel_2.setBounds(60, 200, 80, 25);
+		add(lblNewLabel_2);
 
 	}
 
