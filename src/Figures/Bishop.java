@@ -8,9 +8,8 @@ import org.w3c.dom.Element;
 import Player.Player;
 import Processing.Chessboard;
 import Processing.Vector3;
-import XML.XMLSerializable;
 
-public class Bishop extends Figure implements XMLSerializable {
+public class Bishop extends Figure {
 
 	
 	public Bishop(Chessboard chessboard, Vector3 position, Player player) {
@@ -47,5 +46,7 @@ public class Bishop extends Figure implements XMLSerializable {
         return root;
 
 	}
+
+
 
 }

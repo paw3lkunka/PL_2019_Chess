@@ -6,6 +6,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import Figures.FColor;
+import Player.*;
 import Processing.Chessboard;
 import Processing.Vector3;
 import processing.core.PApplet;
@@ -19,12 +21,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
+@SuppressWarnings("serial")
 public class NewGamePanel extends JPanel {
 	private Program program;
-	private JTextField txtTitle;
-	private JTextField txtLabelWhite;
-	private JTextField txtLabelBlack;
 
 	/**
 	 * Create the panel.
@@ -35,48 +36,18 @@ public class NewGamePanel extends JPanel {
 		setBackground(new Color(160, 82, 45));
 		setLayout(null);
 		
-		txtTitle = new JTextField();
-		txtTitle.setFont(new Font("Arial Black", Font.BOLD, 18));
-		txtTitle.setText("Wprowad\u017C nicki graczy");
-		txtTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		txtTitle.setBackground(new Color(160, 82, 45));
-		txtTitle.setEditable(false);
-		txtTitle.setBounds(40, 13, 320, 30);
-		add(txtTitle);
-		txtTitle.setColumns(10);
-		
-		txtLabelWhite = new JTextField();
-		txtLabelWhite.setHorizontalAlignment(SwingConstants.RIGHT);
-		txtLabelWhite.setFont(new Font("Arial Black", Font.PLAIN, 16));
-		txtLabelWhite.setEditable(false);
-		txtLabelWhite.setText("Bia\u0142y:");
-		txtLabelWhite.setBounds(60, 100, 70, 25);
-		add(txtLabelWhite);
-		txtLabelWhite.setColumns(10);
-		
 		JFormattedTextField txtWhitePlayer = new JFormattedTextField();
 		txtWhitePlayer.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		txtWhitePlayer.setBackground(new Color(0, 0, 0));
 		txtWhitePlayer.setForeground(new Color(245, 245, 245));
-		txtWhitePlayer.setBounds(130, 100, 210, 25);
+		txtWhitePlayer.setBounds(140, 100, 200, 25);
 		add(txtWhitePlayer);
-		
-		txtLabelBlack = new JTextField();
-		txtLabelBlack.setForeground(new Color(245, 245, 245));
-		txtLabelBlack.setBackground(new Color(0, 0, 0));
-		txtLabelBlack.setText("Czarny:");
-		txtLabelBlack.setHorizontalAlignment(SwingConstants.RIGHT);
-		txtLabelBlack.setFont(new Font("Arial Black", Font.PLAIN, 16));
-		txtLabelBlack.setEditable(false);
-		txtLabelBlack.setColumns(10);
-		txtLabelBlack.setBounds(60, 200, 70, 25);
-		add(txtLabelBlack);
 		
 		JFormattedTextField txtBlackPlayer = new JFormattedTextField();
 		txtBlackPlayer.setForeground(new Color(0, 0, 0));
 		txtBlackPlayer.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		txtBlackPlayer.setBackground(new Color(245, 245, 245));
-		txtBlackPlayer.setBounds(130, 200, 210, 25);
+		txtBlackPlayer.setBounds(140, 200, 200, 25);
 		add(txtBlackPlayer);
 		
 		JButton btnBack = new JButton("Wr\u00F3\u0107");
@@ -134,7 +105,11 @@ public class NewGamePanel extends JPanel {
 									
 									switch(confirm) {
 									case JOptionPane.YES_OPTION:
-										program.getGame().setC(new Chessboard(program.getGame(), new Vector3(0,0,0)));
+										//setC(new Chessboard(program.getGame(), new Vector3(0,0,0)));
+										program.getGame().newGame(  //za³atane na tasme
+												new Player("Bia³a", PlayerID.one, FColor.white, Sex.female, Skill.profesional, 10, 12),
+												new Player("Czarny", PlayerID.two, FColor.black, Sex.male, Skill.beginner, 1, 5)
+												);
 										program.getGame().run();
 										program.setContentPane(program.getMmPanel());
 										break;
@@ -143,6 +118,10 @@ public class NewGamePanel extends JPanel {
 										break;
 									}
 							} else {
+								program.getGame().newGame(  //za³atane na tasme
+										new Player("Bia³a", PlayerID.one, FColor.white, Sex.female, Skill.profesional, 10, 12),
+										new Player("Czarny", PlayerID.two, FColor.black, Sex.male, Skill.beginner, 1, 5)
+										);
 								program.getGame().run();
 								program.setContentPane(program.getMmPanel());
 							}
@@ -160,6 +139,25 @@ public class NewGamePanel extends JPanel {
 			}
 		});
 		add(btnStart);
+		
+		JLabel lblTitle = new JLabel("WPROWADZ NICKI GRACZY");
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitle.setFont(new Font("Papyrus", Font.BOLD, 16));
+		lblTitle.setBounds(40, 13, 320, 30);
+		add(lblTitle);
+		
+		JLabel lblWhitePlayer = new JLabel("BIALY:");
+		lblWhitePlayer.setBackground(new Color(240, 255, 255));
+		lblWhitePlayer.setFont(new Font("Papyrus", Font.BOLD, 15));
+		lblWhitePlayer.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblWhitePlayer.setBounds(60, 100, 80, 25);
+		add(lblWhitePlayer);
+		
+		JLabel lblBlackPlayer = new JLabel("CZARNY:");
+		lblBlackPlayer.setForeground(new Color(245, 245, 245));
+		lblBlackPlayer.setFont(new Font("Papyrus", Font.BOLD, 12));
+		lblBlackPlayer.setBounds(60, 200, 80, 25);
+		add(lblBlackPlayer);
 
 	}
 

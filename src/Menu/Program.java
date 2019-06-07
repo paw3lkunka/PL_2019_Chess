@@ -13,6 +13,7 @@ import Processing.Processing;
 import SQL.MySql;
 import processing.core.PApplet;
 
+@SuppressWarnings("serial")
 public class Program extends JFrame {
 	private MainMenuPanel mmPanel;
 	private Processing game;
@@ -59,7 +60,7 @@ public class Program extends JFrame {
   	  	game = new Processing(this);
 		String[] args =new String[] {"--location=2000,2000", "Szachy"};
     	PApplet.runSketch(args, game);
-    	game.stop();
+    	game.exit();
     	
     	mySql = new MySql();
     	
@@ -86,9 +87,9 @@ public class Program extends JFrame {
 				switch(confirm) {
 				case JOptionPane.YES_OPTION:
 					// coœ innego do za³atwienia przy zamykaniu
-					game.end();
 					evt.getWindow().dispose();
 					System.out.println("Closed");
+					game.end();
 					break;
 				default:
 					System.out.println("Closing has been cancelled");

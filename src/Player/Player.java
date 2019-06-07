@@ -1,6 +1,7 @@
 package Player;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 import Figures.FColor;
 import XML.XMLSerializable;
@@ -23,6 +24,18 @@ public class Player implements XMLSerializable {
 		this.wins = wins;
 		this.games = games;
 		this.id = id;
+	}
+
+	public Player(Element element, PlayerID id, FColor color) {
+		NodeList nList = element.getChildNodes();
+		this.name = ((Element)nList).getElementsByTagName("Name").item(0).getTextContent();
+		this.id = id;
+		this.color = color;
+		this.sex = Sex.valueOf( ((Element)nList).getElementsByTagName("Sex").item(0).getTextContent() );
+		this.skill = Skill.valueOf( ((Element)nList).getElementsByTagName("Skill").item(0).getTextContent() );
+		this.wins = Integer.parseInt( ((Element)nList).getElementsByTagName("Wins").item(0).getTextContent() );
+		this.games = Integer.parseInt( ((Element)nList).getElementsByTagName("Games").item(0).getTextContent() );
+
 	}
 
 	public String getName() {
@@ -90,13 +103,13 @@ public class Player implements XMLSerializable {
 	            imie.appendChild(document.createTextNode(name));
 	            root.appendChild(imie);
 	            
-	            Element idgracza = document.createElement("ID");
+	           /* Element idgracza = document.createElement("ID");
 	            idgracza.appendChild(document.createTextNode(id.toString()));
-	            root.appendChild(idgracza);
+	            root.appendChild(idgracza);*/
 
-	            Element kolor = document.createElement("Color");
+	           /* Element kolor = document.createElement("Color");
 	            kolor.appendChild(document.createTextNode(color.toString()));
-	            root.appendChild(kolor);
+	            root.appendChild(kolor);*/
 	            
 	            Element plec = document.createElement("Sex");
 	            plec.appendChild(document.createTextNode(sex.toString()));
@@ -116,5 +129,12 @@ public class Player implements XMLSerializable {
 	            return root;
 
 	}
+
+	@Override
+	public String toString() {
+		return "Player [name=" + name + ", id=" + id + ", color=" + color + ", sex=" + sex + ", skill=" + skill
+				+ ", wins=" + wins + ", games=" + games + "]";
+	}
+
 
 }

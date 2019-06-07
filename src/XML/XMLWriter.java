@@ -29,7 +29,7 @@ public class XMLWriter <T extends XMLSerializable> {
 			Document document = documentBuilder.newDocument();
 			
             // root element
-			t.saveXML(document);
+			document.appendChild(t.saveXML(document));
            
             DOMSource source = new DOMSource(document);
             StreamResult stream = new StreamResult(new File(path));

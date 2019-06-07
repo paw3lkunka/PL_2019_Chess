@@ -5,7 +5,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import Processing.Processing;
+import Processing.Chessboard;
 import XML.XMLWriter;
 
 import java.awt.Font;
@@ -16,10 +16,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
+@SuppressWarnings("serial")
 public class MainMenuPanel extends JPanel {
 	private Program program;
-	private JTextField txtTitle;
 	
 	// by u¿yæ w optymalny sposób klasy wewnêtrznej do obs³ugi tych guziczków potrzebne by³y te pola
 	private MainMenuListener mmListener;
@@ -30,6 +31,7 @@ public class MainMenuPanel extends JPanel {
 	private JButton btnInfo;
 	private JButton btnExit;
 	private JButton btnContinue;
+	private JLabel lblTitle;
 	
 	
 	public JButton getBtnContinue() {
@@ -46,16 +48,6 @@ public class MainMenuPanel extends JPanel {
 		setLayout(null);
 		
 		mmListener = new MainMenuListener();
-		
-		txtTitle = new JTextField();
-		txtTitle.setText("GRA W SZACHY");
-		txtTitle.setForeground(new Color(245, 245, 245));
-		txtTitle.setFont(new Font("Arial Black", Font.PLAIN, 26));
-		txtTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		txtTitle.setBackground(new Color(165, 42, 42));
-		txtTitle.setBounds(40, 20, 320, 40);
-		add(txtTitle);
-		txtTitle.setColumns(10);
 		
 		btnNewGame = new JButton("Nowa gra");
 		btnNewGame.addActionListener(new ActionListener() {
@@ -117,6 +109,13 @@ public class MainMenuPanel extends JPanel {
 		btnContinue.setBounds(40, 80, 320, 30);
 		btnContinue.addActionListener(mmListener);
 		add(btnContinue);
+		
+		lblTitle = new JLabel("GRA W SZACHY");
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitle.setForeground(new Color(245, 245, 245));
+		lblTitle.setFont(new Font("Papyrus", Font.BOLD, 26));
+		lblTitle.setBounds(40, 20, 320, 40);
+		add(lblTitle);
 
 	}
 	
@@ -160,7 +159,8 @@ public class MainMenuPanel extends JPanel {
 					
 					//trzeba bêdzie z³apaæ wyj¹tek NullPointerException na wypadek klikniêcia Cancel
 					System.out.println("Chosen save file: " + fileChooser.getSelectedFile().getAbsolutePath() );
-					new XMLWriter<Processing>(fileChooser.getSelectedFile().getAbsolutePath()).save(program.getGame());
+					program.getGame().saveGame(fileChooser.getSelectedFile().getAbsolutePath());
+					//new XMLWriter<Chessboard>(fileChooser.getSelectedFile().getAbsolutePath()).save(program.getGame().getC());
 				} catch (NullPointerException ex) {
 					System.out.println("Save file hasn't been chosen");
 				}

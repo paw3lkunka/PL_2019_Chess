@@ -3,11 +3,14 @@ import java.util.ArrayList;
 import java.util.List;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+
 import Exceptions.FigureCollisionException;
 import Exceptions.NoCollisionException;
 import Exceptions.OutOfChessboardException;
 import Figures.Bishop;
 import Figures.FColor;
+import Figures.Figure;
 import Figures.King;
 import Figures.Knight;
 import Figures.Pawn;
@@ -15,22 +18,53 @@ import Figures.Queen;
 import Figures.Rook;
 import Player.Player;
 import Player.PlayerID;
-import Player.Sex;
-import Player.Skill;
 import XML.XMLSerializable;
 import processing.core.PApplet;
 
-public class Chessboard extends PositionedObject  implements XMLSerializable  {
+public class Chessboard extends PositionedObject  implements XMLSerializable {
 	
 	private final int size=8;
 	private List<List<Tile>> tiles;
 	private Player one;
 	private Player two;
+	private Figure selection;
+	private PlayerID turn;
 
-	public Chessboard(PApplet parent, Vector3 pos) {
+	public Chessboard(PApplet parent, Vector3 pos, Player one, Player two) {
 		super(parent, pos);
-		tiles = new ArrayList<List<Tile>>();
+  	  	this.selection = null;
+  	  	this.turn = PlayerID.one;
+	    this.one = one; 
+	    this.two = two;
+
+		tilesInit();
+		figuresInit();
+		PApplet.println("Turn of player "+turn.toString());
+	}
+
+	public Chessboard(PApplet parent, Vector3 pos, Element element) {
+		super(parent, pos);
 		
+  	  	this.selection = null;	
+		tilesInit();
+		
+		NodeList nList = element.getElementsByTagName("Players").item(0).getChildNodes();
+		NodeList gracze = ((Element) nList).getElementsByTagName("Player");
+		this.one = new Player( (Element)gracze.item(0) , PlayerID.one , FColor.white);
+		this.two = new Player( (Element)gracze.item(1) , PlayerID.two , FColor.black);
+
+		nList = element.getElementsByTagName("Figures").item(0).getChildNodes();
+		NodeList figury = ((Element) nList).getElementsByTagName("Figure");
+		for(int i=0; i<figury.getLength(); ++i)
+			addFigure((Element)figury.item(i));
+		
+		this.turn = PlayerID.valueOf( element.getElementsByTagName("Turn").item(0).getTextContent() );
+		PApplet.println("Turn of player "+turn.toString());
+	}
+	
+	private void tilesInit()
+	{
+		this.tiles = new ArrayList<List<Tile>>();
 	    for(int i=0; i<size; ++i)
 	    {
 	    	tiles.add(new ArrayList<Tile>());
@@ -42,10 +76,10 @@ public class Chessboard extends PositionedObject  implements XMLSerializable  {
 	        		tiles.get(i).add( new Tile(parent, new Vector3(j*50,0,i*50),TColor.black) );
 	        }
 	    }
-
-	    one = new Player("Bia³a", PlayerID.one, FColor.white, Sex.female, Skill.profesional, 10, 12);
-	    two = new Player("Czarny", PlayerID.two, FColor.black, Sex.male, Skill.beginner, 1, 5);
-	    
+	}
+	
+	private void figuresInit()
+	{
 	    //white
 	    getTile(0,0).setFigure(new Rook(this, new Vector3(0,0), one));
 	    getTile(1,0).setFigure(new Knight(this, new Vector3(1,0), one));
@@ -72,7 +106,7 @@ public class Chessboard extends PositionedObject  implements XMLSerializable  {
 	    for(int i=0; i<8; ++i)
 	    	getTile(i,6).setFigure(new Pawn(this, new Vector3(i,6), two));
 	}
-
+	
 	public void display()
 	{
 		super.place();
@@ -81,15 +115,6 @@ public class Chessboard extends PositionedObject  implements XMLSerializable  {
 				tiles.get(i).get(j).display();
 	}
 	
-	public Tile getTile(int i, int j)
-	{
-		return tiles.get(j).get(i);
-	}
-
-	public Tile getTile(Vector3 v)
-	{
-		return tiles.get((int) v.getY()).get((int) v.getX());
-	}
 	
 	public List<Vector3> getOccupiedTiles() 
 	{
@@ -102,6 +127,27 @@ public class Chessboard extends PositionedObject  implements XMLSerializable  {
 		return list;
 	}
 	
+	public void addFigure(Element figure)		//dodaje figure na plansze
+	{
+		Player player;
+		if( figure.getElementsByTagName("PlayerID").item(0).getTextContent() == PlayerID.one.toString())
+			player = one;
+		else
+			player = two;
+		
+		Vector3 pos = new Vector3( (Element)(figure.getElementsByTagName("Vector3").item(0)) );
+		
+		switch(figure.getAttributes().item(0).getTextContent()) 
+		{
+		case "Rook": 	getTile(pos).setFigure( new Rook(this, pos, player) );	break;
+		case "Queen": 	getTile(pos).setFigure( new Queen(this, pos, player) );	break;
+		case "Bishop":	getTile(pos).setFigure( new Bishop(this, pos, player) );	break;
+		case "King":	getTile(pos).setFigure( new King(this, pos, player) );	break;
+		case "Knight": 	getTile(pos).setFigure( new Knight(this, pos, player) );	break;
+		case "Pawn": 	getTile(pos).setFigure( new Pawn(this, pos, player) );	break;
+		}
+	}
+	
 	public void checkCollision(Vector3 v) throws OutOfChessboardException, FigureCollisionException, NoCollisionException
 	{
 		if(v.getX() > 7 || v.getX() < 0 ||
@@ -112,14 +158,17 @@ public class Chessboard extends PositionedObject  implements XMLSerializable  {
 		else 
 			throw new NoCollisionException("Brak kolizji");
 	}
-
-	public int getSize() {
-		return size;
-	}
+	  
 	
-	public PApplet getParent() {
-		return parent;
-	}
+  	public void changeTurn() 
+	{
+  		if(turn == PlayerID.one)
+  			turn = PlayerID.two;
+  		else
+  			turn = PlayerID.one;
+
+		  PApplet.println("Turn of player "+turn.toString());
+  	}
 	
 	public void moveFigure(Vector3 from, Vector3 to)
 	{
@@ -128,6 +177,17 @@ public class Chessboard extends PositionedObject  implements XMLSerializable  {
 		getTile(from).setFigure( null );					//usuniecie figury z poprzedniego pola
 		getTile(to).getFigure().setPosition(to); 			//nadanie nowej pozycji
 		getTile(to).getFigure().moved();
+		
+		Player winner = checkEnd();
+		if(winner != null)
+			{
+			PApplet.println(winner.toString()+" won");
+			//tutaj rzeczy do wygranej, trzeba jakos do sqla zapisac tych gosci
+			one.setGames(one.getGames()+1);
+			two.setGames(two.getGames()+1);
+			winner.setWins(winner.getWins()+1);
+			parent.exit();
+			}
 	}
 	
 	public Element saveXML(Document document)
@@ -148,7 +208,111 @@ public class Chessboard extends PositionedObject  implements XMLSerializable  {
             for(int i=0; i<tiles.size(); ++i)
                 figures.appendChild(getTile(tiles.get(i)).getFigure().saveXML(document) );
             root.appendChild(figures);
+            
+            Element tura = document.createElement("Turn");
+            tura.appendChild(document.createTextNode(turn.toString()));
+            root.appendChild(tura);
 
             return root;
 	}
+	
+	public void interaction(int x, int y) 
+	{
+		  if( selection == null )							//Nic nie jest wybrane -> mo¿liwoœæ wyboru figury
+		  {
+			  selection = getTile(x, y).getFigure();		
+			  if(selection != null && selection.getPlayer().getId() == turn)
+				  selection.switchSelection();
+			  else
+				  selection = null;
+		  }
+		  else if( selection == getTile(x, y).getFigure() )		//Wybrana jakaœ figura i klikniêcie na t¹ sam¹ figurê -> odklikniêcie
+		  {
+			  selection.switchSelection();
+			  selection = null;
+		  }
+		  else if( selection != null && selection.getPossibleMoves().contains(new Vector3(x,y))) //Wybrana jakaœ figura i klikniêcie na pole ruchu -> ruch figury i zmiana tury
+		  {
+			  moveFigure(selection.getPosition(), new Vector3(x,y));
+			  changeTurn();
+			  selection.switchSelection();
+			  selection = null;
+		  }
+		  else		//Wybrana jakaœ figura i klikniêcie na inn¹ -> mo¿liwoœæ wyboru innej figury
+		  {
+			  selection.switchSelection();
+			  selection = getTile(x, y).getFigure();
+			  if(selection != null && selection.getPlayer().getId() == turn)
+				  selection.switchSelection();
+			  else
+				  selection = null;
+		  }
+	}
+	
+	public Player checkEnd() 
+	{
+		boolean onelife = false;
+		boolean twolife = false;
+		List<Vector3> tiles = getOccupiedTiles();
+		for(int i=0; i<tiles.size(); ++i)
+			if( getTile(tiles.get(i)).getFigure().getClass().getName() == "Figures.King" )
+				if( getTile(tiles.get(i)).getFigure().getPlayer().getId() == PlayerID.one )
+					onelife = true;
+				else
+					twolife = true;
+		
+		if( !onelife )
+			return two;
+		else if( !twolife )
+			return one;
+		else
+			return null;
+	}	
+	
+	
+	
+	//====================get set====================
+	public Tile getTile(int i, int j)
+	{
+		return tiles.get(j).get(i);
+	}
+
+	public Tile getTile(Vector3 v)
+	{
+		return tiles.get((int) v.getY()).get((int) v.getX());
+	}
+
+	public int getSize() {
+		return size;
+	}
+	
+	public PApplet getParent() {
+		return parent;
+	}
+
+	public Figure getSelection() {
+		return selection;
+	}
+
+	public void setSelection(Figure selection) {
+		this.selection = selection;
+	}
+
+	public PlayerID getTurn() {
+		return turn;
+	}
+
+	public void setTurn(PlayerID turn) {
+		this.turn = turn;
+	}
+
+	public Player getOne() {
+		return one;
+	}
+
+	public Player getTwo() {
+		return two;
+	}
+
+
 }

@@ -1,8 +1,6 @@
 package SQL;
 
-import java.awt.List;
 import java.sql.*;
-import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
 

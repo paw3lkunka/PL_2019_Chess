@@ -9,9 +9,8 @@ import Exceptions.FileMissingException;
 import Player.Player;
 import Processing.Chessboard;
 import Processing.Vector3;
-import XML.XMLSerializable;
 
-public class Rook extends Figure implements XMLSerializable {
+public class Rook extends Figure {
 
 	
 	public Rook(Chessboard chessboard, Vector3 position, Player player) {
@@ -47,4 +46,6 @@ public class Rook extends Figure implements XMLSerializable {
         return root;
 
 	}
+
+
 }

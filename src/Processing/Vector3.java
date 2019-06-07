@@ -22,6 +22,14 @@ public class Vector3 implements XMLSerializable {
 		this.z = 0;
 	}
 	
+	public Vector3 (Element element) {
+		
+		this.x = Float.parseFloat( element.getElementsByTagName("X").item(0).getTextContent() );
+		this.y = Float.parseFloat( element.getElementsByTagName("Y").item(0).getTextContent() );
+		this.z = Float.parseFloat( element.getElementsByTagName("Z").item(0).getTextContent() );
+
+	}
+	
 	public Vector3(Vector3 v) {
 		this.x = v.getX();
 		this.y = v.getY();
