@@ -1,16 +1,11 @@
 package Menu;
 import javax.swing.JPanel;
 import java.awt.Color;
-import java.awt.Canvas;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import Figures.FColor;
 import Player.*;
-import Processing.Chessboard;
-import Processing.Vector3;
-import processing.core.PApplet;
 
 import java.awt.Font;
 import java.awt.HeadlessException;

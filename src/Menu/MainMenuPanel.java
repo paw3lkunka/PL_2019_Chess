@@ -1,12 +1,8 @@
 package Menu;
 import javax.swing.JPanel;
 import java.awt.Color;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-
-import Processing.Chessboard;
-import XML.XMLWriter;
 
 import java.awt.Font;
 import javax.swing.JButton;

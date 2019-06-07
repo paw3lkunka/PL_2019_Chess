@@ -1,9 +1,7 @@
 package Menu;
 import javax.swing.JPanel;
 import java.awt.Color;
-import javax.swing.JTable;
 import javax.swing.JFormattedTextField;
-import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
@@ -21,7 +19,6 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
-import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JLabel;
 
 @SuppressWarnings("serial")

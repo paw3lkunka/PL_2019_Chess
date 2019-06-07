@@ -1,13 +1,10 @@
 package Menu;
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.*;
 import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import Processing.Processing;
 import SQL.MySql;
