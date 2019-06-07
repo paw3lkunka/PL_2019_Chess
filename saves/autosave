@@ -2,14 +2,14 @@
 <Chessboard>
 <Players>
 <Player>
-<Name>Biała</Name>
+<Name>HanKolo</Name>
 <Sex>female</Sex>
 <Skill>profesional</Skill>
 <Wins>10</Wins>
 <Games>12</Games>
 </Player>
 <Player>
-<Name>Czarny</Name>
+<Name>Janek</Name>
 <Sex>male</Sex>
 <Skill>beginner</Skill>
 <Wins>1</Wins>
@@ -100,10 +100,10 @@
 <Figure figure="Pawn">
 <Vector3>
 <X>2.0</X>
-<Y>4.0</Y>
+<Y>6.0</Y>
 <Z>0.0</Z>
 </Vector3>
-<PlayerID>one</PlayerID>
+<PlayerID>two</PlayerID>
 </Figure>
 <Figure figure="Bishop">
 <Vector3>
@@ -116,10 +116,42 @@
 <Figure figure="Queen">
 <Vector3>
 <X>3.0</X>
+<Y>0.0</Y>
+<Z>0.0</Z>
+</Vector3>
+<PlayerID>one</PlayerID>
+</Figure>
+<Figure figure="Pawn">
+<Vector3>
+<X>3.0</X>
 <Y>1.0</Y>
 <Z>0.0</Z>
 </Vector3>
+<PlayerID>one</PlayerID>
+</Figure>
+<Figure figure="Pawn">
+<Vector3>
+<X>3.0</X>
+<Y>6.0</Y>
+<Z>0.0</Z>
+</Vector3>
 <PlayerID>two</PlayerID>
+</Figure>
+<Figure figure="Queen">
+<Vector3>
+<X>3.0</X>
+<Y>7.0</Y>
+<Z>0.0</Z>
+</Vector3>
+<PlayerID>two</PlayerID>
+</Figure>
+<Figure figure="King">
+<Vector3>
+<X>4.0</X>
+<Y>0.0</Y>
+<Z>0.0</Z>
+</Vector3>
+<PlayerID>one</PlayerID>
 </Figure>
 <Figure figure="Pawn">
 <Vector3>

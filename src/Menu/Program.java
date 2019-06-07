@@ -84,9 +84,13 @@ public class Program extends JFrame {
 				switch(confirm) {
 				case JOptionPane.YES_OPTION:
 					// coœ innego do za³atwienia przy zamykaniu
+					try {
+						game.end();
+					} catch(NullPointerException ex) {
+						
+					}
 					evt.getWindow().dispose();
 					System.out.println("Closed");
-					game.end();
 					break;
 				default:
 					System.out.println("Closing has been cancelled");

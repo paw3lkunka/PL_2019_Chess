@@ -23,6 +23,8 @@ public class XMLWriter <T extends XMLSerializable> {
 	
 	public void save(T t) {
 		
+		StreamResult stream;
+		
 		try {
 			DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
@@ -32,7 +34,7 @@ public class XMLWriter <T extends XMLSerializable> {
 			document.appendChild(t.saveXML(document));
            
             DOMSource source = new DOMSource(document);
-            StreamResult stream = new StreamResult(new File(path));
+            stream = new StreamResult(new File(path));
             
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
@@ -44,6 +46,8 @@ public class XMLWriter <T extends XMLSerializable> {
             pce.printStackTrace();
         } catch (TransformerException tfe) {
             tfe.printStackTrace();
+        } finally {
+        	
         }
 	}
 

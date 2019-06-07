@@ -130,11 +130,17 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 	
 	public void addFigure(Element figure)		//dodaje figure na plansze
 	{
-		Player player;
-		if( figure.getElementsByTagName("PlayerID").item(0).getTextContent() == PlayerID.one.toString())
+		Player player = null;
+		PApplet.print( figure.getElementsByTagName("PlayerID").item(0).getTextContent() );
+		switch(figure.getElementsByTagName("PlayerID").item(0).getTextContent()) {
+		case "one":
 			player = one;
-		else
+			break;
+		case "two":
 			player = two;
+			break;
+		}
+			
 		
 		Vector3 pos = new Vector3( (Element)(figure.getElementsByTagName("Vector3").item(0)) );
 		
@@ -195,11 +201,11 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 					((Processing)parent).getProgram().getMySql().updateWin(two.getName());
 					((Processing)parent).getProgram().getMySql().updateLoss(one.getName());
 				}
-				} catch(SQLException e) {
-					
-				} finally {
-					parent.exit();
-				}
+			} catch(SQLException e) {
+				e.printStackTrace();	
+			} finally {
+				((Processing)parent).exit();
+			}
 		
 			}
 	}

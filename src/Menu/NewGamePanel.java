@@ -102,8 +102,8 @@ public class NewGamePanel extends JPanel {
 									case JOptionPane.YES_OPTION:
 										//setC(new Chessboard(program.getGame(), new Vector3(0,0,0)));
 										program.getGame().newGame(  //za³atane na tasme
-												new Player("Bia³a", PlayerID.one, FColor.white, Sex.female, Skill.profesional, 10, 12),
-												new Player("Czarny", PlayerID.two, FColor.black, Sex.male, Skill.beginner, 1, 5)
+												new Player(txtWhitePlayer.getText(), PlayerID.one, FColor.white, Sex.female, Skill.profesional, 10, 12),
+												new Player(txtBlackPlayer.getText(), PlayerID.two, FColor.black, Sex.male, Skill.beginner, 1, 5)
 												);
 										program.getGame().run();
 										program.setContentPane(program.getMmPanel());
@@ -114,8 +114,8 @@ public class NewGamePanel extends JPanel {
 									}
 							} else {
 								program.getGame().newGame(  //za³atane na tasme
-										new Player("Bia³a", PlayerID.one, FColor.white, Sex.female, Skill.profesional, 10, 12),
-										new Player("Czarny", PlayerID.two, FColor.black, Sex.male, Skill.beginner, 1, 5)
+										new Player(txtWhitePlayer.getText(), PlayerID.one, FColor.white, Sex.female, Skill.profesional, 10, 12),
+										new Player(txtBlackPlayer.getText(), PlayerID.two, FColor.black, Sex.male, Skill.beginner, 1, 5)
 										);
 								program.getGame().run();
 								program.setContentPane(program.getMmPanel());

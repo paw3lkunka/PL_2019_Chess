@@ -61,7 +61,7 @@ public class MySql {
 		Statement statement = connection.createStatement();
 		statement.executeUpdate(
 			"UPDATE players "
-			+ "SET (Games = Games + 1) "
+			+ "SET Games = Games + 1 "
 			+ "WHERE Nick = \'" + nick + "\'"
 		);
 	}
