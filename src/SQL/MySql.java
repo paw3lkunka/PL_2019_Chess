@@ -81,14 +81,14 @@ public class MySql {
 	    // data of the table
 	    rs.last();
 	    Object [][] data = new Object[rs.getRow() + 1][];
-	    data[0] = columnNames;
+	    //data[0] = columnNames;
 	    rs.beforeFirst();
 	    while (rs.next()) {
 	        Object [] row = new Object[columnCount];
 	        for (int column = 1; column <= columnCount; column++) {
 	            row[column - 1] = rs.getObject(column);
 	        }
-	        data[rs.getRow()] = row;
+	        data[rs.getRow() - 1] = row;
 	    }
 
 	    return new DefaultTableModel(data, columnNames);

@@ -59,9 +59,9 @@ public class StatsPanel extends JPanel {
 		table.setBackground(new Color(0, 0, 0));
 		table.setModel(program.getMySql().buildTableModel(program.getMySql().getPlayersStats()));
 		table.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		
-		JScrollPane scrollPane = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		JScrollPane scrollPane = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setBounds(20, 50, 360, 250);
 		add(scrollPane);
 

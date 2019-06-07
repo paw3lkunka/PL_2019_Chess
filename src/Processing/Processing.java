@@ -140,4 +140,8 @@ public class Processing extends PApplet {
 	public void setC(Chessboard c) {
 		this.c = c;
 	}
+
+	public Program getProgram() {
+		return program;
+	}
 }

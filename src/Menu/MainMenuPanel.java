@@ -140,6 +140,9 @@ public class MainMenuPanel extends JPanel {
 					
 					//trzeba bêdzie z³apaæ wyj¹tek NullPointerException na wypadek klikniêcia Cancel
 					System.out.println("Chosen load file: " + fileChooser.getSelectedFile().getAbsolutePath() );
+					program.getGame().loadGame(fileChooser.getSelectedFile().getAbsolutePath());
+					program.getGame().run();
+					btnContinue.setEnabled(true);
 				} catch (NullPointerException ex) {
 					System.out.println("Load file hasn't been chosen");
 				}
