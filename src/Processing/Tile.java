@@ -1,4 +1,7 @@
 package Processing;
+import java.util.ArrayList;
+import java.util.List;
+
 import Exceptions.ColorMissingException;
 import Figures.Figure;
 import processing.core.PApplet;
@@ -58,6 +61,18 @@ public class Tile extends PositionedObject
 			case aGreen:super.parent.fill(  0, 255,   0, 100);	break;
 			default: throw new ColorMissingException("Brak podanego koloru pola");
 		}
+	}
+	
+	public List<String> toLinesString()
+	{
+		List<String> str = new ArrayList<String>();
+		str.add("=====");
+		if(figure == null)
+			str.add("|   |");
+		else
+			str.add("|"+figure.toString()+"|");
+		str.add("=====");
+		return str;
 	}
 	
 }

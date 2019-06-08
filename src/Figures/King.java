@@ -35,7 +35,12 @@ public class King extends Figure {
 
 	public String toString()
 	{
-		return getPlayer().getName()+" Ki "+getPosition().toChessString();
+		switch ( getPlayer().getId() )
+		{
+		case one: return "1Ki";
+		case two: return "2Ki";
+		default:  return " Ki";
+		}
 	}
 	
 	public Element saveXML(Document document) {

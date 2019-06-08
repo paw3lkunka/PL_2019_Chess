@@ -35,7 +35,12 @@ public class Rook extends Figure {
 	
 	public String toString()
 	{
-		return getPlayer().getName()+" R  "+getPosition().toChessString();
+		switch ( getPlayer().getId() )
+		{
+		case one: return "1Ro";
+		case two: return "2Ro";
+		default:  return " Ro";
+		}
 	}
 
 	public Element saveXML(Document document) {
@@ -44,7 +49,6 @@ public class Rook extends Figure {
         root.setAttribute("figure", "Rook");
 
         return root;
-
 	}
 
 

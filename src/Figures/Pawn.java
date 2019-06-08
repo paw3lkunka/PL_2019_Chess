@@ -53,7 +53,12 @@ public class Pawn extends Figure {
 
 	public String toString()
 	{
-		return getPlayer().getName()+" P  "+getPosition().toChessString();
+		switch ( getPlayer().getId() )
+		{
+		case one: return "1Pa";
+		case two: return "2Pa";
+		default:  return " Pa";
+		}
 	}
 	
 	public Element saveXML(Document document) {

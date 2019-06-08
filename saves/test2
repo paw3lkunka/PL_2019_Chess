@@ -2,14 +2,14 @@
 <Chessboard>
 <Players>
 <Player>
-<Name>x</Name>
+<Name>Biała</Name>
 <Sex>female</Sex>
 <Skill>profesional</Skill>
 <Wins>10</Wins>
 <Games>12</Games>
 </Player>
 <Player>
-<Name>c</Name>
+<Name>Czarny</Name>
 <Sex>male</Sex>
 <Skill>beginner</Skill>
 <Wins>1</Wins>
@@ -60,7 +60,7 @@
 <Figure figure="Pawn">
 <Vector3>
 <X>1.0</X>
-<Y>3.0</Y>
+<Y>1.0</Y>
 <Z>0.0</Z>
 </Vector3>
 <PlayerID>one</PlayerID>
@@ -132,7 +132,7 @@
 <Figure figure="Pawn">
 <Vector3>
 <X>3.0</X>
-<Y>4.0</Y>
+<Y>6.0</Y>
 <Z>0.0</Z>
 </Vector3>
 <PlayerID>two</PlayerID>

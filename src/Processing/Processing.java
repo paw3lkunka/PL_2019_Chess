@@ -1,6 +1,9 @@
 package Processing;
 
 
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+
 import Menu.Program;
 import Player.*;
 import XML.XMLChessboardReader;
@@ -12,11 +15,8 @@ public class Processing extends PApplet {
 	//private PImage bg;
 	private Chessboard c;
 	private boolean isRunning = false;
-	
-	//new Player("Bia³a", PlayerID.one, FColor.white, Sex.female, Skill.profesional, 10, 12);
-	// new Player("Czarny", PlayerID.two, FColor.black, Sex.male, Skill.beginner, 1, 5);
-
-	
+	private Scanner in;
+	private InputThread t1 = new InputThread();
 	public Processing(Program program) {
 		super();
 		this.program = program;
@@ -29,6 +29,7 @@ public class Processing extends PApplet {
 
     public void setup(){
     	  frameRate(30);
+    	  in = new Scanner(System.in);
     	  /*newGame(
     			  new Player("Bia³a", PlayerID.one, FColor.white, Sex.female, Skill.profesional, 10, 12),
     			  new Player("Czarny", PlayerID.two, FColor.black, Sex.male, Skill.beginner, 1, 5)
@@ -37,6 +38,7 @@ public class Processing extends PApplet {
 		  getSurface().setAlwaysOnTop(true);
     	  /*bg = loadImage("sky.jpg");
     	  bg.resize(pixelWidth, pixelHeight);*/
+		  t1.stop();
     	 }
 
   
@@ -53,11 +55,26 @@ public class Processing extends PApplet {
     	rotateX(-PI/2);
     	translate(-200,0,-200);
     	if(c != null)
-    	{
-	    	c.display();
-		  	if(getC().getSelection() != null)
-		  		getC().getSelection().displayPossibleToMoveTiles();
-    	}
+    		switch(c.getMode())
+    		{
+    		case GUI: 
+		    	c.display();
+			  	if(getC().getSelection() != null)
+			  		getC().getSelection().displayPossibleToMoveTiles();
+    			break;
+    			
+    		case TUI:
+    			//new Thread();
+    			//c.input();
+    			break;
+    			
+    		case Both: 
+		    	c.display();
+			  	if(getC().getSelection() != null)
+			  		getC().getSelection().displayPossibleToMoveTiles();
+    			break;
+    		}
+    		
     }	
     
     public void mouseClicked() {
@@ -65,7 +82,8 @@ public class Processing extends PApplet {
   	  int x = mouseX/50;
   	  int y = mouseY/50;
   	  
-  	  c.interaction(x, y);
+  	  if(c.getMode() != Mode.TUI)
+  		  c.interaction(x, y);
 
     }
     
@@ -85,10 +103,13 @@ public class Processing extends PApplet {
 		loop();
 		getSurface().setLocation(100, 100);
 		setIsRunning(true);
+		if(c.getMode() != Mode.GUI)
+			t1.start();
   	    
 	}
   
 	public void exit() {		//do ukrycia okna gry
+		  t1.stop();
 		  program.setVisible(true);
 		  noLoop();
 		  getSurface().setVisible(false);
@@ -101,6 +122,14 @@ public class Processing extends PApplet {
 		  } catch(Exception e) {
 			  e.printStackTrace();
 		  } finally  {
+			  t1.stop();
+			  try {
+						TimeUnit.MILLISECONDS.sleep(200);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+			  
+			  in.close();
 			  super.exit();
 		  }
 	}
@@ -144,4 +173,33 @@ public class Processing extends PApplet {
 	public Program getProgram() {
 		return program;
 	}
+
+	public Scanner getIn() {
+		return in;
+	}
+
+	
+	//====================klasa w¹tku====================
+	class InputThread implements Runnable{
+	    private volatile boolean exit = false;
+	    
+	    public void run() {
+	        while(!exit){
+	        	if(c != null)
+	        		c.input();
+	        }
+	        
+	        System.out.println("\nThread is stopped....");
+	    }
+	    
+	    public void stop(){
+	        exit = true;
+	    }
+	    
+	    public void start() {
+	    	exit = false;
+	    	run();
+	    }
+	}
+	
 }

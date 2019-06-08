@@ -2,6 +2,7 @@ package Processing;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -30,6 +31,7 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 	private Player two;
 	private Figure selection;
 	private PlayerID turn;
+	private Mode mode = Mode.Both;
 
 	public Chessboard(PApplet parent, Vector3 pos, Player one, Player two) {
 		super(parent, pos);
@@ -40,6 +42,8 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 
 		tilesInit();
 		figuresInit();
+		if(mode != Mode.GUI)
+			PApplet.println(toString());
 		PApplet.println("Turn of player "+turn.toString());
 	}
 
@@ -128,10 +132,11 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 		return list;
 	}
 	
+	
 	public void addFigure(Element figure)		//dodaje figure na plansze
 	{
 		Player player = null;
-		PApplet.print( figure.getElementsByTagName("PlayerID").item(0).getTextContent() );
+		//PApplet.print( figure.getElementsByTagName("PlayerID").item(0).getTextContent() );
 		switch(figure.getElementsByTagName("PlayerID").item(0).getTextContent()) {
 		case "one":
 			player = one;
@@ -179,20 +184,24 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 	
 	public void moveFigure(Vector3 from, Vector3 to)
 	{
-		PApplet.println(getTile(from).getFigure() + " ==> "+to.toChessString());	//wyswietlenie na konsoli
 		getTile(to).setFigure( getTile(from).getFigure() ); //ruch figury na pole
 		getTile(from).setFigure( null );					//usuniecie figury z poprzedniego pola
 		getTile(to).getFigure().setPosition(to); 			//nadanie nowej pozycji
 		getTile(to).getFigure().moved();
+		
+		if(mode != Mode.GUI)
+			PApplet.println(toString());
+		PApplet.println(getTile(to).getFigure() +"  "+ from.toChessString() + " ==> "+to.toChessString());	//wyswietlenie na konsoli
 		
 		Player winner = checkEnd();
 		if(winner != null)
 			{
 			PApplet.println(winner.toString()+" won");
 			//tutaj rzeczy do wygranej, trzeba jakos do sqla zapisac tych gosci
-			/*one.setGames(one.getGames()+1);
+			one.setGames(one.getGames()+1);
 			two.setGames(two.getGames()+1);
-			winner.setWins(winner.getWins()+1);*/
+			winner.setWins(winner.getWins()+1);
+			
 			try {
 				if(one == winner) {
 					((Processing)parent).getProgram().getMySql().updateWin(one.getName());
@@ -289,7 +298,34 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 			return null;
 	}	
 	
+	public String toString()
+	{
+		String str = "\n";
+		for(int j=0; j<size; ++j)
+			for(int k=0; k<3; ++k, str+="\n")
+				for(int i=0; i<size; ++i)
+					str += tiles.get(j).get(i).toLinesString().get(k);
+		return str;
+	}
 	
+	public void input()
+	{
+		int y=0;
+		int x=0;
+		
+		try {
+			while(!(x>0 && x<=size && y>0 && y<=size))
+			{
+			PApplet.print("Podaj pozycje x , y: ");
+			x = ((Processing)parent).getIn().nextInt();
+			y = ((Processing)parent).getIn().nextInt();
+			}
+			interaction((x-1)%size,(y-1)%size);
+		} catch(java.util.InputMismatchException e) {
+			PApplet.print("Spróbuj podaæ pozycje w  postaci pary liczb");
+		}
+
+	}
 	
 	//====================get set====================
 	public Tile getTile(int i, int j)
@@ -334,5 +370,12 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 		return two;
 	}
 
+	public Mode getMode() {
+		return mode;
+	}
+	
+	public void setMode(Mode mode) {
+		this.mode = mode;
+	}
 
 }

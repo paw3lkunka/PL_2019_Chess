@@ -35,7 +35,12 @@ public class Queen extends Figure {
 	
 	public String toString()
 	{
-		return getPlayer().getName()+" R "+getPosition().toChessString();
+		switch ( getPlayer().getId() )
+		{
+		case one: return "1Qu";
+		case two: return "2Qu";
+		default:  return " Qu";
+		}
 	}
 	
 	public Element saveXML(Document document) {

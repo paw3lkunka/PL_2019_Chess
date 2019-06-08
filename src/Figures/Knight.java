@@ -33,7 +33,12 @@ public class Knight extends Figure {
 
 	public String toString()
 	{
-		return getPlayer().getName()+" Kn "+getPosition().toChessString();
+		switch ( getPlayer().getId() )
+		{
+		case one: return "1Kn";
+		case two: return "2Kn";
+		default:  return " Kn";
+		}
 	}
 	
 	public Element saveXML(Document document) {

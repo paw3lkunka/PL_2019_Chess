@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Game>
 <Chessboard>
 <Players>
 <Player>
-<Name>x</Name>
+<Name>Biała</Name>
+<ID>one</ID>
+<Color>white</Color>
 <Sex>female</Sex>
 <Skill>profesional</Skill>
 <Wins>10</Wins>
 <Games>12</Games>
 </Player>
 <Player>
-<Name>c</Name>
+<Name>Czarny</Name>
+<ID>two</ID>
+<Color>black</Color>
 <Sex>male</Sex>
 <Skill>beginner</Skill>
 <Wins>1</Wins>
@@ -60,7 +65,7 @@
 <Figure figure="Pawn">
 <Vector3>
 <X>1.0</X>
-<Y>3.0</Y>
+<Y>1.0</Y>
 <Z>0.0</Z>
 </Vector3>
 <PlayerID>one</PlayerID>
@@ -81,14 +86,6 @@
 </Vector3>
 <PlayerID>two</PlayerID>
 </Figure>
-<Figure figure="Bishop">
-<Vector3>
-<X>2.0</X>
-<Y>0.0</Y>
-<Z>0.0</Z>
-</Vector3>
-<PlayerID>one</PlayerID>
-</Figure>
 <Figure figure="Pawn">
 <Vector3>
 <X>2.0</X>
@@ -124,7 +121,7 @@
 <Figure figure="Pawn">
 <Vector3>
 <X>3.0</X>
-<Y>1.0</Y>
+<Y>3.0</Y>
 <Z>0.0</Z>
 </Vector3>
 <PlayerID>one</PlayerID>
@@ -132,7 +129,7 @@
 <Figure figure="Pawn">
 <Vector3>
 <X>3.0</X>
-<Y>4.0</Y>
+<Y>6.0</Y>
 <Z>0.0</Z>
 </Vector3>
 <PlayerID>two</PlayerID>
@@ -193,10 +190,18 @@
 </Vector3>
 <PlayerID>one</PlayerID>
 </Figure>
+<Figure figure="Bishop">
+<Vector3>
+<X>5.0</X>
+<Y>3.0</Y>
+<Z>0.0</Z>
+</Vector3>
+<PlayerID>one</PlayerID>
+</Figure>
 <Figure figure="Pawn">
 <Vector3>
 <X>5.0</X>
-<Y>6.0</Y>
+<Y>5.0</Y>
 <Z>0.0</Z>
 </Vector3>
 <PlayerID>two</PlayerID>
@@ -274,5 +279,5 @@
 <PlayerID>two</PlayerID>
 </Figure>
 </Figures>
-<Turn>one</Turn>
 </Chessboard>
+</Game>

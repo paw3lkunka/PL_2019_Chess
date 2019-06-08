@@ -34,7 +34,12 @@ public class Bishop extends Figure {
 	
 	public String toString()
 	{
-		return getPlayer().getName()+" B "+getPosition().toChessString();
+		switch ( getPlayer().getId() )
+		{
+		case one: return "1Bi";
+		case two: return "2Bi";
+		default:  return " Bi";
+		}
 	}
 
 	
