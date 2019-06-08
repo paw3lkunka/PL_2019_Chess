@@ -14,28 +14,58 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
+/**
+ * The Class MainMenuPanel.
+ * @author Pawe³ Kunka
+ */
 @SuppressWarnings("serial")
 public class MainMenuPanel extends JPanel {
+	
+	/** The program. */
 	private Program program;
 	
+	/** The mm listener. */
 	// by u¿yæ w optymalny sposób klasy wewnêtrznej do obs³ugi tych guziczków potrzebne by³y te pola
 	private MainMenuListener mmListener;
+	
+	/** The btn new game. */
 	private JButton btnNewGame;
+	
+	/** The btn load game. */
 	private JButton btnLoadGame;
+	
+	/** The btn save game. */
 	private JButton btnSaveGame;
+	
+	/** The btn stats. */
 	private JButton btnStats;
+	
+	/** The btn info. */
 	private JButton btnInfo;
+	
+	/** The btn exit. */
 	private JButton btnExit;
+	
+	/** The btn continue. */
 	private JButton btnContinue;
+	
+	/** The lbl title. */
 	private JLabel lblTitle;
 	
 	
+	/**
+	 * Gets the btn continue.
+	 *
+	 * @return the btn continue
+	 */
 	public JButton getBtnContinue() {
 		return btnContinue;
 	}
 
 	/**
 	 * Create the panel.
+	 *
+	 * @param program the program
 	 */
 	public MainMenuPanel(Program program) {
 		this.program = program;
@@ -115,8 +145,22 @@ public class MainMenuPanel extends JPanel {
 
 	}
 	
+	/**
+	 * The listener interface for receiving mainMenu events.
+	 * The class that is interested in processing a mainMenu
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addMainMenuListener<code> method. When
+	 * the mainMenu event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see MainMenuEvent
+	 */
 	class MainMenuListener implements ActionListener {
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			

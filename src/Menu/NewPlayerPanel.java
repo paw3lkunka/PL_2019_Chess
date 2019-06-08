@@ -21,13 +21,23 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
+/**
+ * The Class NewPlayerPanel.
+ * @author Pawe³ Kunka
+ */
 @SuppressWarnings("serial")
 public class NewPlayerPanel extends JPanel {
+	
+	/** The program. */
 	private Program program;
+	
+	/** The level radio. */
 	private ButtonGroup levelRadio;
 
 	/**
 	 * Create the panel.
+	 *
+	 * @param program the program
 	 */
 	public NewPlayerPanel(Program program) {
 		this.program = program;

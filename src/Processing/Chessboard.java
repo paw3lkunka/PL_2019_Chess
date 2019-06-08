@@ -23,16 +23,41 @@ import Player.PlayerID;
 import XML.XMLSerializable;
 import processing.core.PApplet;
 
+/**
+ * The Class Chessboard.
+ * @author Piotr Ruciñski
+ */
 public class Chessboard extends PositionedObject  implements XMLSerializable {
 	
+	/** The size. */
 	private final int size=8;
+	
+	/** The tiles. */
 	private List<List<Tile>> tiles;
+	
+	/** The one. */
 	private Player one;
+	
+	/** The two. */
 	private Player two;
+	
+	/** The selection. */
 	private Figure selection;
+	
+	/** The turn. */
 	private PlayerID turn;
+	
+	/** The mode. */
 	private Mode mode = Mode.Both;
 
+	/**
+	 * Instantiates a new chessboard.
+	 *
+	 * @param parent the instance of PApplet containing chessboard
+	 * @param pos the position of chessboard in Applet
+	 * @param one the player number one - white
+	 * @param two the player number two - black
+	 */
 	public Chessboard(PApplet parent, Vector3 pos, Player one, Player two) {
 		super(parent, pos);
   	  	this.selection = null;
@@ -47,6 +72,13 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 		PApplet.println("Turn of player "+turn.toString());
 	}
 
+	/**
+	 * Instantiates a new chessboard.
+	 *
+	 * @param parent the instance of PApplet containing chessboard
+	 * @param pos the position of chessboard in Applet
+	 * @param element the element
+	 */
 	public Chessboard(PApplet parent, Vector3 pos, Element element) {
 		super(parent, pos);
 		
@@ -67,6 +99,9 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 		PApplet.println("Turn of player "+turn.toString());
 	}
 	
+	/**
+	 * Tiles init.
+	 */
 	private void tilesInit()
 	{
 		this.tiles = new ArrayList<List<Tile>>();
@@ -83,6 +118,9 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 	    }
 	}
 	
+	/**
+	 * Figures init.
+	 */
 	private void figuresInit()
 	{
 	    //white
@@ -112,6 +150,9 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 	    	getTile(i,6).setFigure(new Pawn(this, new Vector3(i,6), two));
 	}
 	
+	/**
+	 * Display.
+	 */
 	public void display()
 	{
 		super.place();
@@ -121,6 +162,11 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 	}
 	
 	
+	/**
+	 * Gets the occupied tiles.
+	 *
+	 * @return the occupied tiles
+	 */
 	public List<Vector3> getOccupiedTiles() 
 	{
 		List<Vector3> list= new ArrayList<Vector3>();
@@ -133,6 +179,11 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 	}
 	
 	
+	/**
+	 * Adds the figure.
+	 *
+	 * @param figure the figure we need to add to the chessboard
+	 */
 	public void addFigure(Element figure)		//dodaje figure na plansze
 	{
 		Player player = null;
@@ -160,6 +211,14 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 		}
 	}
 	
+	/**
+	 * Check collision.
+	 *
+	 * @param v the vector3
+	 * @throws OutOfChessboardException the out of chessboard exception
+	 * @throws FigureCollisionException the figure collision exception
+	 * @throws NoCollisionException the no collision exception
+	 */
 	public void checkCollision(Vector3 v) throws OutOfChessboardException, FigureCollisionException, NoCollisionException
 	{
 		if(v.getX() > 7 || v.getX() < 0 ||
@@ -172,7 +231,10 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 	}
 	  
 	
-  	public void changeTurn() 
+  	/**
+	   * Change turn.
+	   */
+	  public void changeTurn() 
 	{
   		if(turn == PlayerID.one)
   			turn = PlayerID.two;
@@ -182,6 +244,12 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 		  PApplet.println("Turn of player "+turn.toString());
   	}
 	
+	/**
+	 * Move figure.
+	 *
+	 * @param from the from
+	 * @param to the to
+	 */
 	public void moveFigure(Vector3 from, Vector3 to)
 	{
 		getTile(to).setFigure( getTile(from).getFigure() ); //ruch figury na pole
@@ -219,6 +287,9 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 			}
 	}
 	
+	/* (non-Javadoc)
+	 * @see XML.XMLSerializable#saveXML(org.w3c.dom.Document)
+	 */
 	public Element saveXML(Document document)
 	{
 
@@ -245,6 +316,12 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
             return root;
 	}
 	
+	/**
+	 * Interaction.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 */
 	public void interaction(int x, int y) 
 	{
 		  if( selection == null )							//Nic nie jest wybrane -> mo¿liwoœæ wyboru figury
@@ -278,6 +355,11 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 		  }
 	}
 	
+	/**
+	 * Check end. If the game is over.
+	 *
+	 * @return the player
+	 */
 	public Player checkEnd() 
 	{
 		boolean onelife = false;
@@ -298,6 +380,9 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 			return null;
 	}	
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString()
 	{
 		String str = "\n";
@@ -308,6 +393,9 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 		return str;
 	}
 	
+	/**
+	 * Input.
+	 */
 	public void input()
 	{
 		int y=0;
@@ -327,53 +415,116 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 
 	}
 	
+	/**
+	 * Gets the tile.
+	 *
+	 * @param i the vertical index on chessboard
+	 * @param j the horizontal index on chessboard
+	 * @return the tile
+	 */
 	//====================get set====================
 	public Tile getTile(int i, int j)
 	{
 		return tiles.get(j).get(i);
 	}
 
+	/**
+	 * Gets the tile.
+	 *
+	 * @param v the vector3 of tile position
+	 * @return the tile
+	 */
 	public Tile getTile(Vector3 v)
 	{
 		return tiles.get((int) v.getY()).get((int) v.getX());
 	}
 
+	/**
+	 * Gets the size.
+	 *
+	 * @return the size
+	 */
 	public int getSize() {
 		return size;
 	}
 	
+	/**
+	 * Gets the parent.
+	 *
+	 * @return the parent
+	 */
 	public PApplet getParent() {
 		return parent;
 	}
 
+	/**
+	 * Gets the selection.
+	 *
+	 * @return the selection
+	 */
 	public Figure getSelection() {
 		return selection;
 	}
 
+	/**
+	 * Sets the selection.
+	 *
+	 * @param selection the new selection
+	 */
 	public void setSelection(Figure selection) {
 		this.selection = selection;
 	}
 
+	/**
+	 * Gets the turn.
+	 *
+	 * @return the turn
+	 */
 	public PlayerID getTurn() {
 		return turn;
 	}
 
+	/**
+	 * Sets the turn.
+	 *
+	 * @param turn the new turn
+	 */
 	public void setTurn(PlayerID turn) {
 		this.turn = turn;
 	}
 
+	/**
+	 * Gets the one.
+	 *
+	 * @return the one
+	 */
 	public Player getOne() {
 		return one;
 	}
 
+	/**
+	 * Gets the two.
+	 *
+	 * @return the two
+	 */
 	public Player getTwo() {
 		return two;
 	}
 
+	/**
+	 * Gets the mode.
+	 *
+	 * @return the mode
+	 */
 	public Mode getMode() {
 		return mode;
 	}
 	
+	/**
+	 * Sets the mode.
+	 *
+	 * @param mode the new mode
+	 */
 	public void setMode(Mode mode) {
 		this.mode = mode;
 	}

@@ -11,12 +11,23 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
+/**
+ * The Class InfoPanel.
+ * @author Pawe³ Kunka
+ */
 @SuppressWarnings("serial")
 public class InfoPanel extends JPanel implements ActionListener {
+	
+	/** The program. */
 	private Program program;
+	
+	/** The btn back. */
 	JButton btnBack;
+	
 	/**
 	 * Create the panel.
+	 *
+	 * @param program the program
 	 */
 	public InfoPanel(Program program) {
 		this.program = program;
@@ -70,6 +81,9 @@ public class InfoPanel extends JPanel implements ActionListener {
 
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	public void actionPerformed(ActionEvent evt) {
 		if(evt.getSource() == btnBack) {
 			program.setContentPane(program.getMmPanel());

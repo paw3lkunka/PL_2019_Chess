@@ -11,8 +11,20 @@ import Player.Player;
 import Processing.Chessboard;
 import Processing.Vector3;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Pawn.
+ * @author Piotr Ruciñski
+ */
 public class Pawn extends Figure {
 
+	/**
+	 * Instantiates a new pawn.
+	 *
+	 * @param chessboard the chessboard
+	 * @param position the position on chessboard
+	 * @param player the player it belongs to
+	 */
 	public Pawn(Chessboard chessboard, Vector3 position, Player player) {
 		super(chessboard, position, player);
 
@@ -24,6 +36,9 @@ public class Pawn extends Figure {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see Figures.Figure#getPossibleMoves()
+	 */
 	@Override
 	public List<Vector3> getPossibleMoves() {
 
@@ -51,6 +66,9 @@ public class Pawn extends Figure {
 		return list;
 	}
 
+	/* (non-Javadoc)
+	 * @see Figures.Figure#toString()
+	 */
 	public String toString()
 	{
 		switch ( getPlayer().getId() )
@@ -61,6 +79,9 @@ public class Pawn extends Figure {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see Figures.Figure#saveXML(org.w3c.dom.Document)
+	 */
 	public Element saveXML(Document document) {
 
         Element root = super.saveXML(document);

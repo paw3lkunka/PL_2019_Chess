@@ -6,12 +6,26 @@ import Exceptions.ColorMissingException;
 import Figures.Figure;
 import processing.core.PApplet;
 
+/**
+ * The Class Tile.
+ * @author Piotr Ruciñski
+ */
 public class Tile extends PositionedObject 
 {
 
+	/** The color. */
 	TColor color;
+	
+	/** The figure. */
 	Figure figure;
 
+	/**
+	 * Instantiates a new tile.
+	 *
+	 * @param parent the parent
+	 * @param pos the pos
+	 * @param color the color
+	 */
 	public Tile(PApplet parent, Vector3 pos, TColor color) 
 	{
 		super(parent, pos);
@@ -20,6 +34,9 @@ public class Tile extends PositionedObject
 	
 	
 	
+	/**
+	 * Display.
+	 */
 	public void display()
 	{
 		super.parent.noStroke();
@@ -36,6 +53,9 @@ public class Tile extends PositionedObject
 	}
 
 	
+	/**
+	 * Display figure.
+	 */
 	public void displayFigure()
 	{
 		if(figure != null) {
@@ -44,14 +64,27 @@ public class Tile extends PositionedObject
 		}
 	}
 
+	/**
+	 * Gets the figure.
+	 *
+	 * @return the figure on the tile
+	 */
 	public Figure getFigure() {
 		return figure;
 	}
 
+	/**
+	 * Sets the figure.
+	 *
+	 * @param figure the new figure
+	 */
 	public void setFigure(Figure figure) {
 		this.figure = figure;
 	}
 	
+	/**
+	 * Fill.
+	 */
 	public void fill()
 	{
 		switch(color)
@@ -63,6 +96,11 @@ public class Tile extends PositionedObject
 		}
 	}
 	
+	/**
+	 * To lines string.
+	 *
+	 * @return the list of Strings representing tiles in TUI
+	 */
 	public List<String> toLinesString()
 	{
 		List<String> str = new ArrayList<String>();

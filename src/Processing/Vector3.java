@@ -5,23 +5,51 @@ import org.w3c.dom.Element;
 
 import XML.XMLSerializable;
 
+/**
+ * The Class Vector3.
+ * @author Piotr Ruciñski
+ */
 public class Vector3 implements XMLSerializable {
+	
+	/** The x. */
 	private float x;
+	
+	/** The y. */
 	private float y;
+	
+	/** The z. */
 	private float z;
 	
+	/**
+	 * Instantiates a new vector 3.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @param z the z
+	 */
 	public Vector3(float x, float y, float z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
 	}
 	
+	/**
+	 * Instantiates a new vector 3.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 */
 	public Vector3(float x, float y) {
 		this.x = x;
 		this.y = y;
 		this.z = 0;
 	}
 	
+	/**
+	 * Instantiates a new vector 3 from XML Element.
+	 *
+	 * @param element the element
+	 */
 	public Vector3 (Element element) {
 		
 		this.x = Float.parseFloat( element.getElementsByTagName("X").item(0).getTextContent() );
@@ -30,45 +58,93 @@ public class Vector3 implements XMLSerializable {
 
 	}
 	
+	/**
+	 * Instantiates a new vector 3.
+	 *
+	 * @param v the Vector3
+	 */
 	public Vector3(Vector3 v) {
 		this.x = v.getX();
 		this.y = v.getY();
 		this.z = v.getZ();
 	}
 
+	/**
+	 * Gets the vector 3.
+	 *
+	 * @return the vector 3
+	 */
 	public float[] getVector3() {
 		float[] a = {x,y,z};
 		return a;
 	}
 	
+	/**
+	 * Gets the x.
+	 *
+	 * @return the x
+	 */
 	public float getX() {
 		return x;
 	}
 
+	/**
+	 * Sets the x.
+	 *
+	 * @param x the new x
+	 */
 	public void setX(float x) {
 		this.x = x;
 	}
 
+	/**
+	 * Gets the y.
+	 *
+	 * @return the y
+	 */
 	public float getY() {
 		return y;
 	}
 
+	/**
+	 * Sets the y.
+	 *
+	 * @param y the new y
+	 */
 	public void setY(float y) {
 		this.y = y;
 	}
 
+	/**
+	 * Gets the z.
+	 *
+	 * @return the z
+	 */
 	public float getZ() {
 		return z;
 	}
 
+	/**
+	 * Sets the z.
+	 *
+	 * @param z the new z
+	 */
 	public void setZ(float z) {
 		this.z = z;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString() {
 		return "X= "+x+"  Y= "+y+"  Z= "+z;
 	}
 
+	/**
+	 * To chess string. Converts row number to row letter on chessboard.
+	 *
+	 * @return the string
+	 */
 	public String toChessString() {
 		String str = new String();
 		
@@ -88,12 +164,20 @@ public class Vector3 implements XMLSerializable {
 		return str+(int)this.y;
 	}
 	
+	/**
+	 * Mult.
+	 *
+	 * @param a the a
+	 */
 	public void mult(int a) {
 		this.x = x * a;
 		this.y = y * a;
 		this.z = z * a;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -104,6 +188,9 @@ public class Vector3 implements XMLSerializable {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;
@@ -127,6 +214,9 @@ public class Vector3 implements XMLSerializable {
 		return true;
 	}
 	
+	/* (non-Javadoc)
+	 * @see XML.XMLSerializable#saveXML(org.w3c.dom.Document)
+	 */
 	public Element saveXML(Document document) {
 
             // root element

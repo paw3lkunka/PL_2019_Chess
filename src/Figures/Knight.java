@@ -10,8 +10,20 @@ import Player.Player;
 import Processing.Chessboard;
 import Processing.Vector3;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Knight.
+ * @author Piotr Ruciñski
+ */
 public class Knight extends Figure {
 
+	/**
+	 * Instantiates a new knight.
+	 *
+	 * @param chessboard the chessboard
+	 * @param position the position on chessboard
+	 * @param player the player it belongs to
+	 */
 	public Knight(Chessboard chessboard, Vector3 position, Player player) {
 		super(chessboard, position, player);
 
@@ -23,6 +35,9 @@ public class Knight extends Figure {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see Figures.Figure#getPossibleMoves()
+	 */
 	@Override
 	public List<Vector3> getPossibleMoves() {
 
@@ -31,6 +46,9 @@ public class Knight extends Figure {
 		return standardProcedure(tabX,tabY,1,CollisionEvent.both);
 	}
 
+	/* (non-Javadoc)
+	 * @see Figures.Figure#toString()
+	 */
 	public String toString()
 	{
 		switch ( getPlayer().getId() )
@@ -41,6 +59,9 @@ public class Knight extends Figure {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see Figures.Figure#saveXML(org.w3c.dom.Document)
+	 */
 	public Element saveXML(Document document) {
 
         Element root = super.saveXML(document);

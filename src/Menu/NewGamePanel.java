@@ -18,12 +18,20 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
+/**
+ * The Class NewGamePanel.
+ * @author Pawe³ Kunka
+ */
 @SuppressWarnings("serial")
 public class NewGamePanel extends JPanel {
+	
+	/** The program. */
 	private Program program;
 
 	/**
 	 * Create the panel.
+	 *
+	 * @param program the program
 	 */
 	public NewGamePanel(Program program) {
 		this.program = program;

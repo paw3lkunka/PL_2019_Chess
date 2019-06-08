@@ -16,14 +16,24 @@ import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
+/**
+ * The Class StatsPanel.
+ * @author Pawe³ Kunka
+ */
 @SuppressWarnings("serial")
 public class StatsPanel extends JPanel {
+	
+	/** The program. */
 	private Program program;
+	
+	/** The table. */
 	private JTable table;
 
 	/**
 	 * Create the panel.
-	 * @throws SQLException 
+	 *
+	 * @param program the program
+	 * @throws SQLException the SQL exception
 	 */
 	public StatsPanel(Program program) throws SQLException {
 		this.program = program;

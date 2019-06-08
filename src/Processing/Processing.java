@@ -10,23 +10,50 @@ import XML.XMLChessboardReader;
 import XML.XMLWriter;
 import processing.core.PApplet;
 
+/**
+ * The Class Processing.
+ * @author Piotr Ruciñski
+ * @author Pawe³ Kunka
+ */
 public class Processing extends PApplet {
+	
+	/** The program. */
 	private Program program;
+	
+	/** The c. */
 	//private PImage bg;
 	private Chessboard c;
+	
+	/** The is running. */
 	private boolean isRunning = false;
+	
+	/** The in. */
 	private Scanner in;
+	
+	/** The t 1. */
 	private InputThread t1 = new InputThread();
+	
+	/**
+	 * Instantiates a new processing.
+	 *
+	 * @param program the program
+	 */
 	public Processing(Program program) {
 		super();
 		this.program = program;
 	}
 	
+    /* (non-Javadoc)
+     * @see processing.core.PApplet#settings()
+     */
     public void settings(){
     	//fullScreen(P3D);
     	size(400, 400, P3D); 
     }
 
+    /* (non-Javadoc)
+     * @see processing.core.PApplet#setup()
+     */
     public void setup(){
     	  frameRate(30);
     	  in = new Scanner(System.in);
@@ -43,6 +70,9 @@ public class Processing extends PApplet {
 
   
     
+    /* (non-Javadoc)
+     * @see processing.core.PApplet#draw()
+     */
     public void draw() {
     	
     	lights();
@@ -77,6 +107,9 @@ public class Processing extends PApplet {
     		
     }	
     
+    /* (non-Javadoc)
+     * @see processing.core.PApplet#mouseClicked()
+     */
     public void mouseClicked() {
     	  
   	  int x = mouseX/50;
@@ -87,6 +120,9 @@ public class Processing extends PApplet {
 
     }
     
+    /* (non-Javadoc)
+     * @see processing.core.PApplet#keyPressed()
+     */
     public void keyPressed() {
   	  
   	  if(key==27) {
@@ -95,6 +131,9 @@ public class Processing extends PApplet {
   	  }
     }
     
+  /**
+   * Run. Set game window visible and playable, hide menu JFrame.
+   */
   //====================OBS£UGA OKNA====================
 	public void run() {			//nale¿y u¿yæ przy ka¿dorazowym wywo³aniu okna
 		program.setVisible(false);
@@ -108,6 +147,9 @@ public class Processing extends PApplet {
   	    
 	}
   
+	/* (non-Javadoc)
+	 * @see processing.core.PApplet#exit()
+	 */
 	public void exit() {		//do ukrycia okna gry
 		  t1.stop();
 		  program.setVisible(true);
@@ -115,6 +157,9 @@ public class Processing extends PApplet {
 		  getSurface().setVisible(false);
 	}
   
+	/**
+	 * End. Close game in valid way. Make backup saves/autosave.
+	 */
 	public void end()			//koniec dzia³ania programu
 	{
 		  try {
@@ -134,56 +179,113 @@ public class Processing extends PApplet {
 		  }
 	}
 
+  /**
+   * Save game.
+   *
+   * @param path the path
+   */
   //====================OBS£UGA GRY====================
   public void saveGame(String path) {
 	  new XMLWriter<Chessboard>(path).save(c);
   }
   	
+  /**
+   * Load game.
+   *
+   * @param path the path of the file to load
+   */
   public void loadGame(String path) {
 	  new XMLChessboardReader(path).loadChessboard(this, new Vector3(0,0,0));
   }
   
+  /**
+   * New game.
+   *
+   * @param one the player one - white
+   * @param two the player two - black
+   */
   public void newGame(Player one, Player two) {
 	  c = new Chessboard(this, new Vector3(0,0,0), one, two );
   }
   
+  /**
+   * New game.
+   */
   public void newGame() {		//uzywaæ tylko jeœli gra ju¿ jest i nie zmieniono graczy
 	  c = new Chessboard(this, new Vector3(0,0,0), c.getOne(), c.getTwo() );
   }
   
   
   
+/**
+ * Gets the checks if is running.
+ *
+ * @return the checks if is running
+ */
 //====================get set====================
 	public boolean getIsRunning() {
 		return isRunning;
 	}
 
+	/**
+	 * Sets the checks if is running.
+	 *
+	 * @param isRunning the new checks if is running
+	 */
 	public void setIsRunning(boolean isRunning) {
 		this.isRunning = isRunning;
 	}
 
+	/**
+	 * Gets the c.
+	 *
+	 * @return the c
+	 */
 	public Chessboard getC() {
 		return c;
 	}
 
+	/**
+	 * Sets the c.
+	 *
+	 * @param c the new c
+	 */
 	public void setC(Chessboard c) {
 		this.c = c;
 	}
 
+	/**
+	 * Gets the program.
+	 *
+	 * @return the program
+	 */
 	public Program getProgram() {
 		return program;
 	}
 
+	/**
+	 * Gets the in.
+	 *
+	 * @return the in
+	 */
 	public Scanner getIn() {
 		return in;
 	}
 
 	
+	/**
+	 * The Class InputThread.
+	 */
 	//====================klasa w¹tku====================
 	class InputThread implements Runnable{
-	    private volatile boolean exit = false;
 	    
-	    public void run() {
+    	/** The exit. */
+    	private volatile boolean exit = false;
+	    
+	    /* (non-Javadoc)
+    	 * @see java.lang.Runnable#run()
+    	 */
+    	public void run() {
 	        while(!exit){
 	        	if(c != null)
 	        		c.input();
@@ -192,11 +294,17 @@ public class Processing extends PApplet {
 	        System.out.println("\nThread is stopped....");
 	    }
 	    
-	    public void stop(){
+	    /**
+    	 * Stop.
+    	 */
+    	public void stop(){
 	        exit = true;
 	    }
 	    
-	    public void start() {
+	    /**
+    	 * Start.
+    	 */
+    	public void start() {
 	    	exit = false;
 	    	run();
 	    }

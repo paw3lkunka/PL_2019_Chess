@@ -9,9 +9,20 @@ import Player.Player;
 import Processing.Chessboard;
 import Processing.Vector3;
 
+/**
+ * The Class Bishop.
+ * @author Piotr Ruciñski
+ */
 public class Bishop extends Figure {
 
 	
+	/**
+	 * Instantiates a new bishop.
+	 *
+	 * @param chessboard the chessboard
+	 * @param position the position on chessboard
+	 * @param player the player it belongs to
+	 */
 	public Bishop(Chessboard chessboard, Vector3 position, Player player) {
 		super(chessboard, position, player);
 
@@ -24,6 +35,9 @@ public class Bishop extends Figure {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see Figures.Figure#getPossibleMoves()
+	 */
 	@Override
 	public List<Vector3> getPossibleMoves() {
 		int[] tabX = {1,1,-1,-1};
@@ -32,6 +46,9 @@ public class Bishop extends Figure {
 		return standardProcedure(tabX,tabY, getChessboard().getSize(), CollisionEvent.both);
 	}
 	
+	/* (non-Javadoc)
+	 * @see Figures.Figure#toString()
+	 */
 	public String toString()
 	{
 		switch ( getPlayer().getId() )
@@ -43,6 +60,9 @@ public class Bishop extends Figure {
 	}
 
 	
+	/* (non-Javadoc)
+	 * @see Figures.Figure#saveXML(org.w3c.dom.Document)
+	 */
 	public Element saveXML(Document document) {
 
         Element root = super.saveXML(document);

@@ -10,27 +10,54 @@ import Processing.Processing;
 import SQL.MySql;
 import processing.core.PApplet;
 
+/**
+ * The Class Program.
+ * @author Pawe³ Kunka
+ */
 @SuppressWarnings("serial")
 public class Program extends JFrame {
+	
+	/** The mm panel. */
 	private MainMenuPanel mmPanel;
+	
+	/** The game. */
 	private Processing game;
+	
+	/** The my sql. */
 	private MySql mySql;
 
 
+	/**
+	 * Gets the my sql.
+	 *
+	 * @return the my sql
+	 */
 	public MySql getMySql() {
 		return mySql;
 	}
 
+	/**
+	 * Gets the mm panel.
+	 *
+	 * @return the mm panel
+	 */
 	public MainMenuPanel getMmPanel() {
 		return mmPanel;
 	}
 
+	/**
+	 * Gets the game.
+	 *
+	 * @return the game
+	 */
 	public Processing getGame() {
 		return game;
 	}
 	
 	/**
 	 * Launch the application.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		
@@ -49,7 +76,8 @@ public class Program extends JFrame {
 
 	/**
 	 * Create the frame.
-	 * @throws SQLException 
+	 *
+	 * @throws SQLException the SQL exception
 	 */
 	public Program() throws SQLException {
 		
@@ -104,6 +132,11 @@ public class Program extends JFrame {
 		setContentPane(mmPanel);
 	}
 	
+	/**
+	 * Prints the string on standard output.
+	 *
+	 * @param str the string to print
+	 */
 	public void print(String str) {
 		System.out.println(str);
 	}

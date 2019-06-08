@@ -13,14 +13,31 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 
+/**
+ * The Class XMLWriter.
+ * @author Piotr Ruciñski
+ *
+ * @param <T> the generic type
+ */
 public class XMLWriter <T extends XMLSerializable> {
 	
+	/** The path. */
 	private String path;
 	
+	/**
+	 * Instantiates a new XML writer.
+	 *
+	 * @param path the path of the file it is writing in.
+	 */
 	public XMLWriter(String path) {
 		this.path=path;
 	}
 	
+	/**
+	 * Save.
+	 *
+	 * @param t the object of T type
+	 */
 	public void save(T t) {
 		
 		StreamResult stream;

@@ -12,14 +12,31 @@ import Processing.Processing;
 import Processing.Vector3;
 import processing.core.PApplet;
 
+/**
+ * The Class XMLChessboardReader.
+ * @author Piotr Ruciñski
+ */
 public class XMLChessboardReader {
 	
+	/** The path. */
 	private String path;
 	
+	/**
+	 * Instantiates a new XML chessboard reader.
+	 *
+	 * @param path the path to the file it reads
+	 */
 	public XMLChessboardReader (String path){
 		this.path = path;
 	}
 	
+	/**
+	 * Load chessboard.
+	 *
+	 * @param parent the PApplet chessboard is used in
+	 * @param pos the position of chessboard in PApplet
+	 * @return the chessboard
+	 */
 	public Chessboard loadChessboard(PApplet parent, Vector3 pos)
 	{
 		

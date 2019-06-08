@@ -22,15 +22,37 @@ enum CollisionEvent {
 	both;
 }
 
+/**
+ * The Class Figure.
+ * @author Piotr Ruciñski
+ */
 public abstract class Figure implements XMLSerializable {
 
+	/** The chessboard. */
 	private final Chessboard chessboard;
+	
+	/** The player. */
 	private final Player player;
+	
+	/** The position. */
 	private Vector3 position;
+	
+	/** The shape. */
 	private PShape shape;
+	
+	/** The selection. */
 	private boolean selection;
+	
+	/** The moved. */
 	private boolean moved;
 	
+	/**
+	 * Instantiates a new figure.
+	 *
+	 * @param chessboard the chessboard
+	 * @param position the position on chessboard
+	 * @param player the player it belongs to
+	 */
 	public Figure(Chessboard chessboard, Vector3 position, Player player) {
 		this.chessboard = chessboard;
 		this.player = player;
@@ -40,10 +62,22 @@ public abstract class Figure implements XMLSerializable {
 	}
 	
 	
+	/**
+	 * Gets the possible moves.
+	 *
+	 * @return the possible moves
+	 */
 	public abstract List<Vector3> getPossibleMoves();
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public abstract String toString();
 	//public abstract Element saveXML();
 
+	/* (non-Javadoc)
+	 * @see XML.XMLSerializable#saveXML(org.w3c.dom.Document)
+	 */
 	public Element saveXML(Document document) {
 
             // root element
@@ -58,6 +92,9 @@ public abstract class Figure implements XMLSerializable {
             
 	}
 	
+	/**
+	 * Display possible to move tiles on Processing GUI.
+	 */
 	public void displayPossibleToMoveTiles()
 	{
 		List<Vector3> vList = getPossibleMoves();
@@ -72,16 +109,31 @@ public abstract class Figure implements XMLSerializable {
 		}
 	}
 	
+	/**
+	 * Switch selection.
+	 */
 	public void switchSelection()
 	{
 		this.selection = !selection;
 	}
 	
+	/**
+	 * Moved sets moved to true.
+	 */
 	public void moved()
 	{
 		this.moved = true;
 	}
 	
+	/**
+	 * Standard procedure.
+	 *
+	 * @param tabX the tab X
+	 * @param tabY the tab Y
+	 * @param distance the distance
+	 * @param cevent the cevent
+	 * @return the list
+	 */
 	public List<Vector3> standardProcedure(int[] tabX, int[] tabY, int distance,  CollisionEvent cevent) {
 		
 		List<Vector3> list= new ArrayList<Vector3>();
@@ -121,34 +173,74 @@ public abstract class Figure implements XMLSerializable {
 		return list;
 	}
 
+	/**
+	 * Gets the player.
+	 *
+	 * @return the player
+	 */
 	public Player getPlayer() {
 		return player;
 	}
 	
+	/**
+	 * Gets the position.
+	 *
+	 * @return the position
+	 */
 	public Vector3 getPosition() {
 		return position;
 	}
 
+	/**
+	 * Sets the position.
+	 *
+	 * @param position the new position
+	 */
 	public void setPosition(Vector3 position) {
 		this.position = position;
 	}
 
+	/**
+	 * Gets the shape.
+	 *
+	 * @return the shape
+	 */
 	public PShape getShape() {
 		return shape;
 	}
 
+	/**
+	 * Sets the shape.
+	 *
+	 * @param path the new shape
+	 */
 	public void setShape(String path) {
 		this.shape = chessboard.getParent().loadShape(path);
 	}
 
+	/**
+	 * Gets the chessboard.
+	 *
+	 * @return the chessboard
+	 */
 	public Chessboard getChessboard() {
 		return chessboard;
 	}
 
+	/**
+	 * Gets the moved.
+	 *
+	 * @return the moved
+	 */
 	public boolean getMoved() {
 		return moved;
 	}
 
+	/**
+	 * Sets the moved.
+	 *
+	 * @param moved the new moved
+	 */
 	public void setMoved(boolean moved) {
 		this.moved = moved;
 	}

@@ -7,14 +7,31 @@ import javax.swing.table.DefaultTableModel;
 import Player.Sex;
 import Player.Skill;
 
+/**
+ * The Class MySql.
+ * @author Pawe³ Kunka
+ */
 public class MySql {
+	
+	/** The connection. */
 	private Connection connection;
 	
+	/**
+	 * Instantiates a new my sql. Sets the connection with localhost:3306 MySQL database.
+	 *
+	 * @throws SQLException the SQL exception
+	 */
 	public MySql() throws SQLException{
 		DriverManager.registerDriver( new com.mysql.cj.jdbc.Driver() );
 		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Kompo2019?useUnicode=true&characterEncoding=utf-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root","");
 	}
 	
+	/**
+	 * Gets the players stats as ResultSet.
+	 *
+	 * @return the players stats
+	 * @throws SQLException the SQL exception
+	 */
 	public ResultSet getPlayersStats() throws SQLException {
 		Statement statement = connection.createStatement();
 		return statement.executeQuery(
@@ -24,6 +41,15 @@ public class MySql {
 			);
 	}
 	
+	/**
+	 * Adds the new player to database's players table.
+	 *
+	 * @param nick the player nick
+	 * @param sex the player sex
+	 * @param age the player age
+	 * @param skill the player skill
+	 * @throws SQLException the SQL exception
+	 */
 	public void addNewPlayer(String nick, Sex sex, int age, Skill skill) throws SQLException {
 		Statement statement = connection.createStatement();
 		statement.executeUpdate(
@@ -32,6 +58,13 @@ public class MySql {
 		);
 	}
 	
+	/**
+	 * Checks if is player registered.
+	 *
+	 * @param nick the player nick
+	 * @return true, if player is registered
+	 * @throws SQLException the SQL exception
+	 */
 	public boolean isPlayerRegistered(String nick) throws SQLException {
 		Statement statement = connection.createStatement();
 		ResultSet rs = statement.executeQuery(
@@ -48,6 +81,12 @@ public class MySql {
 		}
 	}
 	
+	/**
+	 * Update win.
+	 *
+	 * @param nick the nick
+	 * @throws SQLException the SQL exception
+	 */
 	public void updateWin(String nick) throws SQLException {
 		Statement statement = connection.createStatement();
 		statement.executeUpdate(
@@ -57,6 +96,12 @@ public class MySql {
 		);
 	}
 	
+	/**
+	 * Update loss.
+	 *
+	 * @param nick the nick
+	 * @throws SQLException the SQL exception
+	 */
 	public void updateLoss(String nick) throws SQLException {
 		Statement statement = connection.createStatement();
 		statement.executeUpdate(
@@ -66,6 +111,13 @@ public class MySql {
 		);
 	}
 	
+	/**
+	 * Builds the table model from ResultSet.
+	 *
+	 * @param rs the result set to base table on
+	 * @return the default table model
+	 * @throws SQLException the SQL exception
+	 */
 	public DefaultTableModel buildTableModel(ResultSet rs)
 	        throws SQLException {
 
