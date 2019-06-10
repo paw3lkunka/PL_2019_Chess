@@ -3,10 +3,6 @@ package Processing;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-
-import com.jogamp.newt.event.KeyEvent;
-import com.jogamp.newt.event.KeyListener;
-
 import Menu.Program;
 import Player.*;
 import XML.XMLChessboardReader;
@@ -15,6 +11,7 @@ import processing.core.PApplet;
 
 /**
  * The Class Processing.
+ * Extended PApplet class which manipulates game window.
  * @author Piotr Ruciñski
  * @author Pawe³ Kunka
  */
@@ -152,8 +149,9 @@ public class Processing extends PApplet {
 	public void exit() {		//do ukrycia okna gry
 		  t1.stop();
 		  program.setVisible(true);
-		  noLoop();
+		  getSurface().setLocation(2000, 2000);
 		  getSurface().setVisible(false);
+		  noLoop();
 	}
   
 	/**
