@@ -5,7 +5,7 @@ import org.w3c.dom.Element;
 
 /**
  * The Interface XMLSerializable.
- * @autor Piotr Ruciñski
+ * @author Piotr Ruciñski
  */
 public interface XMLSerializable {
 

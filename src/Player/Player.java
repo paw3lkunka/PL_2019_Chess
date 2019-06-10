@@ -8,6 +8,7 @@ import XML.XMLSerializable;
 
 /**
  * The Class Player.
+ * Represents the player in-game. It appeared to be less useful due to MySQL database.
  * @author Piotr Ruciñski
  */
 public class Player implements XMLSerializable {
@@ -43,8 +44,8 @@ public class Player implements XMLSerializable {
 	public Player(String name, PlayerID id, FColor color) {
 		this.name = name;
 		this.color = color;
-		this.sex = null;
-		this.skill = null;
+		this.sex = Sex.none;
+		this.skill = Skill.beginner;
 		this.wins = 0;
 		this.games = 0;
 		this.id = id;

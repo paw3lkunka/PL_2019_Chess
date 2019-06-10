@@ -116,7 +116,7 @@ public class NewPlayerPanel extends JPanel {
 		btnBack.setBounds(30, 300, 120, 40);
 		add(btnBack);
 		
-		JLabel lblBadNick = new JLabel("NICK  ZAJETY  !!!");
+		JLabel lblBadNick = new JLabel("NICK  ZAJETY LUB Z£Y !!!");
 		lblBadNick.setVisible(false);
 		lblBadNick.setForeground(new Color(255, 105, 180));
 		lblBadNick.setFont(new Font("Papyrus", Font.PLAIN, 13));
@@ -131,9 +131,9 @@ public class NewPlayerPanel extends JPanel {
 				// zebranie danych z pól tekstowych, radia, p³ci, countera
 				// utworzenie obiektu gracza, zapisanie go w bazie danych
 				try {
-					if(program.getMySql().isPlayerRegistered(txtNick.getText()) || txtNick.getText().compareTo("") == 0) {
+					if(program.getMySql().isPlayerRegistered(txtNick.getText()) || txtNick.getText().compareTo("") == 0 || txtNick.getText().length() > 25) {
 						lblBadNick.setVisible(true);
-						System.out.println("Player " + txtNick.getText() + " already registered!");
+						System.out.println("Player " + txtNick.getText() + " already registered or invalid!");
 					} else {
 						Sex playerSex = null;
 						Skill playerSkill = null;

@@ -18,6 +18,7 @@ import processing.core.PShape;
 
 /**
  * The collision event enum.
+ * Represents figure on chessboard and its properties.
  * @author Piotr Ruciñski
  */
 enum CollisionEvent {
