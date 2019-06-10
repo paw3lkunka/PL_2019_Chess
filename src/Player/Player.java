@@ -55,7 +55,7 @@ public class Player implements XMLSerializable {
 	}
 
 	/**
-	 * Instantiates a new player.
+	 * Instantiates a new player based on XML element.
 	 *
 	 * @param element the element
 	 * @param id the id of the player in-game

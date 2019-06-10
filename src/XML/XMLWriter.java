@@ -34,7 +34,7 @@ public class XMLWriter <T extends XMLSerializable> {
 	}
 	
 	/**
-	 * Save.
+	 * Save object T in XML format.
 	 *
 	 * @param t the object of T type
 	 */

@@ -13,6 +13,6 @@ public enum TColor
 	/** The white. */
 	white,
 	
-	/** The a green. */
+	/** The half-invisible green. */
 	aGreen;
 }

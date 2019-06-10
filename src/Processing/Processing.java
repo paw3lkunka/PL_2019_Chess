@@ -20,17 +20,17 @@ public class Processing extends PApplet {
 	/** The program. */
 	private Program program;
 	
-	/** The c. */
+	/** The chessboard. */
 	//private PImage bg;
 	private Chessboard c;
 	
 	/** The is running. */
 	private boolean isRunning = false;
 	
-	/** The in. */
+	/** The scanner. */
 	private Scanner in;
 	
-	/** The t 1. */
+	/** The input thread. */
 	private InputThread t1 = new InputThread();
 	
 	/**
@@ -57,10 +57,6 @@ public class Processing extends PApplet {
     public void setup(){
     	  frameRate(30);
     	  in = new Scanner(System.in);
-    	  /*newGame(
-    			  new Player("Bia³a", PlayerID.one, FColor.white, Sex.female, Skill.profesional, 10, 12),
-    			  new Player("Czarny", PlayerID.two, FColor.black, Sex.male, Skill.beginner, 1, 5)
-    			  );*///new XMLChessboardReader("saves/autosave").loadChessboard(this, new Vector3(0,0,0)); //new Chessboard(this, new Vector3(0,0,0));
     	  getSurface().setResizable(false);
 		  getSurface().setAlwaysOnTop(true);
     	  /*bg = loadImage("sky.jpg");
@@ -147,8 +143,8 @@ public class Processing extends PApplet {
   	    
 	}
   
-	/* (non-Javadoc)
-	 * @see processing.core.PApplet#exit()
+	/**
+	 * Exit. Hide game window and set menu JFrame visible.
 	 */
 	public void exit() {		//do ukrycia okna gry
 		  t1.stop();
@@ -237,18 +233,18 @@ public class Processing extends PApplet {
 	}
 
 	/**
-	 * Gets the c.
+	 * Gets the chessboard.
 	 *
-	 * @return the c
+	 * @return the chessboard
 	 */
 	public Chessboard getC() {
 		return c;
 	}
 
 	/**
-	 * Sets the c.
+	 * Sets the chessboard.
 	 *
-	 * @param c the new c
+	 * @param c the new chessboard
 	 */
 	public void setC(Chessboard c) {
 		this.c = c;
@@ -264,9 +260,9 @@ public class Processing extends PApplet {
 	}
 
 	/**
-	 * Gets the in.
+	 * Gets the scanner.
 	 *
-	 * @return the in
+	 * @return the scanner
 	 */
 	public Scanner getIn() {
 		return in;
@@ -282,8 +278,8 @@ public class Processing extends PApplet {
     	/** The exit. */
     	private volatile boolean exit = false;
 	    
-	    /* (non-Javadoc)
-    	 * @see java.lang.Runnable#run()
+	    /**
+    	 * Starts thread which reads input.
     	 */
     	public void run() {
 	        while(!exit){

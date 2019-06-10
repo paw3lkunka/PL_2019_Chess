@@ -35,7 +35,7 @@ public class Tile extends PositionedObject
 	
 	
 	/**
-	 * Display.
+	 * Display tile.
 	 */
 	public void display()
 	{

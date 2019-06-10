@@ -26,7 +26,7 @@ public class PositionedObject {
 	}
 	
 	/**
-	 * Place.
+	 * Places object in processing.
 	 */
 	public void place()
 	{
