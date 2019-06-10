@@ -21,10 +21,10 @@ import javax.swing.JLabel;
 @SuppressWarnings("serial")
 public class MainMenuPanel extends JPanel {
 	
-	/** The program. */
+	/** The program. Reference to the instance of the program. Primitive and unsecured singleton. */
 	private Program program;
 	
-	/** The mm listener. */
+	/** The mm listener. Main menu listener handling actionEvents of all the main menu buttons*/
 	// by u¿yæ w optymalny sposób klasy wewnêtrznej do obs³ugi tych guziczków potrzebne by³y te pola
 	private MainMenuListener mmListener;
 	
@@ -54,18 +54,19 @@ public class MainMenuPanel extends JPanel {
 	
 	
 	/**
-	 * Gets the btn continue.
+	 * Gets the continue button. Enabled when the game is running. Continues the game.
 	 *
-	 * @return the btn continue
+	 * @return the continue button
 	 */
 	public JButton getBtnContinue() {
 		return btnContinue;
 	}
 
 	/**
-	 * Create the panel.
+	 * Create the panel representing main menu. Sets all the components that it contains to their valid state.
+	 * Adds MainMenuListener as their action listener.
 	 *
-	 * @param program the program
+	 * @param program the reference to the instance of the program class, main class of this application
 	 */
 	public MainMenuPanel(Program program) {
 		this.program = program;

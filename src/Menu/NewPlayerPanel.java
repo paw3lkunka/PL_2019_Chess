@@ -28,16 +28,17 @@ import javax.swing.JLabel;
 @SuppressWarnings("serial")
 public class NewPlayerPanel extends JPanel {
 	
-	/** The program. */
+	/** The program. Reference to the instance of the program. Primitive and unsecured singleton.*/
 	private Program program;
 	
-	/** The level radio. */
+	/** The level radio. Radio button group for choosing declared players skills. Only one at the time may be chosen.*/
 	private ButtonGroup levelRadio;
 
 	/**
-	 * Create the panel.
+	 * Create the new player panel. Sets all of its components to the valid state.
+	 * Adds anonymous classes as their dedicated action listener if needed.
 	 *
-	 * @param program the program
+	 * @param program the the reference to the instance of the program class, main class of this application
 	 */
 	public NewPlayerPanel(Program program) {
 		this.program = program;

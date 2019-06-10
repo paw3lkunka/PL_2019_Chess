@@ -23,14 +23,15 @@ import javax.swing.JScrollPane;
 @SuppressWarnings("serial")
 public class StatsPanel extends JPanel {
 	
-	/** The program. */
+	/** The program. Reference to the instance of the program. Primitive and unsecured singleton. */
 	private Program program;
 	
-	/** The table. */
+	/** The table. made to contain players table from MySQL database (localhost:3306) */
 	private JTable table;
 
 	/**
-	 * Create the panel.
+	 * Create the stats panel. Sets of all its components to valid state.
+	 * Uses anonymous class as action listener if needed.
 	 *
 	 * @param program the program
 	 * @throws SQLException the SQL exception

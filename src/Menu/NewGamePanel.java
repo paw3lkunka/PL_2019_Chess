@@ -25,13 +25,14 @@ import javax.swing.JLabel;
 @SuppressWarnings("serial")
 public class NewGamePanel extends JPanel {
 	
-	/** The program. */
+	/** The program. Reference to the instance of the program. Primitive and unsecured singleton. */
 	private Program program;
 
 	/**
-	 * Create the panel.
+	 * Create the new game panel. Sets all of its components to the valid state.
+	 * Adds anonymous classes as their dedicated action listener if needed.
 	 *
-	 * @param program the program
+	 * @param program the reference to the instance of the program class, main class of this application.
 	 */
 	public NewGamePanel(Program program) {
 		this.program = program;

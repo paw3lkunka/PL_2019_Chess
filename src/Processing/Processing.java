@@ -4,6 +4,9 @@ package Processing;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+import com.jogamp.newt.event.KeyEvent;
+import com.jogamp.newt.event.KeyListener;
+
 import Menu.Program;
 import Player.*;
 import XML.XMLChessboardReader;
@@ -127,7 +130,7 @@ public class Processing extends PApplet {
   	  
   	  if(key==27) {
   		  exit();
-  		  key = 0;
+  		key = 0;
   	  }
     }
     
@@ -277,7 +280,7 @@ public class Processing extends PApplet {
 	 * The Class InputThread.
 	 */
 	//====================klasa w¹tku====================
-	class InputThread implements Runnable{
+	class InputThread implements Runnable {
 	    
     	/** The exit. */
     	private volatile boolean exit = false;
@@ -299,15 +302,19 @@ public class Processing extends PApplet {
     	 */
     	public void stop(){
 	        exit = true;
+	        if(c != null)
+	        	System.out.println("\nGame paused... type anything and press enter");
 	    }
 	    
 	    /**
     	 * Start.
     	 */
     	public void start() {
-	    	exit = false;
+    		
+    		exit = false;
 	    	run();
 	    }
+    	
 	}
 	
 }

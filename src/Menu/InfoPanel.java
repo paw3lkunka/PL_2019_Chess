@@ -18,16 +18,17 @@ import javax.swing.JLabel;
 @SuppressWarnings("serial")
 public class InfoPanel extends JPanel implements ActionListener {
 	
-	/** The program. */
+	/** The program. Reference to the instance of the program. Primitive and unsecured singleton. */
 	private Program program;
 	
-	/** The btn back. */
+	/** The btn back. Button causing program JFrame to get back to main menu.*/
 	JButton btnBack;
 	
 	/**
-	 * Create the panel.
+	 * Create the info panel. Sets all of its components to the valid state.
+	 * Adds anonymous classes as their dedicated action listener if needed.
 	 *
-	 * @param program the program
+	 * @param program the reference to the instance of program - main class of the application.
 	 */
 	public InfoPanel(Program program) {
 		this.program = program;

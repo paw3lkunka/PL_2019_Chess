@@ -27,7 +27,7 @@ public class MySql {
 	}
 	
 	/**
-	 * Gets the players stats as ResultSet.
+	 * Gets all the players stats as ResultSet.
 	 *
 	 * @return the players stats
 	 * @throws SQLException the SQL exception
@@ -59,7 +59,7 @@ public class MySql {
 	}
 	
 	/**
-	 * Checks if is player registered.
+	 * Checks if player is registered.
 	 *
 	 * @param nick the player nick
 	 * @return true, if player is registered
@@ -82,7 +82,7 @@ public class MySql {
 	}
 	
 	/**
-	 * Update win.
+	 * Update win. Increments number of games and wins of the player that has won the game recently.
 	 *
 	 * @param nick the nick
 	 * @throws SQLException the SQL exception
@@ -97,7 +97,7 @@ public class MySql {
 	}
 	
 	/**
-	 * Update loss.
+	 * Update loss. Increments number of games only. Used if the player has lost a game.
 	 *
 	 * @param nick the nick
 	 * @throws SQLException the SQL exception
@@ -112,7 +112,7 @@ public class MySql {
 	}
 	
 	/**
-	 * Builds the table model from ResultSet.
+	 * Builds the table model from ResultSet. Used to format JTable in StatsPanel.
 	 *
 	 * @param rs the result set to base table on
 	 * @return the default table model

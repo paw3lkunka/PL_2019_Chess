@@ -17,18 +17,18 @@ import processing.core.PApplet;
 @SuppressWarnings("serial")
 public class Program extends JFrame {
 	
-	/** The mm panel. */
+	/** The main menu panel. Reference to the JPanel extended JPanel representing main menu in this application. Unsecured singleton */
 	private MainMenuPanel mmPanel;
 	
-	/** The game. */
+	/** The game as reference to the instance of the Processing class. Unsecured singleton. */
 	private Processing game;
 	
-	/** The my sql. */
+	/** The my sql. Reference to the instance of MySql class made to access localhost:3306 dababase containig players table. Unsecured singleton. */
 	private MySql mySql;
 
 
 	/**
-	 * Gets the my sql.
+	 * Gets the my sql class.
 	 *
 	 * @return the my sql
 	 */
@@ -37,16 +37,16 @@ public class Program extends JFrame {
 	}
 
 	/**
-	 * Gets the mm panel.
+	 * Gets the main menu panel.
 	 *
-	 * @return the mm panel
+	 * @return the main menu panel
 	 */
 	public MainMenuPanel getMmPanel() {
 		return mmPanel;
 	}
 
 	/**
-	 * Gets the game.
+	 * Gets the game - processing reference.
 	 *
 	 * @return the game
 	 */
@@ -75,7 +75,7 @@ public class Program extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Create the frame of the program.
 	 *
 	 * @throws SQLException the SQL exception
 	 */
