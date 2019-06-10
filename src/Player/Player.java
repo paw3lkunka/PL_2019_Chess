@@ -260,8 +260,7 @@ public class Player implements XMLSerializable {
 	 */
 	@Override
 	public String toString() {
-		return "Player [name=" + name + ", id=" + id + ", color=" + color + ", sex=" + sex + ", skill=" + skill
-				+ ", wins=" + wins + ", games=" + games + "]";
+		return "Player "+ name;
 	}
 
 
