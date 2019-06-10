@@ -183,7 +183,8 @@ public class Processing extends PApplet {
    */
   //====================OBS£UGA GRY====================
   public void saveGame(String path) {
-	  new XMLWriter<Chessboard>(path).save(c);
+	  if(c!=null)
+		  new XMLWriter<Chessboard>(path).save(c);
   }
   	
   /**
