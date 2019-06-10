@@ -2,14 +2,14 @@
 <Chessboard>
 <Players>
 <Player>
-<Name>A</Name>
+<Name>Janek</Name>
 <Sex>female</Sex>
 <Skill>profesional</Skill>
 <Wins>10</Wins>
 <Games>12</Games>
 </Player>
 <Player>
-<Name>B</Name>
+<Name>Gosia</Name>
 <Sex>male</Sex>
 <Skill>beginner</Skill>
 <Wins>1</Wins>
@@ -124,7 +124,7 @@
 <Figure figure="Pawn">
 <Vector3>
 <X>3.0</X>
-<Y>3.0</Y>
+<Y>2.0</Y>
 <Z>0.0</Z>
 </Vector3>
 <PlayerID>one</PlayerID>
@@ -164,7 +164,7 @@
 <Figure figure="Pawn">
 <Vector3>
 <X>4.0</X>
-<Y>5.0</Y>
+<Y>6.0</Y>
 <Z>0.0</Z>
 </Vector3>
 <PlayerID>two</PlayerID>
@@ -274,5 +274,5 @@
 <PlayerID>two</PlayerID>
 </Figure>
 </Figures>
-<Turn>one</Turn>
+<Turn>two</Turn>
 </Chessboard>

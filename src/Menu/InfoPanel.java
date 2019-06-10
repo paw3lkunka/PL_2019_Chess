@@ -12,7 +12,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
 /**
- * The Class InfoPanel.
+ * The Class InfoPanel. 
+ * Extended JPanel containing information about its creators and a crucial tip.
  * @author Pawe³ Kunka
  */
 @SuppressWarnings("serial")

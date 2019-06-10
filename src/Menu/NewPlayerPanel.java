@@ -23,6 +23,7 @@ import javax.swing.JLabel;
 
 /**
  * The Class NewPlayerPanel.
+ * Extended JPanel containing components to set new player properties and sign him up in MySQL database (localhost:3306 - players table).
  * @author Pawe³ Kunka
  */
 @SuppressWarnings("serial")

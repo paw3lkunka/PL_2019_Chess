@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 
 /**
  * The Class MainMenuPanel.
+ * Extended JPanel containing main menu of the application.
  * @author Pawe³ Kunka
  */
 @SuppressWarnings("serial")

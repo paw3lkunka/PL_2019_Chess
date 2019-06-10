@@ -11,7 +11,8 @@ import SQL.MySql;
 import processing.core.PApplet;
 
 /**
- * The Class Program.
+ * The Class Program. 
+ * Main class of the application starting its process. Also serves as JFrame for Swing-based UI. It is able to display various JPanels that GUI consists of.
  * @author Pawe³ Kunka
  */
 @SuppressWarnings("serial")

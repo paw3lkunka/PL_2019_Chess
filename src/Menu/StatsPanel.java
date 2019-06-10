@@ -18,6 +18,7 @@ import javax.swing.JScrollPane;
 
 /**
  * The Class StatsPanel.
+ * Extended JPanel containing (scrollable) table displaying stats of registered in MySQL players (localohost:3306 - players table)
  * @author Pawe³ Kunka
  */
 @SuppressWarnings("serial")
