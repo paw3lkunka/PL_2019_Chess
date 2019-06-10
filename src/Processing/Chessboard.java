@@ -25,6 +25,7 @@ import processing.core.PApplet;
 
 /**
  * The Class Chessboard.
+ * Class operating with game data - initializes chessboard 
  * @author Piotr Ruciñski
  */
 public class Chessboard extends PositionedObject  implements XMLSerializable {

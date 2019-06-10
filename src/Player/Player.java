@@ -39,11 +39,28 @@ public class Player implements XMLSerializable {
 	 * @param name the nick of the player
 	 * @param id the id of the player in-game
 	 * @param color the color the player's figures
+	 */
+	public Player(String name, PlayerID id, FColor color) {
+		this.name = name;
+		this.color = color;
+		this.sex = null;
+		this.skill = null;
+		this.wins = 0;
+		this.games = 0;
+		this.id = id;
+	}
+	
+	/**
+	 * Instantiates a new player.
+	 *
+	 * @param name the nick of the player
+	 * @param id the id of the player in-game
+	 * @param color the color the player's figures
 	 * @param sex the sex of the player
 	 * @param skill the skill level declared by player
 	 * @param wins the wins count of the player
 	 * @param games the games count of the player
-	 */
+	 */	
 	public Player(String name, PlayerID id, FColor color, Sex sex, Skill skill, int wins, int games) {
 		this.name = name;
 		this.color = color;
@@ -243,8 +260,7 @@ public class Player implements XMLSerializable {
 	 */
 	@Override
 	public String toString() {
-		return "Player [name=" + name + ", id=" + id + ", color=" + color + ", sex=" + sex + ", skill=" + skill
-				+ ", wins=" + wins + ", games=" + games + "]";
+		return "Player "+ name;
 	}
 
 
