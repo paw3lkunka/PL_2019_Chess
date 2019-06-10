@@ -73,11 +73,11 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 	}
 
 	/**
-	 * Instantiates a new chessboard.
+	 * Instantiates a new chessboard based on XML element.
 	 *
 	 * @param parent the instance of PApplet containing chessboard
 	 * @param pos the position of chessboard in Applet
-	 * @param element the element
+	 * @param element the element from XML
 	 */
 	public Chessboard(PApplet parent, Vector3 pos, Element element) {
 		super(parent, pos);
@@ -151,7 +151,7 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 	}
 	
 	/**
-	 * Display.
+	 * Display chessboard.
 	 */
 	public void display()
 	{
@@ -163,9 +163,9 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 	
 	
 	/**
-	 * Gets the occupied tiles.
+	 * Gets the occupied by figures tiles.
 	 *
-	 * @return the occupied tiles
+	 * @return the occupied tiles in Vector3 form.
 	 */
 	public List<Vector3> getOccupiedTiles() 
 	{
@@ -180,7 +180,7 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 	
 	
 	/**
-	 * Adds the figure.
+	 * Adds the figure to chessboard based on XML element.
 	 *
 	 * @param figure the figure we need to add to the chessboard
 	 */
@@ -245,10 +245,10 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
   	}
 	
 	/**
-	 * Move figure.
+	 * Move figure from tile to tile in Vector3 form.
 	 *
-	 * @param from the from
-	 * @param to the to
+	 * @param from - Vector3 of from tile
+	 * @param to - Vector3 of to tile
 	 */
 	public void moveFigure(Vector3 from, Vector3 to)
 	{
@@ -287,7 +287,7 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 			}
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * @see XML.XMLSerializable#saveXML(org.w3c.dom.Document)
 	 */
 	public Element saveXML(Document document)
@@ -317,7 +317,7 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 	}
 	
 	/**
-	 * Interaction.
+	 * Interaction based on position of mouse / chosen with keyboard.
 	 *
 	 * @param x the x
 	 * @param y the y
@@ -358,7 +358,7 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 	/**
 	 * Check end. If the game is over.
 	 *
-	 * @return the player
+	 * @return the player who won
 	 */
 	public Player checkEnd() 
 	{
@@ -380,8 +380,10 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 			return null;
 	}	
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	/** 
+	 * Creates string containing chessboard in TUI form
+	 * 
+	 * @return string containing current chessboard state.
 	 */
 	public String toString()
 	{
@@ -394,7 +396,7 @@ public class Chessboard extends PositionedObject  implements XMLSerializable {
 	}
 	
 	/**
-	 * Input.
+	 * Input with keyboard.
 	 */
 	public void input()
 	{

@@ -165,7 +165,7 @@ public class Vector3 implements XMLSerializable {
 	}
 	
 	/**
-	 * Mult.
+	 * Multiplication of the vector and the a.
 	 *
 	 * @param a the a
 	 */

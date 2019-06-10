@@ -16,9 +16,16 @@ import Processing.Vector3;
 import XML.XMLSerializable;
 import processing.core.PShape;
 
+/**
+ * The collision event enum.
+ * @author Piotr Ruciñski
+ */
 enum CollisionEvent {
+	/** The attack. */
 	attack,
+	/** The move. */
 	move,
+	/** The both. */
 	both;
 }
 
@@ -65,12 +72,14 @@ public abstract class Figure implements XMLSerializable {
 	/**
 	 * Gets the possible moves.
 	 *
-	 * @return the possible moves
+	 * @return the possible moves in Vector3 form
 	 */
 	public abstract List<Vector3> getPossibleMoves();
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	/** 
+	 * Creates label of figure to TUI
+	 * 
+	 * @return String containing label
 	 */
 	public abstract String toString();
 	//public abstract Element saveXML();
@@ -110,7 +119,7 @@ public abstract class Figure implements XMLSerializable {
 	}
 	
 	/**
-	 * Switch selection.
+	 * Switch figure selection.
 	 */
 	public void switchSelection()
 	{
@@ -126,12 +135,12 @@ public abstract class Figure implements XMLSerializable {
 	}
 	
 	/**
-	 * Standard procedure.
+	 * Standard procedure of checking collisions on given distance.
 	 *
-	 * @param tabX the tab X
-	 * @param tabY the tab Y
-	 * @param distance the distance
-	 * @param cevent the cevent
+	 * @param tabX the tab X representing single movement in X direction
+	 * @param tabY the tab Y representing single movement in Y direction
+	 * @param distance the distance to check collision
+	 * @param cevent determines type of movement
 	 * @return the list
 	 */
 	public List<Vector3> standardProcedure(int[] tabX, int[] tabY, int distance,  CollisionEvent cevent) {
